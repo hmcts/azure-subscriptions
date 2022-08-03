@@ -1,0 +1,3 @@
+subscriptions = {
+  management_group: {}
+}
