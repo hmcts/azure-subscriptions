@@ -1,3 +1,10 @@
 subscriptions = {
-  management_group: {}
+  management_groups: [
+    {
+      name: CFT
+      children: [
+
+      ]
+    }
+  ]
 }
