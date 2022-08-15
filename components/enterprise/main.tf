@@ -1,13 +1,3 @@
-variable "root_id" {
-  type    = string
-  default = "hmcts"
-}
-
-variable "root_name" {
-  type    = string
-  default = "HMCTS Programmes"
-}
-
 module "enterprise" {
   source = "../../modules/enterprise"
 
@@ -26,102 +16,102 @@ module "enterprise" {
     CFT = {
       display_name               = "CFT"
       parent_management_group_id = "HMCTS"
-      subscription_ids           = []
+      subscription_ids           = var.cft_subscriptions
     }
     CFT-Sandbox = {
       display_name               = "CFT - Sandbox"
       parent_management_group_id = "CFT"
-      subscription_ids           = []
+      subscription_ids           = var.cft_sandbox_subscriptions
     }
     CFT-NonProd = {
       display_name               = "CFT - Non-production"
       parent_management_group_id = "CFT"
-      subscription_ids           = []
+      subscription_ids           = var.cft_non_production_subscriptions
     }
     CFT-Prod = {
       display_name               = "CFT - Production"
       parent_management_group_id = "CFT"
-      subscription_ids           = []
+      subscription_ids           = var.cft_production_subscriptions
     }
 
     # SDS
     SDS = {
       display_name               = "SDS"
       parent_management_group_id = "HMCTS"
-      subscription_ids           = []
+      subscription_ids           = var.sds_subscriptions
     }
     SDS-Sandbox = {
       display_name               = "SDS - Sandbox"
       parent_management_group_id = "SDS"
-      subscription_ids           = []
+      subscription_ids           = var.sds_sandbox_subscriptions
     }
     SDS-NonProd = {
       display_name               = "SDS - Non-production"
       parent_management_group_id = "SDS"
-      subscription_ids           = []
+      subscription_ids           = var.sds_non_production_subscriptions
     }
     SDS-Prod = {
       display_name               = "SDS - Production"
       parent_management_group_id = "SDS"
-      subscription_ids           = []
+      subscription_ids           = var.sds_production_subscriptions
     }
 
     # Crime
     Crime = {
       display_name               = "Crime"
       parent_management_group_id = "HMCTS"
-      subscription_ids           = []
+      subscription_ids           = var.crime_subscriptions
     }
 
     # Heritage
     Heritage = {
       display_name               = "Heritage"
       parent_management_group_id = "HMCTS"
-      subscription_ids           = []
+      subscription_ids           = var.heritage_subscriptions
     }
     Heritage-Sandbox = {
       display_name               = "Heritage - Sandbox"
       parent_management_group_id = "Heritage"
-      subscription_ids           = []
+      subscription_ids           = var.heritage_sandbox_subscriptions
     }
     Heritage-NonProd = {
       display_name               = "Heritage - Non-production"
       parent_management_group_id = "Heritage"
-      subscription_ids           = []
+      subscription_ids           = var.heritage_non_production_subscriptions
     }
     Heritage-Prod = {
       display_name               = "Heritage - Production"
       parent_management_group_id = "Heritage"
-      subscription_ids           = []
+      subscription_ids           = var.heritage_production_subscriptions
     }
 
     # Security
     Security = {
       display_name               = "Security"
       parent_management_group_id = "HMCTS"
-      subscription_ids           = []
+      subscription_ids           = var.security_subscriptions
     }
 
     # Platform
     Platform = {
       display_name               = "Platform"
       parent_management_group_id = "HMCTS"
-      subscription_ids           = []
+      subscription_ids           = var.platform_subscriptions
     }
     Platform-Sandbox = {
       display_name               = "Platform - Sandbox"
       parent_management_group_id = "Platform"
-      subscription_ids           = []
+      subscription_ids           = var.platform_sandbox_subscriptions
     }
     Platform-NonProd = {
       display_name               = "Platform - Non-production"
       parent_management_group_id = "Platform"
-      subscription_ids           = []
+      subscription_ids           = var.platform_non_production_subscriptions
     }
     Platform-Prod = {
       display_name               = "Platform - Production"
       parent_management_group_id = "Platform"
-      subscription_ids           = []
+      subscription_ids           = var.platform_production_subscriptions
     }
   }
 }

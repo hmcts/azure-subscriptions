@@ -1,7 +1,4 @@
 locals {
-  # TODO look at this which way we want to go
-  strict_subscription_association = false
-
   # basically just adds the id to the map and allows us to make minor adjustments if we want to fields
   management_groups = {
     for key, value in var.management_groups :
@@ -9,7 +6,7 @@ locals {
       id                         = key
       display_name               = value.display_name
       parent_management_group_id = value.parent_management_group_id
-      subscription_ids           = local.strict_subscription_association ? value.subscription_ids : null
+      subscription_ids           = value.subscription_ids
     }
   }
 
