@@ -8,6 +8,9 @@ variable "root_name" {
   default = "HMCTS Programmes"
 }
 
+# unused
+variable "env" {}
+
 variable "cft_subscriptions" {
   default = []
 }
