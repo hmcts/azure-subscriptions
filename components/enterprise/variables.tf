@@ -10,6 +10,7 @@ variable "root_name" {
 
 # unused
 variable "env" {}
+variable "builtFrom" {}
 
 variable "cft_subscriptions" {
   default = []
