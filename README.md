@@ -8,7 +8,7 @@ graph TD
     Root --> HMCTS(HMCTS Programmes)
     HMCTS --> CFT
     HMCTS --> SDS
-    HMCTS --> CRIME
+    HMCTS --> Crime
     HMCTS --> Heritage
     HMCTS --> Security
     HMCTS --> Platform
