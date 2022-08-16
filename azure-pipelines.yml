@@ -1,3 +1,10 @@
+name: Azure Enterprise
+trigger:
+  batch: true
+  branches:
+    include:
+      - main
+
 resources:
   repositories:
     - repository: cnp-azuredevops-libraries
