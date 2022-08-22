@@ -30,12 +30,12 @@ parameters:
         service_connection: 'GA-development-tenant'
         init_subscription: '55922b0d-5c33-467f-91b9-42c4059d310c'
         dependsOn: 'Precheck'
-#      - deployment: 'prod_enterprise'
-#        environment: 'production'
-#        component: 'enterprise'
-#        service_connection: 'GA'
-#        init_subscription: 04d27a32-7a07-48b3-95b8-3c8691e1a263
-#        dependsOn: 'sandbox_enterprise'
+      - deployment: 'prod_enterprise'
+        environment: 'production'
+        component: 'enterprise'
+        service_connection: 'GA'
+        init_subscription: 04d27a32-7a07-48b3-95b8-3c8691e1a263
+        dependsOn: 'sandbox_enterprise'
 
 variables:
   - name: timeoutInMinutes
