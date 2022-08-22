@@ -1,19 +1,79 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
+name: Azure Enterprise
 trigger:
-- main
+  batch: true
+  branches:
+    include:
+      - main
 
-pool:
-  vmImage: ubuntu-latest
+resources:
+  repositories:
+    - repository: cnp-azuredevops-libraries
+      type: github
+      ref: refs/heads/master
+      name: hmcts/cnp-azuredevops-libraries
+      endpoint: 'hmcts (1)'
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+parameters:
+  - name: overrideAction
+    type: string
+    default: plan
+    values:
+      - plan
+      - apply
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+  - name: environment_components
+    type: object
+    default:
+      - deployment: 'sandbox_enterprise'
+        environment: 'sandbox'
+        component: 'enterprise'
+        service_connection: 'GA-development-tenant'
+        init_subscription: '55922b0d-5c33-467f-91b9-42c4059d310c'
+        dependsOn: 'Precheck'
+#      - deployment: 'prod_enterprise'
+#        environment: 'production'
+#        component: 'enterprise'
+#        service_connection: 'GA'
+#        init_subscription: 04d27a32-7a07-48b3-95b8-3c8691e1a263
+#        dependsOn: 'sandbox_enterprise'
+
+variables:
+  - name: timeoutInMinutes
+    value: 60
+  - name: agentPool
+    value: ubuntu-latest
+  - name: product
+    value: enterprise
+  - template: vars/input-variables.yaml@cnp-azuredevops-libraries
+
+
+stages:
+  - stage: Precheck
+    jobs:
+      - job:
+        pool:
+          vmImage: ${{ variables.agentPool }}
+        timeoutInMinutes: ${{ variables.timeoutInMinutes }}
+        steps:
+          - template: steps/terraform-precheck.yaml@cnp-azuredevops-libraries
+            parameters:
+              keyvaultName: 'infra-vault-nonprod'
+              keyvaultSecret: 'azure-devops-token'
+              serviceConnection: 'DCD-CFT-Sandbox'
+  - ${{ each deployment in parameters.environment_components }}:
+      - stage: ${{ deployment.deployment }}
+        dependsOn: ${{ deployment.dependsOn }}
+        jobs:
+          - job: TerraformPlanApply
+            pool:
+              vmImage: ${{ variables.agentPool }}
+            timeoutInMinutes: ${{ variables.timeoutInMinutes }}
+            steps:
+              - template: steps/terraform.yaml@cnp-azuredevops-libraries
+                parameters:
+                  overrideAction: ${{ parameters.overrideAction }}
+                  environment: ${{ deployment.environment }}
+                  component: ${{ deployment.component }}
+                  serviceConnection: ${{ deployment.service_connection }}
+                  terraformInitSubscription: ${{ deployment.init_subscription }}
+                  product: ${{ variables.product }}
