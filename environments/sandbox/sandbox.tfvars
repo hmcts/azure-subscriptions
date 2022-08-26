@@ -3,4 +3,9 @@ cft_sandbox_subscriptions = [
 ]
 
 cft_non_production_subscriptions = [
+  "DTS-Terraform-Dev-Test1",
+  "DTS-Terraform-Dev-Test2",
+  "DCD-RBAC-NONPRODUCTION"
 ]
+
+enrollment_account_name = "322108"
