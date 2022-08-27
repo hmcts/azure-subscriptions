@@ -68,3 +68,9 @@ variable "platform_non_production_subscriptions" {
 variable "platform_production_subscriptions" {
   default = []
 }
+
+variable "billing_account_name" {
+  default = "59232335"
+}
+
+variable "enrollment_account_name" {}
