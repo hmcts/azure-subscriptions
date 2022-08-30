@@ -10,6 +10,6 @@ module "bootstrap" {
 
   source = "../../modules/bootstrap"
 
-  resource_group_name  = join("-", ["azure-control", var.env, "rg"])
-  tags                 = module.tags.common_tags
+  resource_group_name = join("-", ["azure-control", var.env, "rg"])
+  tags                = module.tags.common_tags
 }
