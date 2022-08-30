@@ -8,5 +8,5 @@ locals {
             name = "readers",
             description = "readers"
         }
-  }
+    }
 }
