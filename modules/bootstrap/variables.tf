@@ -3,7 +3,7 @@ variable "tags" {
   type        = map(string)
 }
 
-variable "storage_account_name" {
+variable "name" {
   description = "The name of the Storage Account to create."
   type        = string
 }
