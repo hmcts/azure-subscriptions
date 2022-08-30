@@ -60,3 +60,18 @@ variable "sku_name" {
   type        = string
   default     = "standard"
 }
+
+# variable "groups" {
+#   description = "The groups"
+#   type     = object
+#   default = {
+#     owners = {
+#         name = "owners",
+#         description = "owners"
+#     }
+#     readers = {
+#         name = "readers",
+#         description = "readers"
+#     }
+#   }
+# }
