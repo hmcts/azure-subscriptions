@@ -1,5 +1,5 @@
-locals{
-    groups {
+locals {
+    groups = {
         owners = {
             name = "owners",
             description = "owners"
