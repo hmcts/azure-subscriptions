@@ -13,5 +13,5 @@ output "subscription_id" {
 }
 
 output "subscription_name" {
-  value = azurerm_subscription.this.display_name
+  value = azurerm_subscription.this.subscription_name
 }
