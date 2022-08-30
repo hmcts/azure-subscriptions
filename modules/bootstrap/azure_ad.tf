@@ -10,5 +10,5 @@ resource "azurerm_role_assignment" "role" {
   for_each             = local.groups
   scope                = var.subscription_id
   role_definition_name = each.key
-  principal_id         = azuread_group.group.id
+  principal_id         = azuread_group.group[each.key].id
 }
