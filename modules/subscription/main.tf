@@ -9,7 +9,7 @@ resource "azurerm_subscription" "this" {
 }
 
 output "subscription_id" {
-  value = azurerm_subscription.this.id
+  value = azurerm_subscription.this.subscripion_id
 }
 
 output "subscription_name" {
