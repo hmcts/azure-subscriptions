@@ -50,13 +50,13 @@ variable "access_type" {
 }
 
 variable "purge_protection_enabled" {
-    description = "Should we enable Purge Protection on the KeyVault."
-    type = bool
-    default = false
+  description = "Should we enable Purge Protection on the KeyVault."
+  type        = bool
+  default     = false
 }
 
 variable "sku_name" {
-    description = "The SKU for the KeyVault."
-    type = string
-    default = "standard"
+  description = "The SKU for the KeyVault."
+  type        = string
+  default     = "standard"
 }
