@@ -66,7 +66,7 @@ variable "subscription_name" {
   type        = string
 }
 
-variable "subscription_name" {
+variable "subscription_id" {
   description = "The id of the subscription"
   type        = string
 }
