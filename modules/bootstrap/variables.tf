@@ -65,3 +65,8 @@ variable "subscription_name" {
   description = "The name of the subscription"
   type        = string
 }
+
+variable "subscription_name" {
+  description = "The id of the subscription"
+  type        = string
+}
