@@ -6,7 +6,7 @@ module "tags" {
 }
 
 data "azurerm_subscriptions" "bootstrap" {
-  for_each              = toset(module.cft_non_production_subscriptions)
+  for_each              = toset(var.cft_non_production_subscriptions)
   display_name_contains = each.value
 }
 
