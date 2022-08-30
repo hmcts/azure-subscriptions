@@ -4,6 +4,6 @@ module "bootstrap" {
   source = "../../modules/bootstrap"
 
   storage_account_name = join("", ["c", each.value, "sa"])
-  resource_group_name  = join("-", ["azure-control", var.environment, "rg"])
+  resource_group_name  = join("-", ["azure-control", var.env, "rg"])
   tags                 = module.tags.common_tags
 }
