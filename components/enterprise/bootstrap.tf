@@ -19,5 +19,5 @@ module "bootstrap" {
   resource_group_name = join("-", ["azure-control", var.env, "rg"])
   tags                = module.tags.common_tags
   subscription_name   = module.cft_non_production_subscriptions[each.value].subscription_name
-  subscription_id     = data.azurerm_subscriptions.bootstrap[each.key].subscription_id
+  subscription_id     = data.azurerm_subscriptions.bootstrap[each.key].subscription.subscription_id
 }
