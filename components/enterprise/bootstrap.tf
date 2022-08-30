@@ -5,11 +5,6 @@ module "tags" {
   builtFrom   = var.builtFrom
 }
 
-data "azurerm_subscriptions" "bootstrap" {
-  for_each              = toset(var.cft_non_production_subscriptions)
-  display_name_contains = each.value
-}
-
 module "bootstrap" {
   for_each = toset(var.cft_non_production_subscriptions)
 
@@ -19,5 +14,5 @@ module "bootstrap" {
   resource_group_name = join("-", ["azure-control", var.env, "rg"])
   tags                = module.tags.common_tags
   subscription_name   = module.cft_non_production_subscriptions[each.value].subscription_name
-  subscription_id     = data.azurerm_subscriptions.bootstrap[each.key].subscription.subscription_id
+  scope               = "/subscriptions/${module.cft_non_production_subscriptions[each.value].subscription_id}"
 }
