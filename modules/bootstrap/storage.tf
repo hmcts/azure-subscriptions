@@ -1,4 +1,4 @@
-resource "azurerm_storage_account" "storage_account" {
+resource "azurerm_storage_account" "sa" {
   name                     = "${var.name}sa"
   resource_group_name      = var.resource_group_name
   location                 = var.location
@@ -8,8 +8,8 @@ resource "azurerm_storage_account" "storage_account" {
   tags                     = var.tags
 }
 
-resource "azurerm_storage_container" "storage_container" {
+resource "azurerm_storage_container" "sc" {
   name                  = var.storage_container_name
-  storage_account_name  = azurerm_storage_account.storage_account.name
+  storage_account_name  = azurerm_storage_account.sa.name
   container_access_type = var.access_type
 }
