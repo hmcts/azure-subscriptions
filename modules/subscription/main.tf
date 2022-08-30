@@ -8,10 +8,6 @@ resource "azurerm_subscription" "this" {
   billing_scope_id  = data.azurerm_billing_enrollment_account_scope.this.id
 }
 
-output "subscription_id" {
-  value = azurerm_subscription.this.id
-}
-
 output "subscription_name" {
   value = azurerm_subscription.this.subscription_name
 }
