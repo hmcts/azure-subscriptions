@@ -3,10 +3,10 @@ variable "tags" {
   type        = map(string)
 }
 
-# variable "storage_account_name" {
-#   description = "The name of the Storage Account to create."
-#   type        = string
-# }
+variable "storage_account_name" {
+  description = "The name of the Storage Account to create."
+  type        = string
+}
 
 variable "storage_container_name" {
   description = "The name of the storage container to create."
