@@ -5,7 +5,7 @@ terraform {
       version = ">= 3.0.2"
     }
     azuredevops = {
-      source  = "microsoft/azuredevops"
+      source = "microsoft/azuredevops"
       version = "0.2.2"
     }
   }
@@ -15,5 +15,7 @@ terraform {
 provider "azurerm" {
   features {}
 }
+
+provider "azuredevops" {}
 
 data "azurerm_client_config" "core" {}
