@@ -1,9 +1,3 @@
-resource "random_password" "token" {
-  length           = 32
-  special          = true
-  override_special = "$@"
-}
-
 resource "random_uuid" "app_uuid" {}
 
 resource "azuread_application" "app" {
@@ -32,10 +26,15 @@ resource "azuread_application" "app" {
   }
 }
 
+resource "time_rotating" "one_year" {
+  rotation_days = 365
+}
+
 resource "azuread_application_password" "token" {
   application_object_id = azuread_application.app.id
-  value                 = random_password.token.result
-  end_date_relative     = "8760h"
+  rotate_when_changed = {
+    rotation = time_rotating.one_year.id
+  }
 }
 
 resource "azuread_service_principal" "sp" {
