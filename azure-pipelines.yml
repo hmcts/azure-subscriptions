@@ -45,6 +45,8 @@ variables:
   - name: product
     value: enterprise
   - template: vars/input-variables.yaml@cnp-azuredevops-libraries
+  - name: AZDO_PERSONAL_ACCESS_TOKEN
+    value: $(AZDO_PERSONAL_ACCESS_TOKEN)
 
 
 stages:
@@ -68,9 +70,6 @@ stages:
             pool:
               vmImage: ${{ variables.agentPool }}
             timeoutInMinutes: ${{ variables.timeoutInMinutes }}
-            variables:
-              - name: AZDO_PERSONAL_ACCESS_TOKEN
-                value: $(AZDO_PERSONAL_ACCESS_TOKEN)
             steps:
               - template: steps/terraform.yaml@cnp-azuredevops-libraries
                 parameters:
