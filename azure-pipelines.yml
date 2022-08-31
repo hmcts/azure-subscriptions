@@ -46,7 +46,7 @@ variables:
     value: enterprise
   - template: vars/input-variables.yaml@cnp-azuredevops-libraries
   - name: AZDO_PERSONAL_ACCESS_TOKEN
-    value: $(AZDO_PERSONAL_ACCESS_TOKEN)
+    value: $(System.AccessToken)
 
 
 stages:
