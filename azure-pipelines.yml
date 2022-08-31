@@ -69,7 +69,7 @@ stages:
               vmImage: ${{ variables.agentPool }}
             timeoutInMinutes: ${{ variables.timeoutInMinutes }}
             variables:
-              - name: ado_token
+              - name: AZDO_PERSONAL_ACCESS_TOKEN
                 value: $[ stageDependencies.Precheck.precheck.outputs['export_ado_token.AZDO_PERSONAL_ACCESS_TOKEN'] ]
             steps:
               - template: steps/terraform.yaml@cnp-azuredevops-libraries
