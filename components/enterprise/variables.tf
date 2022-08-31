@@ -78,7 +78,3 @@ variable "enrollment_account_name" {}
 variable "location" {
   default = "UK South"
 }
-
-variable "org_url" {}
-
-variable "personal_access_token" {}

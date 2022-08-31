@@ -45,9 +45,9 @@ variables:
   - name: product
     value: enterprise
   - template: vars/input-variables.yaml@cnp-azuredevops-libraries
-  - name: personal_access_token
+  - name: AZDO_PERSONAL_ACCESS_TOKEN
     value: $(azure-devops-token)
-  - name: org_url
+  - name: AZDO_ORG_SERVICE_URL
     value: https://dev.azure.com/hmcts
 
 

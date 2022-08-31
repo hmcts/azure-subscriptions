@@ -16,9 +16,6 @@ provider "azurerm" {
   features {}
 }
 
-provider "azuredevops" {
-  org_service_url       = var.org_url
-  personal_access_token = var.personal_access_token
-}
+provider "azuredevops" {}
 
 data "azurerm_client_config" "core" {}
