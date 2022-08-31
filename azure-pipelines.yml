@@ -68,6 +68,9 @@ stages:
             pool:
               vmImage: ${{ variables.agentPool }}
             timeoutInMinutes: ${{ variables.timeoutInMinutes }}
+            variables:
+              - name: AZDO_PERSONAL_ACCESS_TOKEN
+                value: $(AZDO_PERSONAL_ACCESS_TOKEN)
             steps:
               - template: steps/terraform.yaml@cnp-azuredevops-libraries
                 parameters:
