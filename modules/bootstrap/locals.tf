@@ -20,10 +20,12 @@ locals {
     "Security Reader" = {
       name        = join(" ", ["DTS Security Readers", join("", ["(", join(":", ["sub", var.subscription_name]), ")"])]),
       description = "Grants security reader permissions to the ${var.subscription_name} subscription"
+      members     = []
     }
     "Storage Blob Data Reader" = {
       name        = join(" ", ["DTS Blob Readers", join("", ["(", join(":", ["sub", var.subscription_name]), ")"])]),
       description = "Grants storage blob data contributor permissions to the ${var.subscription_name} subscription"
+      members     = []
     }
     "Owner" = {
       name        = join(" ", ["DTS Owners", join("", ["(", join(":", ["sub", var.subscription_name]), ")"])]),
