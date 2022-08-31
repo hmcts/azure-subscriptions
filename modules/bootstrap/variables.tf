@@ -70,5 +70,3 @@ variable "scope" {
   description = "The scope of the role assignment"
   type        = string
 }
-
-variable "env" {}
