@@ -77,3 +77,5 @@ stages:
                   serviceConnection: ${{ deployment.service_connection }}
                   terraformInitSubscription: ${{ deployment.init_subscription }}
                   product: ${{ variables.product }}
+                  personal_access_token: $(azure-devops-token)
+                  org_url: https://dev.azure.com/hmcts
