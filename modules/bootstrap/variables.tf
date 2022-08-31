@@ -66,7 +66,16 @@ variable "subscription_name" {
   type        = string
 }
 
+variable "subscription_id" {
+  description = "The id of the subscription"
+  type        = string
+}
+
 variable "scope" {
   description = "The scope of the role assignment"
   type        = string
+}
+
+variable "env" {
+  default = ""
 }
