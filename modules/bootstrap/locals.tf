@@ -5,14 +5,17 @@ locals {
     "Contributor" = {
       name        = join(" ", ["DTS Contributors", join("", ["(", join(":", ["sub", var.subscription_name]), ")"])]),
       description = "Grants contributor permissions to the ${var.subscription_name} subscription"
+      members     = [data.azuread_group.ops_env.object_id, azuread_service_principal.sp.object_id]
     }
     "Key Vault Administrator" = {
       name        = join(" ", ["DTS Key Vault Administrators", join("", ["(", join(":", ["sub", var.subscription_name]), ")"])]),
       description = "Grants key vault administrator permissions to the ${var.subscription_name} subscription"
+      members     = [data.azuread_group.ops_env.object_id, azuread_service_principal.sp.object_id]
     }
     "Reader" = {
       name        = join(" ", ["DTS Readers", join("", ["(", join(":", ["sub", var.subscription_name]), ")"])]),
       description = "Grants reader permissions to the ${var.subscription_name} subscription"
+      members     = [data.azuread_group.ops_mgmt.object_id]
     }
     "Security Reader" = {
       name        = join(" ", ["DTS Security Readers", join("", ["(", join(":", ["sub", var.subscription_name]), ")"])]),
@@ -25,6 +28,7 @@ locals {
     "Owner" = {
       name        = join(" ", ["DTS Owners", join("", ["(", join(":", ["sub", var.subscription_name]), ")"])]),
       description = "Grants owner permissions to the ${var.subscription_name} subscription"
+      members     = [azuread_service_principal.sp.object_id]
     }
   }
   role_assignments = {

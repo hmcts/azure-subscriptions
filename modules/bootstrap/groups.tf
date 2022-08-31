@@ -4,4 +4,8 @@ resource "azuread_group" "group" {
   description             = each.value.description
   prevent_duplicate_names = true
   security_enabled        = true
+
+  members = [
+    each.value.members
+  ]
 }
