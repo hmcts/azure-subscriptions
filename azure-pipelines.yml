@@ -66,7 +66,7 @@ stages:
       - stage: ${{ deployment.deployment }}
         dependsOn: ${{ deployment.dependsOn }}
         jobs:
-          - job: Set environment variables
+          - job: SetVariables
             steps:
               - bash: echo "##vso[task.setvariable variable=AZDO_PERSONAL_ACCESS_TOKEN]$(azure-devops-token)"
                 displayName: Set azure devops variables
