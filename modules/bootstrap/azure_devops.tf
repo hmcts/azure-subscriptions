@@ -1,9 +1,5 @@
-data "azuredevops_project" "platops" {
-  name = "PlatformOperations"
-}
-
 resource "azuredevops_serviceendpoint_azurerm" "endpointazure" {
-  project_id            = data.azuredevops_project.platops.id
+  project_id            = "PlatformOperations"
   service_endpoint_name = var.subscription_name
   credentials {
     serviceprincipalid  = azuread_service_principal.sp.application_id
