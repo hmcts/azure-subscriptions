@@ -9,7 +9,7 @@ resources:
   repositories:
     - repository: cnp-azuredevops-libraries
       type: github
-      ref: refs/heads/master
+      ref: refs/heads/DTSPO-9743/azure-enterprise
       name: hmcts/cnp-azuredevops-libraries
       endpoint: 'hmcts (1)'
 
@@ -45,14 +45,12 @@ variables:
   - name: product
     value: enterprise
   - template: vars/input-variables.yaml@cnp-azuredevops-libraries
-  - name: org_url
-    value: https://dev.azure.com/hmcts
 
 
 stages:
   - stage: Precheck
     jobs:
-      - job:
+      - job: precheck
         pool:
           vmImage: ${{ variables.agentPool }}
         timeoutInMinutes: ${{ variables.timeoutInMinutes }}
@@ -66,17 +64,13 @@ stages:
       - stage: ${{ deployment.deployment }}
         dependsOn: ${{ deployment.dependsOn }}
         jobs:
-          - job: SetVariables
-            steps:
-              - bash: echo "##vso[task.setvariable variable=AZDO_PERSONAL_ACCESS_TOKEN]$(azure-devops-token)"
-                displayName: Set azure devops variables
-                env:
-                  AZDO_PERSONAL_ACCESS_TOKEN: $(azure-devops-token)
-                  AZDO_ORG_SERVICE_URL: ${{ variables.org_url }}
           - job: TerraformPlanApply
             pool:
               vmImage: ${{ variables.agentPool }}
             timeoutInMinutes: ${{ variables.timeoutInMinutes }}
+            variables:
+              - name: ado_token
+                value: $[ stageDependencies.Precheck.precheck.outputs['export_ado_token.AZDO_PERSONAL_ACCESS_TOKEN'] ]
             steps:
               - template: steps/terraform.yaml@cnp-azuredevops-libraries
                 parameters:
