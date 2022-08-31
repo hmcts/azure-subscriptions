@@ -9,7 +9,7 @@ resource "random_uuid" "app_uuid" {}
 resource "azuread_application" "app" {
   display_name = local.app_name
   api {
-    oauth2_permissions_scope {
+    oauth2_permission_scope {
       admin_consent_description  = join(" ", ["Allow the application to access", local.app_name, "on behalf of the signed-in user."])
       admin_consent_display_name = join(" ", ["Access", local.app_name])
       id                         = random_uuid.app_uuid.result
