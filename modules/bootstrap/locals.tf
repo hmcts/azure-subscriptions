@@ -1,5 +1,6 @@
 locals {
-  env = var.env == "sandbox" ? "sbox" : var.env
+  app_name = join(" ", ["DTS Bootstrap", join("", ["(", join(":", ["sub", var.subscription_name]), ")"])])
+  env      = var.env == "sandbox" ? "sbox" : var.env
   groups = {
     "Contributor" = {
       name        = join(" ", ["DTS Contributors", join("", ["(", join(":", ["sub", var.subscription_name]), ")"])]),
