@@ -45,9 +45,7 @@ variables:
   - name: product
     value: enterprise
   - template: vars/input-variables.yaml@cnp-azuredevops-libraries
-  - name: AZDO_PERSONAL_ACCESS_TOKEN
-    value: $(azure-devops-token)
-  - name: AZDO_ORG_SERVICE_URL
+  - name: org_url
     value: https://dev.azure.com/hmcts
 
 
@@ -68,6 +66,13 @@ stages:
       - stage: ${{ deployment.deployment }}
         dependsOn: ${{ deployment.dependsOn }}
         jobs:
+          - job: Set environment variables
+            steps:
+              - bash: echo "##vso[task.setvariable variable=AZDO_PERSONAL_ACCESS_TOKEN]$(azure-devops-token)"
+                displayName: Set azure devops variables
+                env:
+                  AZDO_PERSONAL_ACCESS_TOKEN: $(azure-devops-token)
+                  AZDO_ORG_SERVICE_URL: ${{ variables.org_url }}
           - job: TerraformPlanApply
             pool:
               vmImage: ${{ variables.agentPool }}
