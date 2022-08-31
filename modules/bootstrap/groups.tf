@@ -5,7 +5,5 @@ resource "azuread_group" "group" {
   prevent_duplicate_names = true
   security_enabled        = true
 
-  members = [
-    each.value.members
-  ]
+  members = each.value.members
 }
