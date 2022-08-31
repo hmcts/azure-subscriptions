@@ -9,7 +9,7 @@ resources:
   repositories:
     - repository: cnp-azuredevops-libraries
       type: github
-      ref: refs/heads/DTSPO-9743/azure-enterprise
+      ref: refs/heads/master
       name: hmcts/cnp-azuredevops-libraries
       endpoint: 'hmcts (1)'
 
@@ -50,7 +50,7 @@ variables:
 stages:
   - stage: Precheck
     jobs:
-      - job: precheck
+      - job: Precheck
         pool:
           vmImage: ${{ variables.agentPool }}
         timeoutInMinutes: ${{ variables.timeoutInMinutes }}
@@ -68,11 +68,6 @@ stages:
             pool:
               vmImage: ${{ variables.agentPool }}
             timeoutInMinutes: ${{ variables.timeoutInMinutes }}
-            variables:
-              - name: AZDO_PERSONAL_ACCESS_TOKEN
-                value: $[ stageDependencies.Precheck.precheck.outputs['export_ado_token.AZDO_PERSONAL_ACCESS_TOKEN'] ]
-              - name: AZDO_ORG_SERVICE_URL
-                value: https://dev.azure.com/hmcts
             steps:
               - template: steps/terraform.yaml@cnp-azuredevops-libraries
                 parameters:
