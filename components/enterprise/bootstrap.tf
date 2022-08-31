@@ -16,4 +16,5 @@ module "bootstrap" {
   subscription_id     = module.cft_non_production_subscriptions[each.value].subscription_id
   subscription_name   = module.cft_non_production_subscriptions[each.value].subscription_name
   scope               = "/subscriptions/${module.cft_non_production_subscriptions[each.value].subscription_id}"
+  env                 = var.env
 }
