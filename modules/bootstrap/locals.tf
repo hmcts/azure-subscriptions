@@ -29,11 +29,11 @@ locals {
   role_assignments = {
     "Monitoring Contributor" = {
       principal_id = data.azuread_group.ops_mgmt.object_id
-      scope        = var.subscription_id
+      scope        = "/subscriptions/${var.subscription_id}"
     }
     "Network Contributor" = {
       principal_id = data.azuread_group.ops_mgmt.object_id
-      scope        = var.subscription_id
+      scope        = "/subscriptions/${var.subscription_id}"
     }
     "Storage Account Contributor" = {
       principal_id = azuread_group.group["Contributor"].id
@@ -41,7 +41,7 @@ locals {
     }
     "User Access Administrator" = {
       principal_id = data.azuread_group.ops_env.object_id
-      scope        = var.subscription_id
+      scope        = "/subscriptions/${var.subscription_id}"
     }
   }
 }
