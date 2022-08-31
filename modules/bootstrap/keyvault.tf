@@ -71,3 +71,21 @@ resource "azurerm_key_vault_access_policy" "permissions" {
     "Update"
   ]
 }
+
+resource "azurerm_key_vault_secret" "sp_object_id" {
+  name         = "sp-object-id"
+  value        = azuread_service_principal.sp.object_id
+  key_vault_id = azurerm_key_vault.kv.id
+}
+
+resource "azurerm_key_vault_secret" "sp_app_id" {
+  name         = "sp-application-id"
+  value        = azuread_application.app.application_id
+  key_vault_id = azurerm_key_vault.kv.id
+}
+
+resource "azurerm_key_vault_secret" "sp_token" {
+  name         = "sp-token"
+  value        = azuread_application_password.token.value
+  key_vault_id = azurerm_key_vault.kv.id
+}
