@@ -45,6 +45,10 @@ variables:
   - name: product
     value: enterprise
   - template: vars/input-variables.yaml@cnp-azuredevops-libraries
+  - name: personal_access_token
+    value: $(azure-devops-token)
+  - name: org_url
+    value: https://dev.azure.com/hmcts
 
 
 stages:
@@ -77,5 +81,3 @@ stages:
                   serviceConnection: ${{ deployment.service_connection }}
                   terraformInitSubscription: ${{ deployment.init_subscription }}
                   product: ${{ variables.product }}
-                  personal_access_token: $(azure-devops-token)
-                  org_url: https://dev.azure.com/hmcts
