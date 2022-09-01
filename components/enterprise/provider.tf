@@ -17,7 +17,7 @@ provider "azurerm" {
 }
 
 provider "azuredevops" {
-  org_service_url = "https://dev.azure.com/hmcts"
+  org_service_url       = "https://dev.azure.com/hmcts"
   personal_access_token = data.azurerm_key_vault_secret.ado_token.value
 }
 
