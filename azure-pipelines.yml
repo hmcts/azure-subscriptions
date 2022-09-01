@@ -45,10 +45,6 @@ variables:
   - name: product
     value: enterprise
   - template: vars/input-variables.yaml@cnp-azuredevops-libraries
-  - name: AZDO_PERSONAL_ACCESS_TOKEN
-    value: $(AZDO_PERSONAL_ACCESS_TOKEN)
-  - name: AZDO_ORG_SERVICE_URL
-    value: $(AZDO_ORG_SERVICE_URL)
 
 
 stages:
