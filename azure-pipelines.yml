@@ -45,8 +45,8 @@ variables:
   - name: product
     value: enterprise
   - template: vars/input-variables.yaml@cnp-azuredevops-libraries
-  - name: AZDO_PERSONAL_ACCESS_TOKEN
-    value: $(System.AccessToken)
+  - name: org_url
+    value: https://dev.azure.com/hmcts
 
 
 stages:
@@ -79,3 +79,7 @@ stages:
                   serviceConnection: ${{ deployment.service_connection }}
                   terraformInitSubscription: ${{ deployment.init_subscription }}
                   product: ${{ variables.product }}
+                env:
+                  AZDO_PERSONAL_ACCESS_TOKEN: $(System.AccessToken)
+                  AZDO_ORG_SERVICE_URL: ${{ variables.org_url }}
+                
