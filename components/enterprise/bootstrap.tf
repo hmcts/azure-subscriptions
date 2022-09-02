@@ -6,7 +6,7 @@ module "tags" {
 }
 
 module "bootstrap_subscriptions" {
-    for_each = { for subscription in var.subscriptions :
+  for_each = { for subscription in var.subscriptions :
     subscription.name => subscription
   }
 

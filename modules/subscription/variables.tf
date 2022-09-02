@@ -1,5 +1,5 @@
 variable "subscriptions" {
-  type        = any
+  type = any
 }
 
 variable "billing_account_name" {}
