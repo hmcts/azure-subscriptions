@@ -1,4 +1,4 @@
-module "subscriptions" {
+module "cft_non_production_subscriptions" {
 
   source        = "../../modules/subscription"
   subscriptions = var.subscriptions
