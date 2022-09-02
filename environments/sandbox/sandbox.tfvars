@@ -9,3 +9,18 @@ cft_non_production_subscriptions = [
 ]
 
 enrollment_account_name = "322108"
+
+subscriptions = [
+  {
+    name                = "DTS-Terraform-Dev-Test1"
+    management_group    = "cft_non_production_subscriptions"
+  },
+  {
+    name                = "DTS-Terraform-Dev-Test2"
+    management_group    = "cft_non_production_subscriptions"
+  },
+    {
+    name                = "DTS-Terraform-Dev-Test3"
+    management_group    = "cft_non_production_subscriptions"
+  }
+]

@@ -13,6 +13,10 @@ variable "env" {}
 variable "builtFrom" {}
 variable "product" {}
 
+variable "subscriptions" {
+  default = []
+}
+
 variable "cft_subscriptions" {
   default = []
 }

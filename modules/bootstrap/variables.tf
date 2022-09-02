@@ -5,7 +5,6 @@ variable "tags" {
 
 variable "name" {
   description = "The name of the Storage Account to create."
-  type        = string
 }
 
 variable "storage_container_name" {
@@ -63,12 +62,10 @@ variable "sku_name" {
 
 variable "subscription_name" {
   description = "The name of the subscription"
-  type        = string
 }
 
 variable "subscription_id" {
   description = "The id of the subscription"
-  type        = string
 }
 
 variable "scope" {
