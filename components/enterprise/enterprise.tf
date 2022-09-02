@@ -26,7 +26,7 @@ module "enterprise" {
     CFT-NonProd = {
       display_name               = "CFT - Non-production"
       parent_management_group_id = "CFT"
-      subscription_ids           = [module.subscriptions.subscription_id[0]]
+      subscription_ids           = [module.cft_non_production_subscriptions.subscription_id[0]]
     }
     CFT-Prod = {
       display_name               = "CFT - Production"
