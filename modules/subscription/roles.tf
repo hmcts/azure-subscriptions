@@ -1,6 +1,6 @@
 resource "azurerm_role_assignment" "local_groups" {
   for_each             = local.groups
-  scope                = var.scope
+  scope                = "/subscriptions/${azurerm_subscription.this.subscription_id}"
   role_definition_name = each.key
   principal_id         = azuread_group.group[each.key].id
 }

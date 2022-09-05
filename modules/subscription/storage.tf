@@ -1,5 +1,5 @@
 resource "azurerm_storage_account" "sa" {
-  name                     = "${var.name}sa"
+  name                     = join("", ["c", substr(replace(azurerm_subscription.this.subscription_id, "-", ""), 0, 8), substr(replace(azurerm_subscription.this.subscription_id, "-", ""), 24, 12), "sa"])
   resource_group_name      = var.resource_group_name
   location                 = var.location
   account_tier             = var.account_tier
