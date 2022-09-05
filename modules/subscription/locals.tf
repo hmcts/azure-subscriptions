@@ -1,6 +1,6 @@
 locals {
   app_name = join(" ", ["DTS Bootstrap", join("", ["(", join(":", ["sub", azurerm_subscription.this.subscription_name]), ")"])])
-  env      = var.env == "sandbox" ? "sbox" : var.env
+  # env      = var.environment == "sandbox" ? "sbox" : var.environment
   groups = {
     "Contributor" = {
       name        = join(" ", ["DTS Contributors", join("", ["(", join(":", ["sub", azurerm_subscription.this.subscription_name]), ")"])]),

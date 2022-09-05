@@ -1,11 +1,6 @@
 variable "billing_account_name" {}
 variable "enrollment_account_name" {}
 
-variable "tags" {
-  description = "Tags to be used when we create the Storage Account."
-  type        = map(string)
-}
-
 variable "name" {
   description = "The name of the Storage Account to create."
 }
@@ -20,11 +15,6 @@ variable "location" {
   description = "The location for the Storage Account."
   type        = string
   default     = "UK South"
-}
-
-variable "resource_group_name" {
-  description = "The name of the resource group to contain the Storage Account."
-  type        = string
 }
 
 variable "account_tier" {
@@ -63,6 +53,9 @@ variable "sku_name" {
   default     = "standard"
 }
 
-variable "env" {
+variable "environment" {
   default = ""
 }
+
+variable "builtFrom" {}
+variable "product" {}

@@ -5,5 +5,5 @@ data "azuread_group" "ops_mgmt" {
 }
 
 data "azuread_group" "ops_env" {
-  display_name = join("", ["DTS Operations (env:", lower(local.env), ")"])
+  display_name = join("", ["DTS Operations (env:", lower(var.environment), ")"])
 }

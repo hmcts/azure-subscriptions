@@ -21,7 +21,7 @@ module "enterprise" {
     CFT-Sandbox = {
       display_name               = "CFT - Sandbox"
       parent_management_group_id = "CFT"
-      subscription_ids           = var.cft_sandbox_subscriptions
+      subscription_ids           = values(module.cft_sandbox_subscriptions).*.subscription_id
     }
     CFT-NonProd = {
       display_name               = "CFT - Non-production"
