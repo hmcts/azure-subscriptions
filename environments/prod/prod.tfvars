@@ -1,5 +1,5 @@
-cft_sandbox_subscriptions        = []
-cft_non_production_subscriptions = []
+cft_sandbox_subscriptions        = {}
+cft_non_production_subscriptions = {}
 cft_production_subscriptions     = []
 
 sds_sandbox_subscriptions        = []
