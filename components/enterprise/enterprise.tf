@@ -21,12 +21,12 @@ module "enterprise" {
     CFT-Sandbox = {
       display_name               = "CFT - Sandbox"
       parent_management_group_id = "CFT"
-      subscription_ids           = var.cft_sandbox_subscriptions
+      subscription_ids           = [for subscription in values(module.subscription).*.subscription_id : subscription.subscription_id if subscription.group == "cft_sandbox"]
     }
     CFT-NonProd = {
       display_name               = "CFT - Non-production"
       parent_management_group_id = "CFT"
-      subscription_ids           = values(module.cft_non_production_subscriptions).*.subscription_id
+      subscription_ids           = [for subscription in values(module.subscription).*.subscription_id : subscription.subscription_id if subscription.group == "cft_non_production"]
     }
     CFT-Prod = {
       display_name               = "CFT - Production"
