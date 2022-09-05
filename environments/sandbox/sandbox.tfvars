@@ -1,6 +1,6 @@
 cft_sandbox_subscriptions = {
   DCD-RBAC-NONPRODUCTION = {
-      env = "sbox"
+    env = "sbox"
   }
 }
 
