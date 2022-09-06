@@ -61,11 +61,12 @@ stages:
               keyvaultSecret: 'azure-devops-token'
               serviceConnection: 'DCD-CFT-Sandbox'
 
-          - script: |
+          - bash: |
               wget -O /tmp/yj https://github.com/sclevine/yj/releases/download/v5.1.0/yj-linux-amd64
               chmod +x /tmp/yj
               /tmp/yj -c < environments/sandbox/sandbox.tfvars > /tmp/variables.json
             displayName: Convert HCL to JSON
+            workingDirectory: $(Pipeline.Workspace)/s/azure-enterprise
 
           - template: steps/pipeline-tests-jest.yaml@cnp-azuredevops-libraries
             parameters:
