@@ -4,6 +4,10 @@ cft_sandbox_subscriptions = {
   }
 }
 
+cft_production_subscriptions = {
+  DTS-Terraform-Prod-Test1 = {}
+}
+
 cft_non_production_subscriptions = {
   DTS-Terraform-Dev-Test3 = {
     environment = "dev"

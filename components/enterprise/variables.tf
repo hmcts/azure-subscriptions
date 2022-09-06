@@ -14,59 +14,59 @@ variable "builtFrom" {}
 variable "product" {}
 
 variable "cft_subscriptions" {
-  default = []
+  default = {}
 }
 variable "cft_sandbox_subscriptions" {
-  default = []
+  default = {}
 }
 variable "cft_non_production_subscriptions" {
   default = {}
 }
 variable "cft_production_subscriptions" {
-  default = []
+  default = {}
 }
 
 variable "sds_subscriptions" {
-  default = []
+  default = {}
 }
 variable "sds_sandbox_subscriptions" {
-  default = []
+  default = {}
 }
 variable "sds_non_production_subscriptions" {
-  default = []
+  default = {}
 }
 variable "sds_production_subscriptions" {
-  default = []
+  default = {}
 }
 variable "crime_subscriptions" {
-  default = []
+  default = {}
 }
 variable "heritage_subscriptions" {
-  default = []
+  default = {}
 }
 variable "heritage_sandbox_subscriptions" {
-  default = []
+  default = {}
 }
 variable "heritage_non_production_subscriptions" {
-  default = []
+  default = {}
 }
 variable "heritage_production_subscriptions" {
-  default = []
+  default = {}
 }
 variable "security_subscriptions" {
-  default = []
+  default = {}
 }
 variable "platform_subscriptions" {
-  default = []
+  default = {}
 }
 variable "platform_sandbox_subscriptions" {
-  default = []
+  default = {}
 }
 variable "platform_non_production_subscriptions" {
-  default = []
+  default = {}
 }
 variable "platform_production_subscriptions" {
-  default = []
+  default = {}
 }
 
 variable "billing_account_name" {
