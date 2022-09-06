@@ -8,7 +8,7 @@ sds_production_subscriptions     = {}
 
 crime_subscriptions = {}
 
-heritage_sandbox_subscriptions        = {}
+heritage_sandbox_subscriptions        = []
 heritage_non_production_subscriptions = {}
 heritage_production_subscriptions     = {}
 
