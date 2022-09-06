@@ -1,5 +1,5 @@
 resource "azuredevops_serviceendpoint_azurerm" "endpoint" {
-  count                 = var.env == "prod" ? 1 : 0
+  count                 = length(data.azurerm_subscriptions.sds.subscriptions[0].subscription_id) == 0 ? 0 : 1
   project_id            = "PlatformOperations"
   service_endpoint_name = "OPS-APPROVAL-GATE-${upper(var.env)}-ENVS"
   credentials {
