@@ -11,12 +11,9 @@ cft_non_production_subscriptions = {
   DTS-Terraform-Dev-Test4 = {
     environment = "dev"
   }
-  DTS-RBAC-NONPRODUCTION  = {
+  DTS-RBAC-NONPRODUCTION = {
     environment = "dev"
   }
 }
 
 enrollment_account_name = "322108"
-
-product = "enterprise"
-builtFrom = "hmcts/azure-enterprise"

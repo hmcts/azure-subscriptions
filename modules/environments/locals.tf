@@ -3,7 +3,7 @@ locals {
   # env      = var.environment == "sandbox" ? "sbox" : var.environment
   groups = {
     "DTS Operations" = {
-      name = join(" ", ["DTS Operations", join("", ["(", join(":", ["env", var.environment]), ")"])]),
+      name        = join(" ", ["DTS Operations", join("", ["(", join(":", ["env", var.environment]), ")"])]),
       description = "${var.environment} Operations elevated access"
       members     = [azuread_service_principal.sp.object_id]
     }
