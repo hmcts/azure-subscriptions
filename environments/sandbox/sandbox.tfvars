@@ -2,6 +2,10 @@ cft_sandbox_subscriptions = {
   DTS-RBAC-SBOX = {}
 }
 
+cft_production_subscriptions = {
+  DTS-Terraform-Prod-Test1 = {}
+}
+
 cft_non_production_subscriptions = {
   DTS-Terraform-Dev-Test3 = {}
   DTS-Terraform-Dev-Test4 = {}
