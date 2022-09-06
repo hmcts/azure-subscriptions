@@ -5,7 +5,7 @@ resource "azurerm_key_vault" "kv" {
   tenant_id                = data.azurerm_client_config.current.tenant_id
   purge_protection_enabled = var.purge_protection_enabled
   sku_name                 = var.sku_name
-  tags                     = module.tags.common_tags
+  tags                     = var.common_tags
 }
 
 resource "azurerm_key_vault_access_policy" "permissions" {

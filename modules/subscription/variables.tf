@@ -58,7 +58,10 @@ variable "environment" {
   default = ""
 }
 
-variable "builtFrom" {}
-variable "product" {}
-variable "deploy_acme" {}
-variable "acme_storage_account_repl_type" {}
+# variable "builtFrom" {}
+# variable "product" {}
+
+variable "common_tags" {
+  description = "Common tag to be applied"
+  type        = map(string)
+}

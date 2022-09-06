@@ -19,10 +19,3 @@ output "subscription_id" {
 output "subscription_name" {
   value = azurerm_subscription.this.subscription_name
 }
-
-module "tags" {
-  source      = "git::https://github.com/hmcts/terraform-module-common-tags.git?ref=DTSPO-9743/azure-enterprise"
-  environment = var.environment
-  product     = var.product
-  builtFrom   = var.builtFrom
-}

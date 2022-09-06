@@ -14,14 +14,30 @@ module "subscription" {
   source                         = "../../modules/subscription"
   name                           = each.key
   value                          = each.value
-  deploy_acme                    = try(each.value.deploy_acme, false)
-  acme_storage_account_repl_type = try(each.value.acme_storage_account_repl_type, "ZRS")
   environment                    = each.value.environment
-
-  builtFrom = var.builtFrom
-  product   = var.product
-
+  common_tags = module.tags.common_tags[each.key]
 
   billing_account_name    = var.billing_account_name
   enrollment_account_name = var.enrollment_account_name
+}
+
+module "acme" {
+  for_each = local.subscriptions
+  source = "git::https://github.com/hmcts/terraform-module-acme-function.git?ref=DTSPO-9743/ops-bootstrap"
+
+  location                       = var.location
+  env                            = each.value.environment
+  dns_contributor_group_id       = data.azuread_group.dns_contributor.id
+  common_tags                    = module.tags.common_tags[each.key]
+  product                        = var.product
+  subscription_id                = module.subscription[each.key].subscription_id
+  acme_storage_account_repl_type = var.acme_storage_account_repl_type
+}
+
+module "tags" {
+  for_each = local.subscriptions
+  source      = "git::https://github.com/hmcts/terraform-module-common-tags.git?ref=DTSPO-9743/azure-enterprise"
+  environment = each.value.environment
+  product     = var.product
+  builtFrom   = var.builtFrom
 }
