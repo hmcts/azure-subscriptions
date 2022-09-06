@@ -20,7 +20,7 @@ variable "cft_sandbox_subscriptions" {
   default = []
 }
 variable "cft_non_production_subscriptions" {
-  default = []
+  default = {}
 }
 variable "cft_production_subscriptions" {
   default = []

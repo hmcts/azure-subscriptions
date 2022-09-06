@@ -4,12 +4,16 @@ data "azurerm_billing_enrollment_account_scope" "this" {
 }
 
 resource "azurerm_subscription" "this" {
-  subscription_name = var.name
+  alias             = var.name
+  subscription_name = try(var.value.display_name, var.name)
   billing_scope_id  = data.azurerm_billing_enrollment_account_scope.this.id
 }
 
 output "subscription_id" {
-  value = azurerm_subscription.this.subscription_id
+  value = {
+    group           = var.value.group
+    subscription_id = azurerm_subscription.this.subscription_id
+  }
 }
 
 output "subscription_name" {
