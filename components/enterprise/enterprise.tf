@@ -16,7 +16,7 @@ module "enterprise" {
     CFT = {
       display_name               = "CFT"
       parent_management_group_id = "HMCTS"
-      subscription_ids           = var.cft_subscriptions
+      subscription_ids           = [for subscription in values(module.subscription).*.subscription_id : subscription.subscription_id if subscription.group == "cft"]
     }
     CFT-Sandbox = {
       display_name               = "CFT - Sandbox"
@@ -31,87 +31,87 @@ module "enterprise" {
     CFT-Prod = {
       display_name               = "CFT - Production"
       parent_management_group_id = "CFT"
-      subscription_ids           = var.cft_production_subscriptions
+      subscription_ids           = [for subscription in values(module.subscription).*.subscription_id : subscription.subscription_id if subscription.group == "cft_production"]
     }
 
     # SDS
     SDS = {
       display_name               = "SDS"
       parent_management_group_id = "HMCTS"
-      subscription_ids           = var.sds_subscriptions
+      subscription_ids           = [for subscription in values(module.subscription).*.subscription_id : subscription.subscription_id if subscription.group == "sds"]
     }
     SDS-Sandbox = {
       display_name               = "SDS - Sandbox"
       parent_management_group_id = "SDS"
-      subscription_ids           = var.sds_sandbox_subscriptions
+      subscription_ids           = [for subscription in values(module.subscription).*.subscription_id : subscription.subscription_id if subscription.group == "sds_sandbox"]
     }
     SDS-NonProd = {
       display_name               = "SDS - Non-production"
       parent_management_group_id = "SDS"
-      subscription_ids           = var.sds_non_production_subscriptions
+      subscription_ids           = [for subscription in values(module.subscription).*.subscription_id : subscription.subscription_id if subscription.group == "sds_non_production"]
     }
     SDS-Prod = {
       display_name               = "SDS - Production"
       parent_management_group_id = "SDS"
-      subscription_ids           = var.sds_production_subscriptions
+      subscription_ids           = [for subscription in values(module.subscription).*.subscription_id : subscription.subscription_id if subscription.group == "sds_production"]
     }
 
     # Crime
     Crime = {
       display_name               = "Crime"
       parent_management_group_id = "HMCTS"
-      subscription_ids           = var.crime_subscriptions
+      subscription_ids           = [for subscription in values(module.subscription).*.subscription_id : subscription.subscription_id if subscription.group == "crime"]
     }
 
     # Heritage
     Heritage = {
       display_name               = "Heritage"
       parent_management_group_id = "HMCTS"
-      subscription_ids           = var.heritage_subscriptions
+      subscription_ids           = [for subscription in values(module.subscription).*.subscription_id : subscription.subscription_id if subscription.group == "heritage"]
     }
     Heritage-Sandbox = {
       display_name               = "Heritage - Sandbox"
       parent_management_group_id = "Heritage"
-      subscription_ids           = var.heritage_sandbox_subscriptions
+      subscription_ids           = [for subscription in values(module.subscription).*.subscription_id : subscription.subscription_id if subscription.group == "heritage_sandbox"]
     }
     Heritage-NonProd = {
       display_name               = "Heritage - Non-production"
       parent_management_group_id = "Heritage"
-      subscription_ids           = var.heritage_non_production_subscriptions
+      subscription_ids           = [for subscription in values(module.subscription).*.subscription_id : subscription.subscription_id if subscription.group == "heritage_non_production"]
     }
     Heritage-Prod = {
       display_name               = "Heritage - Production"
       parent_management_group_id = "Heritage"
-      subscription_ids           = var.heritage_production_subscriptions
+      subscription_ids           = [for subscription in values(module.subscription).*.subscription_id : subscription.subscription_id if subscription.group == "heritage_production"]
     }
 
     # Security
     Security = {
       display_name               = "Security"
       parent_management_group_id = "HMCTS"
-      subscription_ids           = var.security_subscriptions
+      subscription_ids           = [for subscription in values(module.subscription).*.subscription_id : subscription.subscription_id if subscription.group == "security"]
     }
 
     # Platform
     Platform = {
       display_name               = "Platform"
       parent_management_group_id = "HMCTS"
-      subscription_ids           = var.platform_subscriptions
+      subscription_ids           = [for subscription in values(module.subscription).*.subscription_id : subscription.subscription_id if subscription.group == "platform"]
     }
     Platform-Sandbox = {
       display_name               = "Platform - Sandbox"
       parent_management_group_id = "Platform"
-      subscription_ids           = var.platform_sandbox_subscriptions
+      subscription_ids           = [for subscription in values(module.subscription).*.subscription_id : subscription.subscription_id if subscription.group == "platform_sandbox"]
     }
     Platform-NonProd = {
       display_name               = "Platform - Non-production"
       parent_management_group_id = "Platform"
-      subscription_ids           = var.platform_non_production_subscriptions
+      subscription_ids           = [for subscription in values(module.subscription).*.subscription_id : subscription.subscription_id if subscription.group == "platform_non_production"]
     }
     Platform-Prod = {
       display_name               = "Platform - Production"
       parent_management_group_id = "Platform"
-      subscription_ids           = var.platform_production_subscriptions
+      subscription_ids           = [for subscription in values(module.subscription).*.subscription_id : subscription.subscription_id if subscription.group == "platform_production"]
     }
   }
 }
