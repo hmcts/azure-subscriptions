@@ -9,3 +9,5 @@ data "azuread_group" "dns_contributor" {
 data "azuread_group" "ops_env" {
   display_name = join("", ["DTS Operations (env:", lower(var.env), ")"])
 }
+
+data "azurerm_client_config" "current" {}
