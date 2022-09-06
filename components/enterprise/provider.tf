@@ -31,7 +31,3 @@ provider "azurerm" {
 provider "azuredevops" {}
 
 data "azurerm_client_config" "core" {}
-
-data "azuread_group" "dns_contributor" {
-  display_name = "DTS Public DNS Contributor (env:${lower(var.env)})"
-}

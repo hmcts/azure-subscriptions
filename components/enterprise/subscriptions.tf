@@ -17,7 +17,6 @@ module "acme" {
 
   location                       = var.location
   env                            = each.value.environment
-  dns_contributor_group_id       = data.azuread_group.dns_contributor.id
   common_tags                    = module.tags[each.key].common_tags
   product                        = var.product
   resource_group_name            = module.environment[each.value.environment].resource_group_name
