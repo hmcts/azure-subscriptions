@@ -1,10 +1,6 @@
 cft_sandbox_subscriptions        = {}
 cft_non_production_subscriptions = {}
-<<<<<<< HEAD
 cft_production_subscriptions     = {}
-=======
-cft_production_subscriptions     = []
->>>>>>> main
 
 sds_sandbox_subscriptions        = {}
 sds_non_production_subscriptions = {}
