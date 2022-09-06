@@ -1,7 +1,7 @@
 locals {
   app_name = join(" ", ["DTS Bootstrap", join("", ["(", join(":", ["sub", azurerm_subscription.this.subscription_name]), ")"])])
   # env      = var.environment == "sandbox" ? "sbox" : var.environment
-  groups_with_roles = {
+  groups = {
     "Contributor" = {
       name        = join(" ", ["DTS Contributors", join("", ["(", join(":", ["sub", azurerm_subscription.this.subscription_name]), ")"])]),
       description = "Grants contributor permissions to the ${azurerm_subscription.this.subscription_name} subscription"

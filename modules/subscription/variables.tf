@@ -1,15 +1,10 @@
-<<<<<<< HEAD
-=======
 variable "name" {}
-variable "value" {}
+variable "value" {
+  default = ""
+}
 
->>>>>>> main
 variable "billing_account_name" {}
 variable "enrollment_account_name" {}
-
-variable "name" {
-  description = "The name of the Storage Account to create."
-}
 
 variable "storage_container_name" {
   description = "The name of the storage container to create."
@@ -65,5 +60,5 @@ variable "environment" {
 
 variable "builtFrom" {}
 variable "product" {}
-variable "deploy_acme" {}
-variable "acme_storage_account_repl_type" {}
+# variable "deploy_acme" {}
+# variable "acme_storage_account_repl_type" {}

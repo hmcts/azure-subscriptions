@@ -1,4 +1,4 @@
-resource "azuread_group" "groups" {
+resource "azuread_group" "group" {
   for_each                = local.groups
   display_name            = each.value.name
   description             = each.value.description
