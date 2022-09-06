@@ -16,6 +16,8 @@ provider "azurerm" {
   features {}
 }
 
-provider "azuredevops" {}
+provider "azuredevops" {
+  features {}
+}
 
 data "azurerm_client_config" "core" {}

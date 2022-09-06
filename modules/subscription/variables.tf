@@ -59,3 +59,5 @@ variable "environment" {
 
 variable "builtFrom" {}
 variable "product" {}
+variable "deploy_acme" {}
+variable "acme_storage_account_repl_type" {}

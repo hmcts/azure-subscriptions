@@ -7,3 +7,8 @@ resource "azuread_group" "groups" {
 
   members = each.value.members
 }
+
+resource "azuread_group_member" "acr" {
+  group_object_id  = data.azuread_group.acr.object_id
+  member_object_id = azuread_group.groups["DTS Operations"].object_id
+}

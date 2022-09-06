@@ -13,10 +13,6 @@ variable "env" {}
 variable "builtFrom" {}
 variable "product" {}
 
-variable "subscriptions" {
-  default = []
-}
-
 variable "cft_subscriptions" {
   default = []
 }
@@ -81,4 +77,12 @@ variable "enrollment_account_name" {}
 
 variable "location" {
   default = "UK South"
+}
+
+variable "acme_storage_account_repl_type" {
+  default = "ZRS"
+}
+
+variable "deploy_acme" {
+  default = false
 }

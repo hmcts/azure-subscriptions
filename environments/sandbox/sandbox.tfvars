@@ -7,6 +7,8 @@ cft_sandbox_subscriptions = {
 cft_non_production_subscriptions = {
   DTS-Terraform-Dev-Test1 = {
     env = "dev"
+    deploy_acme = true
+    acme_storage_account_repl_type = "LRS"
   }
   DTS-Terraform-Dev-Test2 = {
     env = "dev"
