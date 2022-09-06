@@ -8,7 +8,7 @@ locals {
       members     = [azuread_service_principal.sp.object_id]
     }
     "DNS Zone Contributor" = {
-      name        = join(" ", ["DTS DPublic DNS Contributors", join("", ["(", join(":", ["env", var.environment]), ")"])]),
+      name        = join(" ", ["DTS Public DNS Contributors", join("", ["(", join(":", ["env", var.environment]), ")"])]),
       description = "Grants dns zone contributor permissions to the ${var.environment} environment"
       members     = [data.azuread_group.ops_env.object_id, azuread_service_principal.sp.object_id]
     }

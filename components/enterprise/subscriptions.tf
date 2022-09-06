@@ -11,13 +11,16 @@ locals {
 module "subscription" {
   for_each = local.subscriptions
 
-  source      = "../../modules/subscription"
-  name        = each.key
-  value       = each.value
-  environment = each.value.environment
+  source                         = "../../modules/subscription"
+  name                           = each.key
+  value                          = each.value
+  deploy_acme                    = try(each.value.deploy_acme, false)
+  acme_storage_account_repl_type = try(each.value.acme_storage_account_repl_type, "ZRS")
+  environment                    = each.value.environment
 
   builtFrom = var.builtFrom
   product   = var.product
+
 
   billing_account_name    = var.billing_account_name
   enrollment_account_name = var.enrollment_account_name
