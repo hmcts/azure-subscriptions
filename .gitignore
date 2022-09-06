@@ -3,3 +3,5 @@
 tfplan
 *.lock.hcl
 .terraform
+
+node_modules/
