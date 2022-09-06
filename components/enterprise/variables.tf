@@ -86,3 +86,13 @@ variable "acme_storage_account_repl_type" {
 variable "deploy_acme" {
   default = false
 }
+
+variable "asp_sku_size" {
+  default     = "Y1"
+  description = "SKU size for App Service Plan."
+}
+
+variable "asp_sku_tier" {
+  default     = "Dynamic"
+  description = "SKU tier for App Service Plan."
+}

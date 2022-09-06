@@ -5,7 +5,9 @@ cft_sandbox_subscriptions = {
 }
 
 cft_production_subscriptions = {
-  DTS-Terraform-Prod-Test1 = {}
+  DTS-Terraform-Prod-Test1 = {
+    environment = "prod"
+  }
 }
 
 cft_non_production_subscriptions = {
@@ -20,6 +22,7 @@ cft_non_production_subscriptions = {
   }
   DTS-RBAC-NONPRODUCTION = {
     environment = "dev"
+    deploy_acme = true
   }
 }
 

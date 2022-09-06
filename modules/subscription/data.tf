@@ -5,9 +5,9 @@ data "azuread_group" "ops_mgmt" {
 }
 
 data "azuread_group" "ops_env" {
-  display_name = join("", ["DTS Operations (env:", lower(var.environment), ")"])
+  display_name = join("", ["DTS Operations (env:", lower(var.value.environment), ")"])
 }
 
 data "azuread_group" "dns_contributor" {
-  display_name = "DTS Public DNS Contributor (env:${lower(var.environment)})"
+  display_name = "DTS Public DNS Contributor (env:${lower(var.value.environment)})"
 }

@@ -1,6 +1,6 @@
 resource "azuredevops_serviceendpoint_azurerm" "endpoint" {
   project_id            = "PlatformOperations"
-  service_endpoint_name = "OPS-APPROVAL-GATE-${upper(var.environment)}-ENVS"
+  service_endpoint_name = "OPS-APPROVAL-GATE-${upper(var.env)}-ENVS"
   credentials {
     serviceprincipalid  = azuread_service_principal.sp.application_id
     serviceprincipalkey = azuread_application_password.token.value
