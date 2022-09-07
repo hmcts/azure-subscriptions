@@ -15,7 +15,7 @@ jobs:
         with:
           labels: requires-approval-from-head-of-platform-operations
       - uses: mshick/add-pr-comment@v1
-#        if: !contains(github.event.pull_request.labels.*.name, 'subscription-request-approved')
+        if: "!contains(github.event.pull_request.labels.*.name, 'subscription-request-approved')"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
