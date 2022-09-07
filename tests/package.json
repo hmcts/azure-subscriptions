@@ -4,12 +4,15 @@
   "description": "",
   "main": "naming_conventions.js",
   "scripts": {
-    "test": "jest"
+    "lint": "prettier --write .",
+    "test": "jest --ci --reporters=default --testResultsProcessor=jest-junit"
   },
   "author": "",
   "license": "MIT",
   "devDependencies": {
     "@types/jest": "^29.0.0",
-    "jest": "^29.0.2"
+    "jest": "^29.0.2",
+    "jest-junit": "^14.0.1",
+    "prettier": "^2.7.1"
   }
 }
