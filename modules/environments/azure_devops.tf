@@ -12,7 +12,7 @@ resource "azuredevops_serviceendpoint_azurerm" "endpoint" {
 }
 
 resource "azuredevops_serviceendpoint_azurerm" "ptl_endpoint" {
-  count                 = var.pipeline_environment == "prod" || var.env != "ptl" ? 1 : 0
+  count                 = var.pipeline_environment == "prod" || var.env == "ptl" ? 1 : 0
   project_id            = "PlatformOperations"
   service_endpoint_name = "OPS-APPROVAL-GATE-${upper(var.env)}-ENVS"
   credentials {
@@ -25,7 +25,7 @@ resource "azuredevops_serviceendpoint_azurerm" "ptl_endpoint" {
 }
 
 resource "azuredevops_serviceendpoint_azurerm" "ptlsbox_endpoint" {
-  count                 = var.pipeline_environment == "prod" || var.env != "ptlsbox" ? 1 : 0
+  count                 = var.pipeline_environment == "prod" || var.env == "ptlsbox" ? 1 : 0
   project_id            = "PlatformOperations"
   service_endpoint_name = "OPS-APPROVAL-GATE-${upper(var.env)}-ENVS"
   credentials {
