@@ -1,0 +1,24 @@
+name: Approval required reminder
+on:
+  pull_request:
+    paths:
+      - 'environments/prod/prod.tfvars'
+jobs:
+  require-approval:
+    runs-on: ubuntu-latest
+
+    name: Approval required reminder
+
+    steps:
+      - uses: actions-ecosystem/action-add-labels@v1
+        if: !contains(github.event.pull_request.labels.*.name, 'subscription-request-approved')
+        with:
+          labels: requires-approval-from-head-of-platform-operations
+      - uses: mshick/add-pr-comment@v1
+        if: !contains(github.event.pull_request.labels.*.name, 'subscription-request-approved')
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          message: |
+            Please request approval for a new subscription by emailing DTS Platform Operations.
+            Reply to this comment with the approval from the 'Head of Platform Operations' (Linda Green).
