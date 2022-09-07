@@ -50,13 +50,13 @@ locals {
   )
 
   environments = {
-    demo = {}
-    dev  = {}
-    ithc = {}
-    sbox = {}
-    ptl = {}
+    demo    = {}
+    dev     = {}
+    ithc    = {}
+    sbox    = {}
+    ptl     = {}
     ptlsbox = {}
-    prod = {}
-    stg = {}
+    prod    = {}
+    stg     = {}
   }
 }
