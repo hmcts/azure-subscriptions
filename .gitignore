@@ -5,3 +5,4 @@ tfplan
 .terraform
 
 node_modules/
+junit.xml

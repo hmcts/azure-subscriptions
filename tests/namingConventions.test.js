@@ -7,8 +7,8 @@ describe("Naming conventions", () => {
     fs.readFileSync("/tmp/variables.json", { encoding: "utf-8" })
   );
 
+  // noinspection JSMismatchedCollectionQueryUpdate remove this noinspection if any exclusions are added
   const globalExclusions = [];
-  // const globalExclusions = ['DTS-Terraform-Dev-Test3']
 
   const managementGroupSubscriptions = Object.keys(variables)
     .filter((key) => key.includes("_subscriptions"))
@@ -46,10 +46,8 @@ describe("Naming conventions", () => {
   });
 
   it("ends with a valid environment", () => {
-    const localExclusions = [
-      "DTS-Terraform-Dev-Test4",
-      "DTS-RBAC-NONPRODUCTION",
-    ];
+    // noinspection JSMismatchedCollectionQueryUpdate remove this noinspection if any exclusions are added
+    const localExclusions = [];
 
     managementGroupSubscriptions
       .filter(
