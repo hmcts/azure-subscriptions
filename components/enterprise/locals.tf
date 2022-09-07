@@ -57,6 +57,7 @@ locals {
     ptl     = {}
     ptlsbox = {}
     prod    = {}
+    sbox    = {}
     stg     = {}
   }
 }

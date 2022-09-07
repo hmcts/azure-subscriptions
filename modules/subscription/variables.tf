@@ -66,4 +66,4 @@ variable "common_tags" {
   type        = map(string)
 }
 
-variable "ops_env_group_id" {}
+variable "dts_operations_group_id" {}
