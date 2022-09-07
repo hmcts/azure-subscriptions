@@ -8,8 +8,10 @@ jobs:
     runs-on: ubuntu-latest
     name: Approval required reminder
     steps:
+      - name: Dump context
+        uses: crazy-max/ghaction-dump-context@v1
       - uses: actions-ecosystem/action-add-labels@v1
-        if: !contains(github.event.pull_request.labels.*.name, 'subscription-request-approved')
+#        if: !contains(github.event.pull_request.labels.*.name, 'subscription-request-approved')
         with:
           labels: requires-approval-from-head-of-platform-operations
       - uses: mshick/add-pr-comment@v1
