@@ -9,7 +9,7 @@ jobs:
     name: Approval required reminder
     steps:
       - uses: actions-ecosystem/action-add-labels@v1
-#        if: !contains(github.event.pull_request.labels.*.name, 'subscription-request-approved')
+        if: !contains(github.event.pull_request.labels.*.name, 'subscription-request-approved')
         with:
           labels: requires-approval-from-head-of-platform-operations
       - uses: mshick/add-pr-comment@v1
@@ -19,4 +19,5 @@ jobs:
         with:
           message: |
             Please request approval for a new subscription by emailing DTS Platform Operations.
+
             Reply to this comment with the approval from the 'Head of Platform Operations' (Linda Green).
