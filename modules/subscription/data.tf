@@ -11,3 +11,7 @@ data "azuread_group" "ops_env" {
 data "azuread_group" "dns_contributor" {
   display_name = "DTS Public DNS Contributor (env:${lower(var.value.environment)})"
 }
+
+data "azuread_group" "aks_global_admin" {
+  display_name = "dcd_group_aks_admin_global_v2"
+}

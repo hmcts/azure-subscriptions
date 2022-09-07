@@ -2,6 +2,16 @@ locals {
   app_name = join(" ", ["DTS Bootstrap", join("", ["(", join(":", ["sub", azurerm_subscription.this.subscription_name]), ")"])])
   # env      = var.value.environment == "sandbox" ? "sbox" : var.value.environment
   groups = {
+    "Azure Kubernetes Service Cluster Admin Role" = {
+      name        = join(" ", ["DTS AKS Administrators", join("", ["(", join(":", ["sub", azurerm_subscription.this.subscription_name]), ")"])]),
+      description = "Grants aks cluster admin permissions to the ${azurerm_subscription.this.subscription_name} subscription"
+      members     = [data.azuread_group.aks_global_admin.id]
+    }
+    "Azure Kubernetes Service Cluster User Role" = {
+      name        = join(" ", ["DTS AKS Users", join("", ["(", join(":", ["sub", azurerm_subscription.this.subscription_name]), ")"])]),
+      description = "Grants aks cluster user permissions to the ${azurerm_subscription.this.subscription_name} subscription"
+      members     = []
+    }
     "Contributor" = {
       name        = join(" ", ["DTS Contributors", join("", ["(", join(":", ["sub", azurerm_subscription.this.subscription_name]), ")"])]),
       description = "Grants contributor permissions to the ${azurerm_subscription.this.subscription_name} subscription"
