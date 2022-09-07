@@ -50,7 +50,7 @@ variables:
 stages:
   - stage: Precheck
     jobs:
-      - job:
+      - job: Precheck
         pool:
           vmImage: ${{ variables.agentPool }}
         timeoutInMinutes: ${{ variables.timeoutInMinutes }}
