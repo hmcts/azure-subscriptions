@@ -23,3 +23,5 @@ jobs:
             Please request approval for a new subscription by emailing DTS Platform Operations.
 
             Reply to this comment with the approval from the 'Head of Platform Operations' (Linda Green).
+
+            Platform Operations, replace the label `requires-approval-from-head-of-platform-operations` with `subscription-request-approved` after approval received.
