@@ -14,6 +14,6 @@ resource "azuread_group_member" "acr" {
 }
 
 resource "azuread_group_member" "dns_zone_contributor" {
-  group_object_id  = azuread_group.groups["DTS Zone Contributor"].object_id
+  group_object_id  = azuread_group.groups["DNS Zone Contributor"].object_id
   member_object_id = azuread_group.groups["DTS Operations"].object_id
 }
