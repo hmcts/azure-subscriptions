@@ -1,10 +1,6 @@
 module "subscription" {
   for_each = local.subscriptions
 
-  depends_on = [
-    module.environment
-  ]
-
   source           = "../../modules/subscription"
   name             = each.key
   value            = each.value
