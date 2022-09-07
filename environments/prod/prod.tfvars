@@ -2,7 +2,9 @@ cft_sandbox_subscriptions        = {}
 cft_non_production_subscriptions = {}
 cft_production_subscriptions     = {}
 
-sds_sandbox_subscriptions        = {}
+sds_sandbox_subscriptions = {
+  DTS-NOTACTUALLYGETTINGCREATED-SBOX = {}
+}
 sds_non_production_subscriptions = {}
 sds_production_subscriptions     = {}
 
