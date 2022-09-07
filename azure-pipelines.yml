@@ -75,7 +75,7 @@ stages:
               environment: prod
               product: ${{ variables.product }}
               test_title: 'Naming conventions'
-              test_pattern: namingConventions.test.ts
+              test_pattern: namingConventions.test.js
   - ${{ each deployment in parameters.environment_components }}:
       - stage: ${{ deployment.deployment }}
         dependsOn: ${{ deployment.dependsOn }}
