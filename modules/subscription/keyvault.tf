@@ -11,7 +11,7 @@ resource "azurerm_key_vault" "kv" {
 resource "azurerm_key_vault_access_policy" "permissions" {
   key_vault_id = azurerm_key_vault.kv.id
   tenant_id    = data.azurerm_client_config.current.tenant_id
-  object_id    = azuread_group.group["Contributor"].id
+  object_id    = azuread_group.groups["Contributor"].id
   certificate_permissions = [
     "Backup",
     "Create",
@@ -92,12 +92,12 @@ resource "azurerm_key_vault_secret" "sp_token" {
 
 resource "azurerm_key_vault_secret" "aks_admin_group_id" {
   name         = "aks-admin-rbac-group-id"
-  value        = azuread_group.group["Azure Kubernetes Service Cluster Admin Role"].object_id
+  value        = azuread_group.groups["Azure Kubernetes Service Cluster Admin Role"].object_id
   key_vault_id = azurerm_key_vault.kv.id
 }
 
 resource "azurerm_key_vault_secret" "aks_user_group_id" {
   name         = "aks-user-rbac-group-id"
-  value        = azuread_group.group["Azure Kubernetes Service Cluster User Role"].object_id
+  value        = azuread_group.groups["Azure Kubernetes Service Cluster User Role"].object_id
   key_vault_id = azurerm_key_vault.kv.id
 }

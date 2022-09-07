@@ -45,7 +45,7 @@ locals {
   }
   role_assignments = {
     "Key Vault Contributor" = {
-      principal_id = azuread_group.group["Contributor"].id
+      principal_id = azuread_group.groups["Contributor"].id
       scope        = azurerm_key_vault.kv.id
     }
     "Monitoring Contributor" = {
@@ -57,11 +57,11 @@ locals {
       scope        = "/subscriptions/${azurerm_subscription.this.subscription_id}"
     }
     "Storage Account Contributor" = {
-      principal_id = azuread_group.group["Contributor"].id
+      principal_id = azuread_group.groups["Contributor"].id
       scope        = azurerm_storage_account.sa.id
     }
     "Storage Blob Data Contributor" = {
-      principal_id = azuread_group.group["Contributor"].id
+      principal_id = azuread_group.groups["Contributor"].id
       scope        = azurerm_storage_account.sa.id
     }
     "User Access Administrator" = {
