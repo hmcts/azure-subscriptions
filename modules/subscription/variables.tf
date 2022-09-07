@@ -65,3 +65,5 @@ variable "common_tags" {
   description = "Common tag to be applied"
   type        = map(string)
 }
+
+variable "ops_env_group_id" {}

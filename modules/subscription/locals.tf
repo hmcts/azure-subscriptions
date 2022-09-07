@@ -15,12 +15,12 @@ locals {
     "Contributor" = {
       name        = join(" ", ["DTS Contributors", join("", ["(", join(":", ["sub", azurerm_subscription.this.subscription_name]), ")"])]),
       description = "Grants contributor permissions to the ${azurerm_subscription.this.subscription_name} subscription"
-      members     = [data.azuread_group.ops_env.object_id, azuread_service_principal.sp.object_id]
+      members     = [var.ops_env_group_id, azuread_service_principal.sp.object_id]
     }
     "Key Vault Administrator" = {
       name        = join(" ", ["DTS Key Vault Administrators", join("", ["(", join(":", ["sub", azurerm_subscription.this.subscription_name]), ")"])]),
       description = "Grants key vault administrator permissions to the ${azurerm_subscription.this.subscription_name} subscription"
-      members     = [data.azuread_group.ops_env.object_id, azuread_service_principal.sp.object_id]
+      members     = [var.ops_env_group_id, azuread_service_principal.sp.object_id]
     }
     "Reader" = {
       name        = join(" ", ["DTS Readers", join("", ["(", join(":", ["sub", azurerm_subscription.this.subscription_name]), ")"])]),
@@ -65,7 +65,7 @@ locals {
       scope        = azurerm_storage_account.sa.id
     }
     "User Access Administrator" = {
-      principal_id = data.azuread_group.ops_env.object_id
+      principal_id = var.ops_env_group_id
       scope        = "/subscriptions/${azurerm_subscription.this.subscription_id}"
     }
   }

@@ -1,10 +1,11 @@
 module "subscription" {
   for_each = local.subscriptions
 
-  source      = "../../modules/subscription"
-  name        = each.key
-  value       = each.value
-  common_tags = module.tags[each.key].common_tags
+  source           = "../../modules/subscription"
+  name             = each.key
+  value            = each.value
+  common_tags      = module.tags[each.key].common_tags
+  ops_env_group_id = module.environment[each.value.environment].ops_env_group_id
 
   billing_account_name    = var.billing_account_name
   enrollment_account_name = var.enrollment_account_name
