@@ -16,18 +16,6 @@ provider "azurerm" {
   features {}
 }
 
-# provider "azurerm" {
-#   features {}
-#   subscription_id = module.subscription.subscription_id
-#   alias           = "subscription"
-# }
-
-# provider "azurerm" {
-#   features {}
-#   subscription_id = "ed302caf-ec27-4c64-a05e-85731c3ce90e"
-#   alias           = "dnszone"
-# }
-
 provider "azuredevops" {}
 
 data "azurerm_client_config" "core" {}
