@@ -2,11 +2,7 @@ cft_sandbox_subscriptions        = {}
 cft_non_production_subscriptions = {}
 cft_production_subscriptions     = {}
 
-sds_sandbox_subscriptions = {
-  DTS-PLATOPS-DEMO-SBOX = {
-    environment = "demo"
-  }
-}
+sds_sandbox_subscriptions = {}
 sds_non_production_subscriptions = {}
 sds_production_subscriptions     = {}
 
