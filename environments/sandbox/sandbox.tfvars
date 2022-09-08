@@ -1,5 +1,7 @@
 cft_sandbox_subscriptions = {
-  DTS-RBAC-SBOX = {}
+  DTS-RBAC-SBOX = {
+    display_name = "DTS-CONTROL-SBOX"
+  }
 }
 
 cft_production_subscriptions = {
