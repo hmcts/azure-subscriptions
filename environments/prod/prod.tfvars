@@ -3,7 +3,7 @@ cft_non_production_subscriptions = {}
 cft_production_subscriptions     = {}
 
 sds_sandbox_subscriptions = {
-  Richards-playground = {}
+  Richards-playground   = {}
   DTS-PLATOPS-DEMO-SBOX = {}
 }
 sds_non_production_subscriptions = {}
