@@ -9,7 +9,7 @@ resource "azuread_application" "app" {
   api {
     oauth2_permission_scope {
       admin_consent_description  = "Allow the application to access ${local.app_name} on behalf of the signed-in user."
-      admin_consent_display_name = join(" ", ["Access", local.app_name])
+      admin_consent_display_name = "Access ${local.app_name}"
       id                         = random_uuid.app_uuid.result
       enabled                    = true
       type                       = "User"
