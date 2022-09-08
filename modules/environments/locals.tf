@@ -1,5 +1,5 @@
 locals {
-  app_name = "DTS Operations (env:${var.env}"
+  app_name = "DTS Operations (env:${var.env})"
   groups = {
     "DTS Operations" = {
       name        = "DTS Operations (env:${var.env})"
