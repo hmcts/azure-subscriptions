@@ -1,6 +1,5 @@
 locals {
   app_name = "DTS Bootstrap (sub:${azurerm_subscription.this.subscription_name})"
-  # env      = var.value.environment == "sandbox" ? "sbox" : var.value.environment
   groups = {
     "Azure Kubernetes Service Cluster Admin Role" = {
       name        = "DTS AKS Administrators (sub:${azurerm_subscription.this.subscription_name})"
