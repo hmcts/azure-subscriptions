@@ -3,7 +3,9 @@ cft_non_production_subscriptions = {}
 cft_production_subscriptions     = {}
 
 sds_sandbox_subscriptions = {
-  DTS-PLATOPS-DEMO-SBOX = {}
+  DTS-PLATOPS-DEMO-SBOX = {
+    environment = "demo"
+  }
 }
 sds_non_production_subscriptions = {}
 sds_production_subscriptions     = {}

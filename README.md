@@ -62,8 +62,17 @@ Request approval for a new subscription by emailing "DTS Platform Operations"
 
 Once approved create a pull request adding the required subscriptions.
 
-1. Modify the file [prod.tfvars](https://github.com/hmcts/azure-enterprise/blob/main/environments/prod/prod.tfvars) with the subscription name.
+1. Modify the file [prod.tfvars](https://github.com/hmcts/azure-enterprise/blob/main/environments/prod/prod.tfvars) with the subscription name and its environment.
    * add it into the corresponding management group e.g. for a new heritage production subscription add it to the `heritage_production_subscriptions` variable.
+   ```
+   heritage_production_subscriptions = {
+    DTS-HERITAGENEWSUB-STG = {
+      environment = "stg
+    }
+   }
+   ```
+  
+The environment is required to bootstrap the subscription.
 
 Create a 'help request' in the [#platops-help](https://hmcts-reform.slack.com/app_redirect?channel=platops-help) Slack channel if you have any questions.
 
@@ -88,7 +97,9 @@ In [prod.tfvars](https://github.com/hmcts/azure-enterprise/blob/main/environment
 
 ```terraform
 cft_non_production_subscriptions = {
-  DCD-CFTAPPS-DEV = {}
+  DCD-CFTAPPS-DEV = {
+    environment = "dev"
+  }
 }
 ```
 
@@ -104,6 +115,7 @@ index 9b27139..4a8f1c0 100644
 -  DCD-CFTAPPS-DEV  = {}
 +  DTS-CFTAPPS-DEV  = {
 +    display_name = "DTS-CFTAPPS-DEV"
+     environment = "dev"
 +  }
 ```
 
@@ -133,11 +145,15 @@ index 9b27139..8affa55 100644
 @@ -4,12 +4,12 @@ cft_sandbox_subscriptions = {
 
  cft_production_subscriptions = {
-+  DTS-CFTAPPS-STG  = {}
++  DTS-CFTAPPS-STG  = {
++   environment = "stg"
+}
  }
 
  cft_non_production_subscriptions = {
--  DTS-CFTAPPS-STG  = {}
+-  DTS-CFTAPPS-STG  = {
+-   environment = "stg"
+}
  }
 ```
 
