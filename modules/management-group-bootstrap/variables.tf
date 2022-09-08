@@ -1,0 +1,3 @@
+variable "groups" {
+  type = any
+}
