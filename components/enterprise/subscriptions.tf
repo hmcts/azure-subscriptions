@@ -12,7 +12,7 @@ module "subscription" {
 }
 
 module "acme" {
-  for_each = { for k, v in local.subscriptions : k => v if try(v.deploy_acme, false)}
+  for_each = { for k, v in local.subscriptions : k => v if try(v.deploy_acme, false) }
 
   source = "git::https://github.com/hmcts/terraform-module-acme-function.git?ref=DTSPO-9743/ops-bootstrap"
 
