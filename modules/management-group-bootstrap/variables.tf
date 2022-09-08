@@ -1,3 +1,3 @@
 variable "groups" {
-  type = object({ id = string })
+  type = any
 }

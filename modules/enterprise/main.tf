@@ -7,11 +7,11 @@ resource "azurerm_management_group" "level_1" {
   subscription_ids           = each.value.subscription_ids
 }
 
-module "level_1_bootstrap" {
+module "bootstrap" {
   source = "../management-group-bootstrap"
-  groups = local.azurerm_management_group_level_1
+  groups = local.management_groups
 
-  depends_on = [azurerm_management_group.level_1]
+  depends_on = [azurerm_management_group.level_6]
 }
 
 resource "azurerm_management_group" "level_2" {
@@ -26,13 +26,6 @@ resource "azurerm_management_group" "level_2" {
 
 }
 
-module "level_2_bootstrap" {
-  source = "../management-group-bootstrap"
-  groups = local.azurerm_management_group_level_2
-
-  depends_on = [azurerm_management_group.level_2]
-}
-
 resource "azurerm_management_group" "level_3" {
   for_each = local.azurerm_management_group_level_3
 
@@ -42,13 +35,6 @@ resource "azurerm_management_group" "level_3" {
   subscription_ids           = each.value.subscription_ids
 
   depends_on = [azurerm_management_group.level_2]
-}
-
-module "level_3_bootstrap" {
-  source = "../management-group-bootstrap"
-  groups = local.azurerm_management_group_level_3
-
-  depends_on = [azurerm_management_group.level_3]
 }
 
 resource "azurerm_management_group" "level_4" {
@@ -62,13 +48,6 @@ resource "azurerm_management_group" "level_4" {
   depends_on = [azurerm_management_group.level_3]
 }
 
-module "level_4_bootstrap" {
-  source = "../management-group-bootstrap"
-  groups = local.azurerm_management_group_level_4
-
-  depends_on = [azurerm_management_group.level_4]
-}
-
 resource "azurerm_management_group" "level_5" {
   for_each = local.azurerm_management_group_level_5
 
@@ -80,13 +59,6 @@ resource "azurerm_management_group" "level_5" {
   depends_on = [azurerm_management_group.level_4]
 }
 
-module "level_5_bootstrap" {
-  source = "../management-group-bootstrap"
-  groups = local.azurerm_management_group_level_5
-
-  depends_on = [azurerm_management_group.level_5]
-}
-
 resource "azurerm_management_group" "level_6" {
   for_each = local.azurerm_management_group_level_6
 
@@ -96,11 +68,4 @@ resource "azurerm_management_group" "level_6" {
   subscription_ids           = each.value.subscription_ids
 
   depends_on = [azurerm_management_group.level_5]
-}
-
-module "level_6_bootstrap" {
-  source = "../management-group-bootstrap"
-  groups = local.azurerm_management_group_level_6
-
-  depends_on = [azurerm_management_group.level_6]
 }
