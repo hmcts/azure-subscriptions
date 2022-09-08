@@ -5,7 +5,13 @@ resource "azurerm_management_group" "level_1" {
   display_name               = each.value.display_name
   parent_management_group_id = "${local.provider_path.management_groups}${each.value.parent_management_group_id}"
   subscription_ids           = each.value.subscription_ids
+}
 
+module "bootstrap" {
+  source = "../management-group-bootstrap"
+  groups = local.management_groups
+
+  depends_on = [azurerm_management_group.level_6]
 }
 
 resource "azurerm_management_group" "level_2" {
@@ -29,7 +35,6 @@ resource "azurerm_management_group" "level_3" {
   subscription_ids           = each.value.subscription_ids
 
   depends_on = [azurerm_management_group.level_2]
-
 }
 
 resource "azurerm_management_group" "level_4" {
@@ -41,7 +46,6 @@ resource "azurerm_management_group" "level_4" {
   subscription_ids           = each.value.subscription_ids
 
   depends_on = [azurerm_management_group.level_3]
-
 }
 
 resource "azurerm_management_group" "level_5" {
@@ -53,7 +57,6 @@ resource "azurerm_management_group" "level_5" {
   subscription_ids           = each.value.subscription_ids
 
   depends_on = [azurerm_management_group.level_4]
-
 }
 
 resource "azurerm_management_group" "level_6" {
@@ -65,5 +68,4 @@ resource "azurerm_management_group" "level_6" {
   subscription_ids           = each.value.subscription_ids
 
   depends_on = [azurerm_management_group.level_5]
-
 }
