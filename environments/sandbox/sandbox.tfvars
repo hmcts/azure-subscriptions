@@ -22,7 +22,6 @@ cft_non_production_subscriptions = {
   }
   DTS-RBAC-NONPRODUCTION = {
     environment = "dev"
-    deploy_acme = true
   }
 }
 
