@@ -8,6 +8,6 @@ data "azuread_group" "aks_global_admin" {
   display_name = "dcd_group_aks_admin_global_v2"
 }
 
-data "azuread_group" "dts_operations_group_id" {
+data "azuread_group" "dts_operations" {
   display_name = "DTS Operations (env:${var.environment})"
 }

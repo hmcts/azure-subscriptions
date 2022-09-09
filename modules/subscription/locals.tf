@@ -14,12 +14,12 @@ locals {
     "Contributor" = {
       name        = "DTS Contributors (sub:${azurerm_subscription.this.subscription_name})"
       description = "Grants contributor permissions to the ${azurerm_subscription.this.subscription_name} subscription"
-      members     = [data.dts_operations_group_id.object_id, azuread_service_principal.sp.object_id]
+      members     = [data.azuread_group_dts_operations.object_id, azuread_service_principal.sp.object_id]
     }
     "Key Vault Administrator" = {
       name        = "DTS Key Vault Administrators (sub:${azurerm_subscription.this.subscription_name})"
       description = "Grants key vault administrator permissions to the ${azurerm_subscription.this.subscription_name} subscription"
-      members     = [data.dts_operations_group_id.object_id, azuread_service_principal.sp.object_id]
+      members     = [data.azuread_group_dts_operations.object_id, azuread_service_principal.sp.object_id]
     }
     "Reader" = {
       name        = "DTS Readers (sub:${azurerm_subscription.this.subscription_name})"
@@ -64,7 +64,7 @@ locals {
       scope        = azurerm_storage_account.sa.id
     }
     "User Access Administrator" = {
-      principal_id = data.dts_operations_group_id.object_id
+      principal_id = data.azuread_group_dts_operations.object_id
       scope        = "/subscriptions/${azurerm_subscription.this.subscription_id}"
     }
   }
