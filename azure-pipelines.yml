@@ -40,7 +40,7 @@ parameters:
         environment: 'prod'
         component: 'video-hearings'
         service_connection: 'DTS-Video-Hearings-tenant-GA'
-        init_subscription: "todo"
+        init_subscription: "4b34a614-5deb-4e58-9180-0eaa01ff3dce"
         dependsOn: 'sandbox_enterprise'
 
 variables:
