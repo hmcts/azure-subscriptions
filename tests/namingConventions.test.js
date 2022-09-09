@@ -13,7 +13,10 @@ describe("Naming conventions", () => {
   const managementGroupSubscriptions = Object.keys(variables)
     .filter((key) => key.includes("_subscriptions"))
     .reduce((obj, key) => {
-      return Object.assign(obj, variables[key]);
+      if (Object.keys(variables[key][0]).length > 0) {
+        return Object.assign(obj, variables[key]);
+      }
+      return obj;
     }, [])
     .flatMap((obj) => Object.keys(obj));
 
