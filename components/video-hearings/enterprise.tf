@@ -9,7 +9,7 @@ module "enterprise" {
     HMCTS = {
       display_name               = "HMCTS"
       parent_management_group_id = data.azurerm_client_config.core.tenant_id
-      subscription_ids           = []
+      subscription_ids           = [for subscription in values(module.subscription).*.subscription_id : subscription.subscription_id if subscription.group == "hmcts"]
     }
   }
 }

@@ -20,8 +20,6 @@ platform_sandbox_subscriptions        = {}
 platform_non_production_subscriptions = {}
 platform_production_subscriptions     = {}
 
-vh_subscriptions = {
-  DTS-VH-TEST = {}
-}
+vh_subscriptions = {}
 
 enrollment_account_name = "233705"
