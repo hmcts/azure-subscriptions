@@ -7,7 +7,7 @@ locals {
 }
 
 module "subscription" {
-  for_each = { for k, v in local.subscriptions : k => v if try(v.environments, false) }
+  for_each = local.subscriptions
 
   source                  = "../../modules/subscription"
   name                    = each.key
