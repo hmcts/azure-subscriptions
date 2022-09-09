@@ -201,6 +201,10 @@ Once the subscription has been fully deleted it can be removed from terraform.
 
 ## Adding another tenant
 
+We aim to manage the subscriptions for all our tenants as part of this repository, that way we have one place to manage the enterprise from.
+
+Each tenant needs to have a local user account and to have its own enrolment account where the user account is the account admin.
+
 ### Service principal creation
 
 1. Add your account as a guest to the tenant with the Global Administrator role
