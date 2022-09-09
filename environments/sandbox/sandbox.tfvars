@@ -1,6 +1,5 @@
 cft_sandbox_subscriptions = {
   DTS-RBAC-SBOX = {
-    environment = "sbox"
   }
 }
 

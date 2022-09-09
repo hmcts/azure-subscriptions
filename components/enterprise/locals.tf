@@ -59,5 +59,6 @@ locals {
     prod    = {}
     sbox    = {}
     stg     = {}
+    test    = {}
   }
 }

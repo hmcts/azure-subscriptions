@@ -62,17 +62,24 @@ Request approval for a new subscription by emailing "DTS Platform Operations"
 
 Once approved create a pull request adding the required subscriptions.
 
-1. Modify the file [prod.tfvars](https://github.com/hmcts/azure-enterprise/blob/main/environments/prod/prod.tfvars) with the subscription name and its environment.
+1. Modify the file [prod.tfvars](https://github.com/hmcts/azure-enterprise/blob/main/environments/prod/prod.tfvars) with the subscription name.
    * add it into the corresponding management group e.g. for a new heritage production subscription add it to the `heritage_production_subscriptions` variable.
    ```
    heritage_production_subscriptions = {
-    DTS-HERITAGENEWSUB-STG = {
-      environment = "stg
+    DTS-HERITAGE-STG = {
     }
    }
    ```
   
-The environment is required to bootstrap the subscription.
+The environment is required to bootstrap the subscription. Most subscriptions have the environment name in the subscription name e.g. DTS-SHAREDSERVICES-DEV. The environment will be extracted automatically where this naming convention is followed. If a subscription does not follow this naming convention, then you must specify the environment in the tfvars file.
+
+   ```
+   heritage_production_subscriptions = {
+    DTS-HERITAGE-STG-NEWSUB = {
+      environment = "stg"
+    }
+   }
+   ```
 
 Create a 'help request' in the [#platops-help](https://hmcts-reform.slack.com/app_redirect?channel=platops-help) Slack channel if you have any questions.
 
@@ -98,7 +105,6 @@ In [prod.tfvars](https://github.com/hmcts/azure-enterprise/blob/main/environment
 ```terraform
 cft_non_production_subscriptions = {
   DCD-CFTAPPS-DEV = {
-    environment = "dev"
   }
 }
 ```
@@ -115,7 +121,6 @@ index 9b27139..4a8f1c0 100644
 -  DCD-CFTAPPS-DEV  = {}
 +  DTS-CFTAPPS-DEV  = {
 +    display_name = "DTS-CFTAPPS-DEV"
-     environment = "dev"
 +  }
 ```
 
@@ -146,13 +151,11 @@ index 9b27139..8affa55 100644
 
  cft_production_subscriptions = {
 +  DTS-CFTAPPS-STG  = {
-+   environment = "stg"
 }
  }
 
  cft_non_production_subscriptions = {
 -  DTS-CFTAPPS-STG  = {
--   environment = "stg"
 }
  }
 ```

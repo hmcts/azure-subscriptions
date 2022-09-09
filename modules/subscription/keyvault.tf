@@ -1,7 +1,7 @@
 resource "azurerm_key_vault" "kv" {
   name                     = "c${substr(replace(azurerm_subscription.this.subscription_id, "-", ""), 0, 8)}${substr(replace(azurerm_subscription.this.subscription_id, "-", ""), 24, 12)}kv"
   location                 = var.location
-  resource_group_name      = "azure-control-${var.value.environment}-rg"
+  resource_group_name      = "azure-control-${var.environment}-rg"
   tenant_id                = data.azurerm_client_config.current.tenant_id
   purge_protection_enabled = var.purge_protection_enabled
   sku_name                 = var.sku_name
