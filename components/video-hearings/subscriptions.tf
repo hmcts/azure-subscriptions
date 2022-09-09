@@ -1,8 +1,8 @@
 locals {
-  cft = { for k, v in var.cft_subscriptions : k => merge(tomap({ group = "cft" }), v) }
+  vh = { for k, v in var.vh_subscriptions : k => merge(tomap({ group = "hmcts" }), v) }
 
   subscriptions = merge(
-    local.cft,
+    local.vh,
   )
 }
 
@@ -14,5 +14,5 @@ module "subscription" {
   value  = each.value
 
   billing_account_name    = var.billing_account_name
-  enrollment_account_name = var.enrollment_account_name
+  enrollment_account_name = "TODO"
 }
