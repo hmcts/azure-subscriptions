@@ -1,12 +1,11 @@
 module "subscription" {
   for_each = local.subscriptions
 
-  source                  = "../../modules/subscription"
-  name                    = each.key
-  value                   = each.value
-  common_tags             = module.tags[each.key].common_tags
-  dts_operations_group_id = module.environment[try(each.value.environment, (lower(replace([each.key][0], "/.*-([A-Za-z]+).*/", "$1"))))].dts_operations_group_id
-  environment             = try(each.value.environment, (lower(replace([each.key][0], "/.*-([A-Za-z]+).*/", "$1"))))
+  source      = "../../modules/subscription"
+  name        = each.key
+  value       = each.value
+  common_tags = module.tags[each.key].common_tags
+  environment = try(each.value.environment, (lower(replace([each.key][0], "/.*-([A-Za-z]+).*/", "$1"))))
 
   billing_account_name    = var.billing_account_name
   enrollment_account_name = var.enrollment_account_name
