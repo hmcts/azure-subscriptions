@@ -201,4 +201,45 @@ Once the subscription has been fully deleted it can be removed from terraform.
 
 ## Adding another tenant
 
-...
+### Service principal creation
+
+1. Add your account as a guest to the tenant with the Global Administrator role
+2. Create a service principal in the tenant and add the 'Global Administrator' role to it, name it "DTS <tenant> Operations GA"
+3. Assign the Owner role to the Root Management Group of the tenant to the service principal
+4. Create a subscription in the tenant that will be used for storing terraform state
+   * Name it something like `DTS-<tenant>-CONTROL-PROD`, or `DTS-<tenant>-MGMT-PROD`
+   * You can use the Service Principal that the CJS Common Platform tenant uses
+   * Create a Terraform resource in a temporary folder, assign yourself owner of the subscription created
+   * Use the 'Change directory' button in the Azure portal to move the subscription to the tenant
+5. In the 'PlatformOperations' Azure DevOps project create a new service connection 'DTS-<tenant>-GA'
+
+### Enrolment account Setup
+
+1. Ensure there is a custom domain assigned to the tenant, we do not want to use onmicrosoft tenants
+   * If there is no custom domain then create one and verify it
+2. Create a user account in the tenant, name it `dtsazure@<custom-domain>`, it should have a complex password and 2fa if possible in the tenant.
+3. Assign the user account Global Administrator
+4. Invite dtsazure@hmcts.net to the tenant if it's not already present, this account should have visibility over all tenants
+5. Ask the EA Administrators to create an enrolment account in the HMCTS department
+   * named after the tenant, usually something like 'DTS <tenant name' 
+   * account admin as `dtsazure@<custom-domain>`
+   * If it's going to have subscriptions for Dev/Test ask them to enable the Dev/Test offer on the account
+6. Log into the [EA portal](https://ea.azure.com) using the tenant user `dtsazure@<custom-domain>`
+   * You will need to fill out some profile information
+   * Once completed you should be signed in to the EA portal and able to see the enrolment account
+   * Wait a couple of hours, this takes an unknown amount of time to replicate and actually grant permissions
+   * Go to the [Azure portal](https://portal.azure.com)
+     * Login with the `dtsazure@<custom-domain>` account, click Subscriptions, click create
+     * You should see a screen with the MoJ enterprise agreement and a dropdown to select the enrolment account. If the enrolment account is missing then check back later
+
+### Service principal permission delegation
+
+Follow the [Microsoft documentation to delegate permissions to the service principal](https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/grant-access-to-create-subscription?tabs=rest%2Crest-2).
+
+You can click the 'Try it' button from the [Microsoft REST API docs](https://docs.microsoft.com/en-us/rest/api/billing/2019-10-01-preview/enrollment-account-role-assignments/put?tabs=HTTP) to do this.
+
+If you get a 400 error check you're using the right principal ID, application registrations and enterprise application have different IDs, try the other one.
+
+### Terraform setup
+
+Copy an existing component, the `video-hearings` folder is a good example for a standalone tenant, or `prod` for a larger tenant with lots of subscriptions.
