@@ -218,3 +218,6 @@ It will be automatically deleted after 90 days or can be force deleted after 72 
 
 Once the subscription has been fully deleted it can be removed from terraform.
 
+## Adding another tenant
+
+...
