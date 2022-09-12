@@ -1,4 +1,3 @@
-
 resource "azurerm_app_service_plan" "asp" {
   location            = var.location
   name                = "${var.product}-${var.env}-asp"
