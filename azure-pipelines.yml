@@ -33,7 +33,7 @@ parameters:
       - stage: 'prod_enterprise'
         environment: 'prod'
         component: 'enterprise'
-        service_connection: 'GA'
+        service_connection: 'GA-Prod-Tenant'
         init_subscription: 04d27a32-7a07-48b3-95b8-3c8691e1a263
         dependsOn: 'sandbox_enterprise'
       - stage: 'prod_video_hearings'
