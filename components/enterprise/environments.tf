@@ -10,7 +10,7 @@ module "environment" {
   asp_sku_tier         = var.asp_sku_tier
   product              = var.product
   pipeline_environment = var.env
-  display_name_prefix  = try(each.environment.display_name_prefix, "DTS-SHAREDSERVICES-${[each.key]}")
+  display_name_prefix  = try(each.value.display_name_prefix, "DTS-SHAREDSERVICES-${[each.key]}")
 }
 
 module "environment_tags" {
