@@ -149,13 +149,11 @@ index 9b27139..8affa55 100644
 @@ -4,12 +4,12 @@ cft_sandbox_subscriptions = {
 
  cft_production_subscriptions = {
-+  DTS-CFTAPPS-STG  = {
-}
++  DTS-CFTAPPS-STG  = {}
  }
 
  cft_non_production_subscriptions = {
--  DTS-CFTAPPS-STG  = {
-}
+-  DTS-CFTAPPS-STG  = {}
  }
 ```
 
