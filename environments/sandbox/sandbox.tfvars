@@ -5,7 +5,7 @@ cft_sandbox_subscriptions = {
 
 cft_production_subscriptions = {
   DTS-Terraform-Prod-Test1 = {
-    environment = "prod"
+    environment = "nle"
   }
 }
 
