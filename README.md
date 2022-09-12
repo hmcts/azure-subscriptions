@@ -5,7 +5,7 @@ Simplified for our use-cases / retrofitting.
 
 ```mermaid
 graph TD
-    Root --> HMCTS(HMCTS Programmes)
+    Root --> HMCTS
     HMCTS --> CFT
     HMCTS --> SDS
     HMCTS --> Crime

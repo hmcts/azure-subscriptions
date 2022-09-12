@@ -7,7 +7,7 @@ module "enterprise" {
 
   management_groups = {
     HMCTS = {
-      display_name               = "HMCTS Programmes"
+      display_name               = "HMCTS"
       parent_management_group_id = data.azurerm_client_config.core.tenant_id
       subscription_ids           = []
     }
