@@ -53,7 +53,6 @@ locals {
     demo    = {}
     dev     = {}
     ithc    = {}
-    sbox    = {}
     ptl     = {}
     ptlsbox = {}
     prod    = {}
