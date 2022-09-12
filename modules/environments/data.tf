@@ -5,6 +5,6 @@ data "azuread_group" "acr" {
 data "azurerm_client_config" "current" {}
 
 data "azurerm_subscriptions" "sds" {
-  count               = var.pipeline_environment == "prod"
+  count               = var.pipeline_environment == "prod" ? 1 : 0
   display_name_prefix = var.display_name_prefix
 }
