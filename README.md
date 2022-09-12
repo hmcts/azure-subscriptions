@@ -62,12 +62,12 @@ Request approval for a new subscription by emailing "DTS Platform Operations"
 
 Once approved create a pull request adding the required subscriptions.
 
-1. Modify the file [prod.tfvars](https://github.com/hmcts/azure-enterprise/blob/main/environments/prod/prod.tfvars) with the subscription name.
+Modify the file [prod.tfvars](https://github.com/hmcts/azure-enterprise/blob/main/environments/prod/prod.tfvars) with the subscription name.
    * add it into the corresponding management group e.g. for a new heritage production subscription add it to the `heritage_production_subscriptions` variable.
+
    ```
    heritage_production_subscriptions = {
-    DTS-HERITAGE-STG = {
-    }
+    DTS-HERITAGE-STG = {}
    }
    ```
   
@@ -75,7 +75,7 @@ The environment is required to bootstrap the subscription. Most subscriptions ha
 
    ```
    heritage_production_subscriptions = {
-    DTS-HERITAGE-STG-NEWSUB = {
+    DTS-HERITAGE-NLE = {
       environment = "stg"
     }
    }
@@ -104,8 +104,7 @@ In [prod.tfvars](https://github.com/hmcts/azure-enterprise/blob/main/environment
 
 ```terraform
 cft_non_production_subscriptions = {
-  DCD-CFTAPPS-DEV = {
-  }
+  DCD-CFTAPPS-DEV = {}
 }
 ```
 

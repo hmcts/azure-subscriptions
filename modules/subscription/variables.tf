@@ -62,5 +62,3 @@ variable "common_tags" {
   description = "Common tag to be applied"
   type        = map(string)
 }
-
-# variable "dts_operations_group_id" {}

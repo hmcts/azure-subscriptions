@@ -99,4 +99,3 @@ stages:
                   serviceConnection: ${{ deployment.service_connection }}
                   terraformInitSubscription: ${{ deployment.init_subscription }}
                   product: ${{ variables.product }}
-                
