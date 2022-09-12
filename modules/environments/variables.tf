@@ -6,6 +6,7 @@ variable "env" {}
 variable "asp_sku_size" {}
 variable "asp_sku_tier" {}
 variable "pipeline_environment" {}
+variable "display_name_prefix" {}
 
 
 variable "common_tags" {
