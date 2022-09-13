@@ -32,6 +32,6 @@ module "tags" {
   for_each    = local.subscriptions
   source      = "git::https://github.com/hmcts/terraform-module-common-tags.git?ref=master"
   environment = try(each.value.environment, (lower(replace([each.key][0], "/.*-([A-Za-z]+).*/", "$1"))))
-  product     = try(each.value.product, (tostring(lower(replace([each.value.group][0], "/([A-Za-z])_.*/", "$1"))) == "cft" ? "cft-platform" : tostring(lower(replace([each.value.group][0], "/([A-Za-z])_.*/", "$1"))) == "sds" ? "sds-platform" : tostring(lower(replace([each.value.group][0], "/([A-Za-z])_.*/", "$1")))))
+  product     = try(each.value.product, join("-", [regex("cft|sds", [each.value.group][0]), "platform"]), replace(regex("security", [each.value.group][0]), "/([A-Za-z]).*/", "soc"), replace([each.value.group][0], "/([A-Za-z])_.*/", "$1"))
   builtFrom   = var.builtFrom
 }
