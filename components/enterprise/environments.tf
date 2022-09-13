@@ -15,7 +15,7 @@ module "environment" {
 
 module "environment_tags" {
   for_each    = local.environments
-  source      = "git::https://github.com/hmcts/terraform-module-common-tags.git?ref=DTSPO-9743/azure-enterprise"
+  source      = "git::https://github.com/hmcts/terraform-module-common-tags.git?ref=master"
   environment = each.key
   product     = var.product
   builtFrom   = var.builtFrom
