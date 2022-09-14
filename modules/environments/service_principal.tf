@@ -27,6 +27,11 @@ resource "azuread_application" "app" {
   }
   web {
     homepage_url = "https://dev.azure.com/hmcts/PlatformOperations"
+
+    implicit_grant {
+      access_token_issuance_enabled = false
+      id_token_issuance_enabled     = true
+    }
   }
 }
 
