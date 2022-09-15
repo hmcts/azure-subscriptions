@@ -6,8 +6,7 @@ module "environment" {
   common_tags          = module.environment_tags[each.key].common_tags
   location             = var.location
   env                  = each.key
-  asp_sku_size         = var.asp_sku_size
-  asp_sku_tier         = var.asp_sku_tier
+  sp_sku_name          = var.sp_sku_name
   product              = var.product
   pipeline_environment = var.env
   display_name_prefix  = try(each.value.display_name_prefix, "DTS-SHAREDSERVICES-${each.key}")
