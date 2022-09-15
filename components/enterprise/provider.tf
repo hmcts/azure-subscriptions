@@ -5,8 +5,7 @@ terraform {
       version = "= 3.22.0"
     }
     azuredevops = {
-      source  = "microsoft/azuredevops"
-      version = "0.1.8"
+      source = "microsoft/azuredevops"
     }
   }
   backend "azurerm" {}

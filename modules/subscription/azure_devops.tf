@@ -1,5 +1,5 @@
 resource "azuredevops_serviceendpoint_azurerm" "endpoint" {
-  project_id            = "PlatformOperations"
+  project_id            = var.project_id
   service_endpoint_name = azurerm_subscription.this.subscription_name
   credentials {
     serviceprincipalid  = azuread_service_principal.sp.application_id

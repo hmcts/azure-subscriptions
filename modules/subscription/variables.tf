@@ -67,3 +67,5 @@ variable "common_tags" {
   description = "Common tag to be applied"
   type        = map(string)
 }
+
+variable "project_id" {}
