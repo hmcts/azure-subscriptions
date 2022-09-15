@@ -50,18 +50,18 @@ locals {
   )
 
   environments = {
-    # demo = {}
-    # dev  = {}
-    # ithc = {}
-    # ptl = {
-    #   display_name_prefix = "DTS-SHAREDSERVICESPTL"
-    # }
-    # ptlsbox = {
-    #   display_name_prefix = "DTS-SHAREDSERVICESPTL-SBOX"
-    # }
-    # prod = {}
+    demo = {}
+    dev  = {}
+    ithc = {}
+    ptl = {
+      display_name_prefix = "DTS-SHAREDSERVICESPTL"
+    }
+    ptlsbox = {
+      display_name_prefix = "DTS-SHAREDSERVICESPTL-SBOX"
+    }
+    prod = {}
     sbox = {}
-    # stg  = {}
-    # test = {}
+    stg  = {}
+    test = {}
   }
 }
