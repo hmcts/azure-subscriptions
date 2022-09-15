@@ -11,7 +11,6 @@ module "environment" {
   product              = var.product
   pipeline_environment = var.env
   display_name_prefix  = try(each.value.display_name_prefix, "DTS-SHAREDSERVICES-${each.key}")
-  project_id           = "c8947a39-47e3-4236-8bc8-51ff42dbda51"
 }
 
 module "environment_tags" {

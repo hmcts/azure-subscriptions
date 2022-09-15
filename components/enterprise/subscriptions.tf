@@ -6,7 +6,6 @@ module "subscription" {
   value       = each.value
   common_tags = module.tags[each.key].common_tags
   environment = try(each.value.environment, (lower(replace([each.key][0], "/.*-([A-Za-z]+).*/", "$1"))))
-  project_id  = "c8947a39-47e3-4236-8bc8-51ff42dbda51"
 
   billing_account_name    = var.billing_account_name
   enrollment_account_name = var.enrollment_account_name

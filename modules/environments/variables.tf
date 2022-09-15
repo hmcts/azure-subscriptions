@@ -15,4 +15,6 @@ variable "common_tags" {
   type        = map(string)
 }
 
-variable "project_id" {}
+variable "project_id" {
+  default = "c8947a39-47e3-4236-8bc8-51ff42dbda51"
+}
