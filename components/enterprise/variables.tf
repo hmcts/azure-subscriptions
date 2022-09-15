@@ -96,3 +96,7 @@ variable "asp_sku_tier" {
   default     = "Dynamic"
   description = "SKU tier for App Service Plan."
 }
+
+variable "vh_subscriptions" {
+  default = {}
+}
