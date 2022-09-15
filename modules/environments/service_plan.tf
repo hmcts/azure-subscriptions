@@ -5,9 +5,6 @@ resource "azurerm_service_plan" "asp" {
   kind                = "FunctionApp"
   reserved            = false
   os_type             = "Windows"
-  sku {
-    size = var.asp_sku_size
-    tier = var.asp_sku_tier
-  }
-  tags = var.common_tags
+  sku_name            = var.sp_sku_name
+  tags                = var.common_tags
 }

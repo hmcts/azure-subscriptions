@@ -3,8 +3,7 @@ variable "name" {}
 variable "location" {}
 variable "product" {}
 variable "env" {}
-variable "asp_sku_size" {}
-variable "asp_sku_tier" {}
+variable "sp_sku_name" {}
 variable "pipeline_environment" {}
 variable "display_name_prefix" {
   default = ""

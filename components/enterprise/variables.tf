@@ -87,14 +87,9 @@ variable "deploy_acme" {
   default = false
 }
 
-variable "asp_sku_size" {
+variable "sp_sku_name" {
   default     = "Y1"
-  description = "SKU size for App Service Plan."
-}
-
-variable "asp_sku_tier" {
-  default     = "Dynamic"
-  description = "SKU tier for App Service Plan."
+  description = "SKU name for App Service Plan."
 }
 
 variable "vh_subscriptions" {
