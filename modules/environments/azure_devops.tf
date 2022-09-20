@@ -8,7 +8,10 @@ resource "azuredevops_serviceendpoint_azurerm" "endpoint" {
   }
   azurerm_spn_tenantid = data.azurerm_client_config.current.tenant_id
 
-  # current data resource only supports searching for subscriptions by prefix and not for an exact match which creates issues when multiple subscriptions contain the same string e.g. `DTS-SHAREDSERIVCESPTL` and `DTS-SHAREDSERVICESPTL-SBOX`. See https://github.com/hashicorp/terraform-provider-azurerm/issues/18462
-  azurerm_subscription_id   = var.env == "ptl" ? data.azurerm_subscriptions.service_endpoint_subscription[0].subscriptions[1].subscription_id : data.azurerm_subscriptions.service_endpoint_subscription[0].subscriptions[0].subscription_id
-  azurerm_subscription_name = var.env == "ptl" ? data.azurerm_subscriptions.service_endpoint_subscription[0].subscriptions[1].display_name : data.azurerm_subscriptions.service_endpoint_subscription[0].subscriptions[0].display_name
+  # current data resource only supports searching for subscriptions by prefix and not for an exact match 
+  # this creates issues when multiple subscriptions contain the same string e.g. `DTS-SHAREDSERIVCESPTL` and `DTS-SHAREDSERVICESPTL-SBOX`
+  # see https://github.com/hashicorp/terraform-provider-azurerm/issues/18462
+  # for expression below will extract the subscriptions and match the correct subscription id and display_name based on the variable display_name_prefix
+  azurerm_subscription_id   = [for elem in data.azurerm_subscriptions.service_endpoint_subscription[0].subscriptions[*]: elem.subscription_id if elem.display_name==var.display_name_prefix][0]
+  azurerm_subscription_name = [for elem in data.azurerm_subscriptions.service_endpoint_subscription[0].subscriptions[*]: elem.display_name if elem.display_name==var.display_name_prefix][0]
 }

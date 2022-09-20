@@ -9,7 +9,7 @@ module "environment" {
   sp_sku_name          = var.sp_sku_name
   product              = var.product
   pipeline_environment = var.env
-  display_name_prefix  = try(each.value.display_name_prefix, "DTS-SHAREDSERVICES-${each.key}")
+  display_name_prefix  = try(each.value.display_name_prefix, "DTS-SHAREDSERVICES-${upper(each.key)}")
 }
 
 module "environment_tags" {
