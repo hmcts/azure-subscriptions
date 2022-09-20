@@ -64,4 +64,8 @@ locals {
     stg  = {}
     test = {}
   }
+
+  regex_last_section_hyphen = "/.*-([A-Za-z]+).*/" # extracts the last section of a string after any hyphens (-) e.g. extracts `SBOX` from `DTS-RBAC-SBOX`
+  regex_string = "/([A-Za-z]).*/" # used to replace string with another string e.g. replacing `security` with `soc`
+  regex_first_section_underscore = "/([A-Za-z])_.*/" # extracts the first section of a string before any underscores (_) e.g. extracting `cft` from `cft_production_subscriptions`
 }
