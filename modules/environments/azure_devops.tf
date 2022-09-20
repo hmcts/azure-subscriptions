@@ -6,7 +6,7 @@ resource "azuredevops_serviceendpoint_azurerm" "endpoint" {
     serviceprincipalid  = azuread_service_principal.sp.application_id
     serviceprincipalkey = azuread_application_password.token.value
   }
-  azurerm_spn_tenantid      = data.azurerm_client_config.current.tenant_id
+  azurerm_spn_tenantid = data.azurerm_client_config.current.tenant_id
 
   # current data resource only supports searching for subscriptions by prefix and not for an exact match which creates issues when multiple subscriptions contain the same string e.g. `DTS-SHAREDSERIVCESPTL` and `DTS-SHAREDSERVICESPTL-SBOX`. See https://github.com/hashicorp/terraform-provider-azurerm/issues/18462
   azurerm_subscription_id   = var.env == "ptl" ? data.azurerm_subscriptions.service_endpoint_subscription[0].subscriptions[1].subscription_id : data.azurerm_subscriptions.service_endpoint_subscription[0].subscriptions[0].subscription_id
