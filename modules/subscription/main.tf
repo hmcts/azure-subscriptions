@@ -15,3 +15,7 @@ output "subscription_id" {
     subscription_id = azurerm_subscription.this.subscription_id
   }
 }
+
+output "subscription_name" {
+  value = azurerm_subscription.this.subscription_name
+}

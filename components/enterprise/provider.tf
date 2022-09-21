@@ -4,6 +4,9 @@ terraform {
       source  = "hashicorp/azurerm"
       version = "= 3.22.0"
     }
+    azuredevops = {
+      source = "microsoft/azuredevops"
+    }
   }
   backend "azurerm" {}
 }
@@ -11,5 +14,7 @@ terraform {
 provider "azurerm" {
   features {}
 }
+
+provider "azuredevops" {}
 
 data "azurerm_client_config" "core" {}
