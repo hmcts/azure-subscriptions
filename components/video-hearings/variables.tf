@@ -5,7 +5,16 @@ variable "root_id" {
 
 variable "root_name" {
   type    = string
-  default = "HMCTS Programmes"
+  default = "HMCTS"
+}
+
+variable "location" {
+  default = "UK South"
+}
+
+variable "sp_sku_name" {
+  default     = "Y1"
+  description = "SKU name for App Service Plan."
 }
 
 # unused
