@@ -95,3 +95,7 @@ variable "sp_sku_name" {
 variable "vh_subscriptions" {
   default = {}
 }
+
+variable "add_service_connection_to_ado" {
+  default = false
+}
