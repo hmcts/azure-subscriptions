@@ -50,7 +50,9 @@ describe("Naming conventions", () => {
 
   it("ends with a valid environment", () => {
     // noinspection JSMismatchedCollectionQueryUpdate remove this noinspection if any exclusions are added
-    const localExclusions = [];
+    const localExclusions = [
+      "DCD-CFT-Sandbox"
+    ];
 
     managementGroupSubscriptions
       .filter(
