@@ -1,5 +1,5 @@
 resource "azuredevops_serviceendpoint_azurerm" "endpoint" {
-  count                 = var.pipeline_environment == "prod" ? 1 : 0
+  count                 = var.add_service_connection_to_ado == true ? 1 : 0
   project_id            = var.project_id
   service_endpoint_name = "OPS-APPROVAL-GATE-${upper(var.env)}-ENVS"
   credentials {

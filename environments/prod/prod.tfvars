@@ -26,3 +26,5 @@ platform_production_subscriptions     = {}
 vh_subscriptions = {}
 
 enrollment_account_name = "233705"
+
+add_service_connection_to_ado = true

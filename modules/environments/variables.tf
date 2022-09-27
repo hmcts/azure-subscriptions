@@ -4,7 +4,6 @@ variable "location" {}
 variable "product" {}
 variable "env" {}
 variable "sp_sku_name" {}
-variable "pipeline_environment" {}
 variable "display_name_prefix" {
   default = ""
 }
@@ -12,6 +11,10 @@ variable "display_name_prefix" {
 variable "common_tags" {
   description = "Common tag to be applied"
   type        = map(string)
+}
+
+variable "add_service_connection_to_ado" {
+  default = false
 }
 
 variable "project_id" {
