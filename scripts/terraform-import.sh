@@ -49,7 +49,7 @@ subscriptions='[
 for subscription in $(echo "${subscriptions[@]}" | jq -c '.[]'); do
 
     # generate random uuid for subscription alias
-    ACCOUNT_ALIAS=$(uuidgen | tr "[:upper:]" "[:lower:]")
+    # ACCOUNT_ALIAS=$(uuidgen | tr "[:upper:]" "[:lower:]")
 
     # get subscription name
     SUBSCRIPTION_NAME=$(echo $subscription | jq -r '.subscription_name')
@@ -102,17 +102,17 @@ for subscription in $(echo "${subscriptions[@]}" | jq -c '.[]'); do
     DEPLOY_ACME=$(echo "${subscription}" | jq -r '.deploy_acme')
 
     # check if alias already exists
-    EXISTING_ALIAS=$(az account alias list --only-show-errors | jq --arg SUBSCRIPTION_ID "$SUBSCRIPTION_ID" '.value[] | select(.properties.subscriptionId==$SUBSCRIPTION_ID)' | jq -r '.name')
+    EXISTING_ALIAS=$(az account alias list --only-show-errors | jq --arg SUBSCRIPTION_NAME "$SUBSCRIPTION_NAME" '.value[] | select(.name==$SUBSCRIPTION_NAME)' | jq -r '.name')
 
     if [ -z $EXISTING_ALIAS ]; then
         echo "Creating alias for subscription ${SUBSCRIPTION_NAME}"
-        az account alias create --subscription-id $SUBSCRIPTION_ID --name $ACCOUNT_ALIAS
+        az account alias create --subscription-id ${SUBSCRIPTION_ID} --name ${SUBSCRIPTION_NAME}
     else
         echo "Alias already exists for subscription ${SUBSCRIPTION_NAME}"
         ACCOUNT_ALIAS=$EXISTING_ALIAS
     fi
 
-    ALIAS_ID="/providers/Microsoft.Subscription/aliases/$ACCOUNT_ALIAS"
+    ALIAS_ID="/providers/Microsoft.Subscription/aliases/${SUBSCRIPTION_NAME}"
 
     APP_ID=$(az ad app list --display-name "DTS Bootstrap (sub:${SUBSCRIPTION_NAME})" --query '[].{id:id}' -o tsv)
 
