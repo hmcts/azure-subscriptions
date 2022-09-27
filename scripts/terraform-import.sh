@@ -65,6 +65,8 @@ for subscription in $(echo "${subscriptions[@]}" | jq -c '.[]'); do
 
     KEYVAULT=$(az keyvault show --name $(echo c${SUBSCRIPTION_ID:0:8}${SUBSCRIPTION_ID:24:32}kv) --query '{id:id}' -o tsv)
 
+    STORAGE_ACCOUNT=$(az storage account list --query "[?name=='$(echo c${SUBSCRIPTION_ID:0:8}${SUBSCRIPTION_ID:24:32}sa)'].{id:id}" -o tsv)
+
     # set context to subscription for other resources
     echo "Setting Azure CLI context to subscription $SUBSCRIPTION_NAME"
     az account set -s $SUBSCRIPTION_NAME
@@ -93,11 +95,9 @@ for subscription in $(echo "${subscriptions[@]}" | jq -c '.[]'); do
         echo "Importing keyvault secrets into terraform state..."
         terraform import -var builtFrom=azure-enterprise -var env=prod -var product=enterprise -var-file=../../environments/prod/prod.tfvars module.subscription[\"${SUBSCRIPTION_NAME}\"].azurerm_key_vault_secret.$(echo $secret | jq -r '.resource') $SECRET_ID
     else
-        echo "Key Vault secret $SECRET_ID will be imported to \"module.subscription['${SUBSCRIPTION_NAME}'].azurerm_key_vault_secret.$(echo $secret | jq -r '.resource')\""
+        echo "Key Vault secret $SECRET_ID will be imported to module.subscription[\"${SUBSCRIPTION_NAME}\"].azurerm_key_vault_secret.$(echo $secret | jq -r '.resource')"
     fi
     done
-
-    STORAGE_ACCOUNT=$(az storage account list --query "[?name=='$(echo c${SUBSCRIPTION_ID:0:8}${SUBSCRIPTION_ID:24:32}sa)'].{id:id}" -o tsv)
 
     DEPLOY_ACME=$(echo "${subscription}" | jq -r '.deploy_acme')
 
@@ -138,13 +138,13 @@ for subscription in $(echo "${subscriptions[@]}" | jq -c '.[]'); do
         # terraform import -var builtFrom=azure-enterprise -var env=prod -var product=enterprise -var-file=../../environments/prod/prod.tfvars module.subscription[\"${SUBSCRIPTION_NAME}\"].azurerm_storage_account.sa $STORAGE_ACCOUNT
         # terraform import -var builtFrom=azure-enterprise -var env=prod -var product=enterprise -var-file=../../environments/prod/prod.tfvars module.subscription[\"${SUBSCRIPTION_NAME}\"].azurerm_storage_container.sc https://$(echo c${SUBSCRIPTION_ID:0:8}${SUBSCRIPTION_ID:24:32}sa).blob.core.windows.net/subscription-tfstate  
     else
-        echo "Subscription alias $ALIAS_ID will be imported to \"module.subscription['${SUBSCRIPTION_NAME}'].azurerm_subscription.this\""
-        echo "Application Registration $APP_ID will be imported to \"module.subscription['${SUBSCRIPTION_NAME}'].azuread_application.app\""
-        echo "Service Principal $SP_ID will be imported to \"module.subscription['${SUBSCRIPTION_NAME}'].azuread_service_principal.sp\""
-        echo "Azure DevOps Service Endpoint $ADO_SERVICE_ENDPOINT will be imported to \"module.subscription['${SUBSCRIPTION_NAME}'].azuredevops_serviceendpoint_azurerm.endpoint\""
-        echo "Key vault $KEYVAULT will be imported to \"module.subscription['${SUBSCRIPTION_NAME}'].azurerm_key_vault.kv\""
-        echo "Storage account $STORAGE_ACCOUNT will be imported to \"module.subscription['${SUBSCRIPTION_NAME}'].azurerm_storage_account.sa\""
-        echo "Storage container https://$(echo c${SUBSCRIPTION_ID:0:8}${SUBSCRIPTION_ID:24:32}sa).blob.core.windows.net/subscription-tfstate will be imported to \"module.subscription['${SUBSCRIPTION_NAME}'].azurerm_storage_container.sc\""
+        echo "Subscription alias $ALIAS_ID will be imported to module.subscription[\"${SUBSCRIPTION_NAME}\"].azurerm_subscription.this"
+        echo "Application Registration $APP_ID will be imported to module.subscription[\"${SUBSCRIPTION_NAME}\"].azuread_application.app"
+        echo "Service Principal $SP_ID will be imported to module.subscription[\"${SUBSCRIPTION_NAME}\"].azuread_service_principal.sp"
+        echo "Azure DevOps Service Endpoint $ADO_SERVICE_ENDPOINT will be imported to module.subscription[\"${SUBSCRIPTION_NAME}\"].azuredevops_serviceendpoint_azurerm.endpoint"
+        echo "Key vault $KEYVAULT will be imported to module.subscription[\"${SUBSCRIPTION_NAME}\"].azurerm_key_vault.kv"
+        echo "Storage account $STORAGE_ACCOUNT will be imported to module.subscription[\"${SUBSCRIPTION_NAME}\"].azurerm_storage_account.sa"
+        echo "Storage container https://$(echo c${SUBSCRIPTION_ID:0:8}${SUBSCRIPTION_ID:24:32}sa).blob.core.windows.net/subscription-tfstate will be imported to module.subscription[\"${SUBSCRIPTION_NAME}\"].azurerm_storage_container.sc"
     fi
 
     groups='[
@@ -178,8 +178,8 @@ for subscription in $(echo "${subscriptions[@]}" | jq -c '.[]'); do
                 # terraform import -var builtFrom=azure-enterprise -var env=prod -var product=enterprise -var-file=../../environments/prod/prod.tfvars module.subscription[\"${SUBSCRIPTION_NAME}\"].azuread_group.groups[$GROUP] $GROUP_ID
                 # terraform import -var builtFrom=azure-enterprise -var env=prod -var product=enterprise -var-file=../../environments/prod/prod.tfvars module.subscription[\"${SUBSCRIPTION_NAME}\"].azurerm_role_assignment.local_groups[$GROUP] $ROLE_ID
             else
-                echo "Azure AD group $GROUP_ID will be imported to \"module.subscription['${SUBSCRIPTION_NAME}'].azuread_group.groups['$GROUP']\""
-                echo "Role assignment $ROLE_ID will be imported to \"module.subscription['${SUBSCRIPTION_NAME}'].azurerm_role_assignment.local_groups['$GROUP']\""
+                echo "Azure AD group $GROUP_ID will be imported to module.subscription[\"${SUBSCRIPTION_NAME}\"].azuread_group.groups[\"$GROUP\"]"
+                echo "Role assignment $ROLE_ID will be imported to module.subscription[\"${SUBSCRIPTION_NAME}\"].azurerm_role_assignment.local_groups[\"$GROUP\"]"
             fi    
     done
 
@@ -197,9 +197,9 @@ for subscription in $(echo "${subscriptions[@]}" | jq -c '.[]'); do
             # terraform import -var builtFrom=azure-enterprise -var env=prod -var product=enterprise -var-file=../../environments/prod/prod.tfvars module.acme[\"${SUBSCRIPTION_NAME}\"].azurerm_key_vault.kv $KEYVAULT
             # terraform import -var builtFrom=azure-enterprise -var env=prod -var product=enterprise -var-file=../../environments/prod/prod.tfvars module.acme[\"${SUBSCRIPTION_NAME}\"].azurerm_storage_account.stg $STORAGE_ACCOUNT
         else
-            echo "ACME application registration $APP_ID will be imported to \"module.acme['${SUBSCRIPTION_NAME}'].azuread_application.appreg\""
-            echo "ACME keyvault $KEYVAULT will be imported to \"module.acme['${SUBSCRIPTION_NAME}'].azurerm_key_vault.kv\""
-            echo "ACME storage account $STORAGE_ACCOUNT will be imported to \"module.acme['${SUBSCRIPTION_NAME}'].azurerm_storage_account.stg\""
+            echo "ACME application registration $APP_ID will be imported to module.acme[\"${SUBSCRIPTION_NAME}\"].azuread_application.appreg"
+            echo "ACME keyvault $KEYVAULT will be imported to module.acme[\"${SUBSCRIPTION_NAME}\"].azurerm_key_vault.kv"
+            echo "ACME storage account $STORAGE_ACCOUNT will be imported to module.acme[\"${SUBSCRIPTION_NAME}\"].azurerm_storage_account.stg"
         fi       
     fi
 done
