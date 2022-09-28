@@ -1,5 +1,5 @@
 resource "azurerm_storage_account" "sa" {
-  name                     = "c${substr(replace(azurerm_subscription.this.subscription_id, "-", ""), 0, 8)}${substr(replace(azurerm_subscription.this.subscription_id, "-", ""), 24, 32)}sa"
+  name                     = "c${substr(replace(azurerm_subscription.this.subscription_id, "-", ""), 0, 8)}${substr(replace(azurerm_subscription.this.subscription_id, "-", ""), 20, 32)}sa"
   resource_group_name      = "azure-control-${var.environment}-rg"
   location                 = var.location
   account_tier             = var.account_tier
