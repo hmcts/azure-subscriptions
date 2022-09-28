@@ -183,9 +183,40 @@ Terraform will perform the following actions:
         ]
 ```
 
+## Importing an existing subscription
+
+To import an existing subscription, first add it to the prod.tfvars file under the appropriate management group, adding the necessary variables as appropriate - see [Creating a subscription](#creating-the-subscription). Then create a pull request.
+
+You will see the terraform plan in the Azure DevOps pipeline run and changes should be commented on your pull request.
+
+Terraform will attempt to create some resources that already exist such as Azure AD groups, applications or key vault secrets. These will need imported to terraform state to avoid errors on apply.
+
+A [bash script](scripts/terraform-import.sh) has been provided to automate this process.
+
+Open the bash script in a code editor and update the `subscriptions` json array (L43) with the subscription(s) you need to import e.g.
+
+subscriptions='[
+        {
+            "subscription_name": "DCD-CFT-Sandbox", "deploy_acme": "true"
+        },
+        {
+            "subscription_name": "DCD-CFTAPPS-SBOX", "deploy_acme": "false"
+        },
+    ]'
+
+Run the script without any flags to perform a dry-run. The script will output the resources to be imported and their address IDs. Check these values are expected.
+
+To run terraform import, append `--import` to the script.
+
+Terraform will attempt to import the resources to the address IDs.
+
+Note: one of the resources to be imported is a service endpoint for Azure DevOps. This will require you to create a Personal Access Token with `Service Connections (Read, query & manage)` permissions which you can use in an environment variable along with the organisation URL to authenticate the microsoft/azuredevops terraform provider. See https://registry.terraform.io/providers/microsoft/azuredevops/latest/docs#argument-reference. 
+
+If you don't have permission to manage service connections, you can simply comment out the terraform import command for this resource. Ask a colleague for help on getting this resource imported.
+
 ## Cancelling a subscription
 
-There is two options for cancelling a subscription depending on how confident you are the subscription is not in use
+There are two options for cancelling a subscription depending on how confident you are the subscription is not in use:
 
 ### Removing from terraform
 
