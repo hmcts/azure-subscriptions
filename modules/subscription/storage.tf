@@ -1,11 +1,11 @@
 resource "azurerm_storage_account" "sa" {
-  name                     = "c${substr(replace(azurerm_subscription.this.subscription_id, "-", ""), 0, 8)}${substr(replace(azurerm_subscription.this.subscription_id, "-", ""), 20, 32)}sa"
-  resource_group_name      = "azure-control-${var.environment}-rg"
-  location                 = var.location
-  account_tier             = var.account_tier
-  account_kind             = var.account_kind
-  account_replication_type = var.replication_type
-  tags                     = var.common_tags
+  name                            = "c${substr(replace(azurerm_subscription.this.subscription_id, "-", ""), 0, 8)}${substr(replace(azurerm_subscription.this.subscription_id, "-", ""), 20, 32)}sa"
+  resource_group_name             = "azure-control-${var.environment}-rg"
+  location                        = var.location
+  account_tier                    = var.account_tier
+  account_kind                    = var.account_kind
+  account_replication_type        = var.replication_type
+  tags                            = var.common_tags
   allow_nested_items_to_be_public = false
 }
 
