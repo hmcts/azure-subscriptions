@@ -193,6 +193,8 @@ Terraform will attempt to create some resources that already exist such as Azure
 
 A [bash script](scripts/terraform-import.sh) has been provided to automate this process.
 
+Before running the bash script, ensure you have azure-cli installed and logged in as well as terraform and jq.
+
 Open the bash script in a code editor and update the `subscriptions` json array (L43) with the subscription(s) you need to import e.g.
 
 subscriptions='[
@@ -212,7 +214,7 @@ Terraform will attempt to import the resources to the address IDs.
 
 Note: one of the resources to be imported is a service endpoint for Azure DevOps. This will require you to create a Personal Access Token with `Service Connections (Read, query & manage)` permissions which you can use in an environment variable along with the organisation URL to authenticate the microsoft/azuredevops terraform provider. See https://registry.terraform.io/providers/microsoft/azuredevops/latest/docs#argument-reference. 
 
-If you don't have permission to manage service connections, you can simply comment out the terraform import command for this resource. Ask a colleague for help on getting this resource imported.
+If you don't have permission to manage service connections, ask a colleague for help.
 
 ## Cancelling a subscription
 
