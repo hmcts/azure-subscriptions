@@ -56,6 +56,8 @@ for subscription in $(echo "${subscriptions[@]}" | jq -c '.[]'); do
     SUBSCRIPTION_ID=$(az account subscription list --query "[?displayName=='${SUBSCRIPTION_NAME}'].{subscriptionId:subscriptionId}" --only-show-errors -o tsv)
     echo "SUBSCRIPTION_ID is $SUBSCRIPTION_ID"
 
+    SUBSCRIPTION_RESOURCE_ID="/subscriptions/${SUBSCRIPTION_ID}"
+
     ENVIRONMENT=$(echo "${subscription}" | jq -r '.environment')
     echo "ENVIRONMENT is $ENVIRONMENT"
 
@@ -182,6 +184,29 @@ for subscription in $(echo "${subscriptions[@]}" | jq -c '.[]'); do
             else
                 echo "Azure AD group $GROUP_ID will be imported to module.subscription[\"${SUBSCRIPTION_NAME}\"].azuread_group.groups[\"$GROUP\"]"
                 echo "Role assignment $ROLE_ID will be imported to module.subscription[\"${SUBSCRIPTION_NAME}\"].azurerm_role_assignment.local_groups[\"$GROUP\"]"
+            fi    
+    done
+
+    roles=$(jq -n --arg DTS_Contributors "DTS Contributors (sub:${SUBSCRIPTION_NAME})" --arg DTS_Operations "DTS Operations (env:${ENVIRONMENT})" '[
+            {"assignee": $DTS_Contributors, "role": "Key Vault Contributor", "scope": "KEYVAULT_ID"},
+            {"assignee": "DTS Operations (env:mgmt)", "role": "Monitoring Contributor", "scope": "SUBSCRIPTION_RESOURCE_ID"},
+            {"assignee": "DTS Operations (env:mgmt)", "role": "Network Contributor", "scope": "SUBSCRIPTION_RESOURCE_ID"},
+            {"assignee": $DTS_Contributors, "role": "Storage Account Contributor", "scope": "STORAGE_ACCOUNT_ID"},
+            {"assignee": $DTS_Contributors, "role": "Storage Blob Data Contributor", "scope": "STORAGE_ACCOUNT_ID"},
+            {"assignee": $DTS_Operations, "role": "User Access Administrator", "scope": "SUBSCRIPTION_RESOURCE_ID"}
+            ]')
+
+    for role in $(echo "${roles[@]}" | jq -c '.[]'); do
+        ASSIGNEE=$(az ad group show --group $(echo $role | jq -r '.assignee') --query '{id:id}' -o tsv)
+        ROLE=$(echo $role | jq -r '.role')
+        SCOPE=$(echo $role | jq -r '.scope')
+        ROLE_ID=$(az role assignment list --assignee ${ASSIGNEE} --role ${ROLE} --scope ${!SCOPE} --query '[].{id:id}' -o tsv)
+
+            if [ "$1" = "--import" ]; then
+                echo "Importing role assignments into terraform state..."
+                terraform import -var builtFrom=azure-enterprise -var env=prod -var product=enterprise -var-file=../../environments/prod/prod.tfvars module.subscription[\"${SUBSCRIPTION_NAME}\"].azurerm_role_assignment.local_role_assignments[\"${ROLE}\"] $ROLE_ID
+            else
+                echo "Role assignment $ROLE with scope ${!SCOPE} and assignee \"${ASSIGNEE}\" will be imported to module.subscription[\"${SUBSCRIPTION_NAME}\"].azurerm_role_assignment.local_role_assignments[\"${ROLE}\"]"
             fi    
     done
 
