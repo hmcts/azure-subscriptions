@@ -4,6 +4,10 @@ resource "azuread_group" "groups" {
   description             = each.value.description
   prevent_duplicate_names = true
   security_enabled        = true
+}
 
-  members = each.value.members
+resource "azuread_group_member" "members" {
+  for_each         = local.groups
+  group_object_id  = azuread_group.groups[each.key].object_id
+  member_object_id = each.value.members
 }
