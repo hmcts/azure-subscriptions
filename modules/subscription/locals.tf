@@ -14,7 +14,7 @@ locals {
     "Contributor" = {
       name        = "DTS Contributors (sub:${lower(azurerm_subscription.this.subscription_name)})"
       description = "Grants contributor permissions to the ${azurerm_subscription.this.subscription_name} subscription"
-      members     = [data.azuread_group.dts_operations.object_id, azuread_service_principal.sp.object_id, data.azurerm_client_config.current.object_id]
+      members     = [data.azuread_group.dts_operations.object_id, azuread_service_principal.sp.object_id, data.azurerm_client_config.current.object_id, data.azuread_group.dts_owners.object_id, data.azuread_group.dts_cft_developers.object_id]
     }
     "Key Vault Administrator" = {
       name        = "DTS Key Vault Administrators (sub:${lower(azurerm_subscription.this.subscription_name)})"
