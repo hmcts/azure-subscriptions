@@ -75,5 +75,5 @@ locals {
       description = "Grants contributor permissions to the subscription"
       members     = ["Bla1", "Bla2", "Bla3"]
     }
-    }
+  }
 }
