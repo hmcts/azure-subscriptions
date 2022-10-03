@@ -51,9 +51,9 @@ locals {
       members = [azuread_service_principal.sp.object_id]
     }
   }
-  memberslist = merge([for inst_key, inst in local.members : {
-    for index, member in inst.members : "${inst_key}-${index}" => {
-      role   = inst_key
+  members_list = merge([for key, value in local.members : {
+    for index, member in value.members : "${key}-${index}" => {
+      role   = key
       member = member
     }
     }
