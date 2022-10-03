@@ -214,9 +214,11 @@ If you don't have permission to manage service connections, ask a colleague for 
    ]
 ```
 
-5. Run the script without any flags to perform a dry-run i.e. `scripts/terraform-import.sh`. The script will output the resources to be imported and their address IDs. Check these values are expected.
+5. Run terraform init inside the components/enterprise directory for the environment you are targeting.
 
-6. If the values returned by the dry-run are correct, run the script again and append `--import`. This will run `terraform import`.
+6. Run the script from the components/enterprise directory without any flags to perform a dry-run i.e. `scripts/terraform-import.sh`. The script will output the resources to be imported and their address IDs. Check these values are expected.
+
+7. If the values returned by the dry-run are correct, run the script again and append `--import`. This will run `terraform import`.
 
    Terraform will attempt to import the resources to the address IDs.
 
