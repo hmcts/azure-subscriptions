@@ -185,6 +185,10 @@ Terraform will perform the following actions:
 
 ## Importing an existing subscription
 
+Note before you begin, one of the resources to be imported is a service endpoint for Azure DevOps. This will require you to create a Personal Access Token with `Service Connections (Read, query & manage)` permissions which you can use in an environment variable along with the organisation URL to authenticate the microsoft/azuredevops terraform provider. See https://registry.terraform.io/providers/microsoft/azuredevops/latest/docs#argument-reference. 
+
+If you don't have permission to manage service connections, ask a colleague for help.
+
 1. Add the subscription to the `prod.tfvars` file under the appropriate management group, adding the necessary variables as appropriate - see [Creating a subscription](#creating-the-subscription).
 
 2. Create a pull request.
@@ -199,7 +203,7 @@ Terraform will perform the following actions:
 
 4. Open the bash script in a code editor and update the `subscriptions` json array (L43) with the subscription(s) you need to import e.g.
 
-```
+```hcl
 subscriptions='[
         {
             "subscription_name": "DCD-CFT-Sandbox", "deploy_acme": "true"
@@ -215,10 +219,6 @@ subscriptions='[
 6. If the values returned by the dry-run are correct, run the script again and append `--import`. This will run `terraform import`.
 
    Terraform will attempt to import the resources to the address IDs.
-
-Note: one of the resources to be imported is a service endpoint for Azure DevOps. This will require you to create a Personal Access Token with `Service Connections (Read, query & manage)` permissions which you can use in an environment variable along with the organisation URL to authenticate the microsoft/azuredevops terraform provider. See https://registry.terraform.io/providers/microsoft/azuredevops/latest/docs#argument-reference. 
-
-If you don't have permission to manage service connections, ask a colleague for help.
 
 ## Cancelling a subscription
 
