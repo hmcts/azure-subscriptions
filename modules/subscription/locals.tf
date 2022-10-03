@@ -45,12 +45,10 @@ locals {
       members = [data.azuread_group.dts_operations.object_id, azuread_service_principal.sp.object_id]
     }
     "Reader" = {
-      members = [data.azuread_group.ops_mgmt.object_id
-      ]
+      members = [data.azuread_group.ops_mgmt.object_id]
     }
     "Owner" = {
-      members = [azuread_service_principal.sp.object_id
-      ]
+      members = [azuread_service_principal.sp.object_id]
     }
   }
   memberslist = merge([for inst_key, inst in local.members : {
