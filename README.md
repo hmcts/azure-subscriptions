@@ -201,17 +201,17 @@ If you don't have permission to manage service connections, ask a colleague for 
 
 3. Before running the bash script, ensure you have azure-cli installed and logged in as well as terraform and jq.
 
-4. Open the bash script in a code editor and update the `subscriptions` json array (L43) with the subscription(s) you need to import e.g.
+4. Update [subscriptions.json](scripts/subscriptions.json) with the subscription to be imported e.g.
 
-```hcl
-subscriptions='[
-        {
-            "subscription_name": "DCD-CFT-Sandbox", "deploy_acme": "true"
-        },
-        {
-            "subscription_name": "DCD-CFTAPPS-SBOX", "deploy_acme": "false"
-        },
-    ]'
+```json
+   [
+      {
+         "subscription_name": "DCD-CFT-Sandbox", "deploy_acme": "true"
+      },
+      {
+         "subscription_name": "DCD-CFTAPPS-SBOX", "deploy_acme": "false"
+      },
+   ]
 ```
 
 5. Run the script without any flags to perform a dry-run i.e. `scripts/terraform-import.sh`. The script will output the resources to be imported and their address IDs. Check these values are expected.

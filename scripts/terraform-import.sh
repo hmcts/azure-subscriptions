@@ -40,11 +40,7 @@ done
 
 az devops configure --defaults organization=https://dev.azure.com/hmcts
 
-subscriptions='[
-        {
-            "subscription_name": "DCD-CFT-Sandbox", "deploy_acme": "true", "environment": "sbox"
-        }
-    ]'
+subscriptions=$(cat ../../scripts/subscriptions.json)
 
 for subscription in $(echo "${subscriptions[@]}" | jq -c '.[]'); do
 
