@@ -39,7 +39,7 @@ locals {
       members = [data.azuread_group.aks_global_admin.object_id]
     }
     "Contributor" = {
-      members = [data.azuread_group.dts_operations.object_id, azuread_service_principal.sp.object_id, data.azurerm_client_config.current.object_id, data.azuread_group.dts_owners.object_id, data.azuread_group.dts_cft_developers.object_id]
+      members = [data.azuread_group.dts_operations.object_id, azuread_service_principal.sp.object_id, data.azurerm_client_config.current.object_id, data.azuread_group.dts_owners.object_id]
     }
     "Key Vault Administrator" = {
       members = [data.azuread_group.dts_operations.object_id, azuread_service_principal.sp.object_id]
