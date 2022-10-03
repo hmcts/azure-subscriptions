@@ -11,7 +11,3 @@ data "azuread_group" "aks_global_admin" {
 data "azuread_group" "dts_operations" {
   display_name = "DTS Operations (env:${var.environment})"
 }
-
-data "azuread_group" "dts_owners" {
-  display_name = "DTS Owners (sub:${azurerm_subscription.this.subscription_name})"
-}

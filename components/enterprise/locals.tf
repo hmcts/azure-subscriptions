@@ -68,27 +68,4 @@ locals {
   regex_last_section_hyphen      = "/.*-([A-Za-z]+).*/" # extracts the last section of a string after any hyphens (-) e.g. extracts `SBOX` from `DTS-RBAC-SBOX`
   regex_string                   = "/([A-Za-z]).*/"     # used to replace string with another string e.g. replacing `security` with `soc`
   regex_first_section_underscore = "/([A-Za-z])_.*/"    # extracts the first section of a string before any underscores (_) e.g. extracting `cft` from `cft_production_subscriptions`
-
-  groups = {
-    "Contributor" = {
-      name        = "DTS Contributors (sub:)"
-      description = "Grants contributor permissions to the subscription"
-      members     = ["Bla1", "Bla2", "Bla3"]
-    }
-  }
-
-  vms = {
-    "Key Vault Administrator" = {
-      vm_names = ["bla1", "bla2"]
-    }
-  }
-
-
-  vmlist = merge([for inst_key, inst in local.vms : {
-    for index, names in inst.vm_names : "${inst_key}-${index}" => {
-      role          = inst_key
-      instance_name = names
-    }
-    }
-  ]...)
 }
