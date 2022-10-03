@@ -201,7 +201,7 @@ If you don't have permission to manage service connections, ask a colleague for 
 
 3. Before running the bash script, ensure you have azure-cli installed and logged in as well as terraform and jq.
 
-4. Update [subscriptions.json](scripts/subscriptions.json) with the subscription to be imported e.g.
+4. Create a file called subscriptions.json in the scripts folder and create a json array with the subscription to be imported and its details e.g.
 
 ```json
    [
