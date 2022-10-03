@@ -76,4 +76,19 @@ locals {
       members     = ["Bla1", "Bla2", "Bla3"]
     }
   }
+
+  vms = {
+    "Key Vault Administrator" = {
+      vm_names = ["bla1", "bla2"]
+    }
+  }
+
+
+  vmlist = merge([for inst_key, inst in local.vms : {
+    for index, names in inst.vm_names : "${inst_key}-${index}" => {
+      role          = inst_key
+      instance_name = names
+    }
+    }
+  ]...)
 }
