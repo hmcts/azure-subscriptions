@@ -185,7 +185,9 @@ Terraform will perform the following actions:
 
 ## Importing an existing subscription
 
-Note before you begin, one of the resources to be imported is a service endpoint for Azure DevOps. This will require you to create a Personal Access Token with `Service Connections (Read, query & manage)` permissions which you can use in an environment variable along with the organisation URL to authenticate the microsoft/azuredevops terraform provider. See https://registry.terraform.io/providers/microsoft/azuredevops/latest/docs#argument-reference. 
+_Note: before you begin, one of the resources to be imported is a service endpoint for Azure DevOps.
+This will require you to create a Personal Access Token with `Service Connections (Read, query & manage)` permissions which you can use in an environment variable along with the organisation URL to authenticate the microsoft/azuredevops terraform provider.
+See [the provider documentation](https://registry.terraform.io/providers/microsoft/azuredevops/latest/docs#argument-reference)._
 
 If you don't have permission to manage service connections, ask a colleague for help.
 
