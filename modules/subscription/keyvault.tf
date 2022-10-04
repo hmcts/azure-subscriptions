@@ -1,5 +1,5 @@
 resource "azurerm_key_vault" "kv" {
-  name                     = "c${substr(replace(azurerm_subscription.this.subscription_id, "-", ""), 0, 8)}${substr(replace(azurerm_subscription.this.subscription_id, "-", ""), 24, 12)}kv"
+  name                     = "c${substr(replace(azurerm_subscription.this.subscription_id, "-", ""), 0, 8)}${substr(replace(azurerm_subscription.this.subscription_id, "-", ""), 20, 32)}kv"
   location                 = var.location
   resource_group_name      = "azure-control-${var.environment}-rg"
   tenant_id                = data.azurerm_client_config.current.tenant_id

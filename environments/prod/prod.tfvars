@@ -1,4 +1,9 @@
-cft_sandbox_subscriptions        = {}
+cft_sandbox_subscriptions = {
+  DCD-CFT-Sandbox = {
+    environment = "sbox"
+    deploy_acme = true
+  }
+}
 cft_non_production_subscriptions = {}
 cft_production_subscriptions     = {}
 

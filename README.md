@@ -183,9 +183,50 @@ Terraform will perform the following actions:
         ]
 ```
 
+## Importing an existing subscription
+
+_Note: before you begin, one of the resources to be imported is a service endpoint for Azure DevOps.
+This will require you to create a Personal Access Token with `Service Connections (Read, query & manage)` permissions which you can use in an environment variable along with the organisation URL to authenticate the microsoft/azuredevops terraform provider.
+See [the provider documentation](https://registry.terraform.io/providers/microsoft/azuredevops/latest/docs#argument-reference)._
+
+If you don't have permission to manage service connections, ask a colleague for help.
+
+1. Add the subscription to the `prod.tfvars` file under the appropriate management group, adding the necessary variables as appropriate - see [Creating a subscription](#creating-the-subscription).
+
+2. Create a pull request.
+
+   You will see the terraform plan in the Azure DevOps pipeline run and changes should be commented on your pull request.
+
+   Terraform will attempt to create some resources that already exist such as Azure AD groups, applications or key vault secrets. These will need imported to terraform state to avoid errors on apply.
+
+   A [bash script](scripts/terraform-import.sh) has been provided to automate this process.
+
+3. Before running the bash script, ensure you have azure-cli installed and logged in as well as terraform and jq.
+
+4. Create a file called subscriptions.json in the scripts folder and create a json array with the subscription to be imported and its details e.g.
+
+```json
+   [
+      {
+         "subscription_name": "DCD-CFT-Sandbox", "deploy_acme": "true"
+      },
+      {
+         "subscription_name": "DCD-CFTAPPS-SBOX", "deploy_acme": "false"
+      },
+   ]
+```
+
+5. Run terraform init inside the components/enterprise directory for the environment you are targeting.
+
+6. Run the script from the components/enterprise directory without any flags to perform a dry-run i.e. `scripts/terraform-import.sh`. The script will output the resources to be imported and their address IDs. Check these values are expected.
+
+7. If the values returned by the dry-run are correct, run the script again and append `--import`. This will run `terraform import`.
+
+   Terraform will attempt to import the resources to the address IDs.
+
 ## Cancelling a subscription
 
-There is two options for cancelling a subscription depending on how confident you are the subscription is not in use
+There are two options for cancelling a subscription depending on how confident you are the subscription is not in use:
 
 ### Removing from terraform
 
