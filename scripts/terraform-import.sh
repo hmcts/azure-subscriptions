@@ -264,6 +264,8 @@ for subscription in $(echo "${subscriptions[@]}" | jq -c '.[]'); do
                 fi
             fi
 
+            sleep 5
+
             # set variable to resource id of keyvault in HMCTS-CONTROL subscription
             KEYVAULT_ID="/subscriptions/${HMCTS_CONTROL_SUBSCRIPTION_ID}/resourceGroups/enterprise-${ENVIRONMENT}-rg/providers/Microsoft.KeyVault/vaults/$(echo "acme"$(echo ${SUBSCRIPTION_NAME} | tr '[:upper:]' '[:lower:]' | sed -e 's/-//g'))"
                 
@@ -276,13 +278,15 @@ for subscription in $(echo "${subscriptions[@]}" | jq -c '.[]'); do
             if [ "$STORAGE_RG" == "cft-platform-${ENVIRONMENT}-rg" ]; then
             echo "ACME storage account needs moved. Validating if resource can be moved..."
             VALIDATE_STORAGE=$(az resource invoke-action --action validateMoveResources --ids "$(echo $STORAGE_ACCOUNT_ID | sed -e 's/\/providers.*//g')" \
-            --request-body "{  \"resources\": [\"$OLD_STORAGE_ACCOUNT_ID\"],\"targetResourceGroup\":\"/subscriptions/${HMCTS_CONTROL_SUBSCRIPTION_ID}/resourceGroups/enterprise-$ENVIRONMENT-rg\" }")
+            --request-body "{  \"resources\": [\"$STORAGE_ACCOUNT_ID\"],\"targetResourceGroup\":\"/subscriptions/${HMCTS_CONTROL_SUBSCRIPTION_ID}/resourceGroups/enterprise-$ENVIRONMENT-rg\" }")
             
                 if [ "$VALIDATE_STORAGE" = "{}" ]; then
                 echo "Validation successful...moving ACME storage account to resource group enterprise-${ENVIRONMENT}-rg"
                 az resource move --destination-subscription-id ${HMCTS_CONTROL_SUBSCRIPTION_ID} --destination-group enterprise-${ENVIRONMENT}-rg --ids $STORAGE_ACCOUNT_ID
                 fi
             fi
+
+            sleep 5
 
             # set variable to resource id of storage account in HMCTS-CONTROL subscription
             STORAGE_ACCOUNT_ID="/subscriptions/${HMCTS_CONTROL_SUBSCRIPTION_ID}/resourceGroups/enterprise-${ENVIRONMENT}-rg/providers/Microsoft.Storage/storageAccounts/$(echo "acme"$(echo ${SUBSCRIPTION_NAME} | tr '[:upper:]' '[:lower:]' | sed -e 's/-//g'))"
