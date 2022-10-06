@@ -162,8 +162,16 @@ for subscription in $(echo "${subscriptions[@]}" | jq -c '.[]'); do
 
     groups='[
             {
+                "resource": "Azure Kubernetes Service Cluster Admin Role",
+                "group_name": "DTS AKS Administrators"
+            },
+            {
                 "resource": "Contributor",
                 "group_name": "DTS Contributors"
+            },
+            {
+                "resource": "Key Vault Administrators",
+                "group_name": "DTS Key Vault Administrators"
             },
             {
                 "resource": "Owner",
