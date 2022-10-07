@@ -14,7 +14,7 @@ module "subscription" {
 module "acme" {
   for_each = { for k, v in local.subscriptions : k => v if try(v.deploy_acme, false) }
 
-  source = "git::https://github.com/hmcts/terraform-module-acme-function.git?ref=DTSPO-9746/acme-kv"
+  source = "git::https://github.com/hmcts/terraform-module-acme-function.git?ref=master"
 
   location                       = var.location
   env                            = try(each.value.environment, lower(replace([each.key][0], local.regex_last_section_hyphen, "$1")))
