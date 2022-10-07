@@ -6,10 +6,10 @@ module "acme" {
   location                       = var.location
   env                            = try(each.value.environment, lower(replace([each.key][0], local.regex_last_section_hyphen, "$1")))
   common_tags                    = module.tags[each.key].common_tags
-  platform_operations_object_id  = data.azuread_group.group.object_id
+  platform_operations_object_id  = "e7ea2042-4ced-45dd-8ae3-e051c6551789"
   dns_contributor_group_id       = "6c2d130e-ba66-408a-bdf9-f426a9730923"
   product                        = var.product
-  subscription_id                = [for elem in data.azurerm_subscriptions.subscription[0].subscriptions[*] : elem.subscription_id if elem.display_name == each.key]
+  subscription_id                = [for elem in data.azurerm_subscriptions.subscription.subscriptions[*] : elem.subscription_id if elem.display_name == each.key]
   acme_storage_account_repl_type = "ZRS"
 }
 
