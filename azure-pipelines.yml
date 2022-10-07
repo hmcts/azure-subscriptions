@@ -30,24 +30,24 @@ parameters:
         service_connection: 'GA-development-tenant'
         init_subscription: '55922b0d-5c33-467f-91b9-42c4059d310c'
         dependsOn: 'Precheck'
-      # - stage: 'prod_enterprise'
-      #   environment: 'prod'
-      #   component: 'enterprise'
-      #   service_connection: 'GA-Prod-Tenant'
-      #   init_subscription: 04d27a32-7a07-48b3-95b8-3c8691e1a263
-      #   dependsOn: 'sandbox_enterprise'
+      - stage: 'prod_enterprise'
+        environment: 'prod'
+        component: 'enterprise'
+        service_connection: 'GA-Prod-Tenant'
+        init_subscription: 04d27a32-7a07-48b3-95b8-3c8691e1a263
+        dependsOn: 'sandbox_enterprise'
       # - stage: 'prod_video_hearings'
       #   environment: 'prod'
       #   component: 'video-hearings'
       #   service_connection: 'DTS-Video-Hearings-tenant-GA'
       #   init_subscription: "4b34a614-5deb-4e58-9180-0eaa01ff3dce"
       #   dependsOn: 'sandbox_enterprise'
-      - stage: 'dcd_cft_sandbox'
-        environment: 'prod'
-        component: 'enterprise'
-        service_connection: 'DCD-CFT-Sandbox'
-        init_subscription: "04d27a32-7a07-48b3-95b8-3c8691e1a263"
-        dependsOn: 'sandbox_enterprise'
+      # - stage: 'dcd_cft_sandbox'
+      #   environment: 'prod'
+      #   component: 'enterprise'
+      #   service_connection: 'DCD-CFT-Sandbox'
+      #   init_subscription: "04d27a32-7a07-48b3-95b8-3c8691e1a263"
+      #   dependsOn: 'sandbox_enterprise'
 
 variables:
   - name: timeoutInMinutes
