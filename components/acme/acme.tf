@@ -6,6 +6,7 @@ module "acme" {
   location                       = var.location
   env                            = try(each.value.environment, lower(replace([each.key][0], local.regex_last_section_hyphen, "$1")))
   common_tags                    = module.tags[each.key].common_tags
+  platform_operations_object_id = data.azuread_group.platform_operations_object_id.bject_id
   dns_contributor_group_id       = "6c2d130e-ba66-408a-bdf9-f426a9730923"
   product                        = var.product
   subscription_id                = [for elem in data.azurerm_subscriptions.subscription[0].subscriptions[*] : elem.subscription_id if elem.display_name == each.key]
