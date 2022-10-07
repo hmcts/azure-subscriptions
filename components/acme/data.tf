@@ -5,7 +5,7 @@ data "azurerm_subscriptions" "subscription" {
   display_name_prefix = each.key
 }
 
-data "azuread_group" "group" {
-  display_name     = "DTS Platform Operations"
-  security_enabled = true
-}
+# data "azuread_group" "group" {
+#   display_name     = "DTS Platform Operations"
+#   security_enabled = true
+# }
