@@ -43,7 +43,7 @@ parameters:
       #   init_subscription: "4b34a614-5deb-4e58-9180-0eaa01ff3dce"
       #   dependsOn: 'sandbox_enterprise'
       - stage: 'dcd_cft_sandbox'
-        environment: 'prod'
+        environment: 'sbox'
         component: 'enterprise'
         service_connection: 'DCD-CFT-Sandbox'
         init_subscription: "04d27a32-7a07-48b3-95b8-3c8691e1a263"
