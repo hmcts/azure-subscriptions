@@ -25,7 +25,7 @@ parameters:
     type: object
     default:
       - stage: 'dcd_cft_sandbox'
-        environment: 'prod'
+        environment: 'sbox'
         component: 'acme'
         service_connection: 'dcd-cft-sandbox'
         init_subscription: '04d27a32-7a07-48b3-95b8-3c8691e1a263'
