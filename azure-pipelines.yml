@@ -1,9 +1,14 @@
 name: Azure Enterprise
 trigger:
-  batch: true
+  batch: "true"
   branches:
     include:
       - main
+  paths:
+    exclude:
+      - azure-pipelines-acme.yml
+      - components/acme/*
+      - environments/sbox/sbox.tfvars
 
 resources:
   repositories:
