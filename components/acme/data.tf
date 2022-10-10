@@ -1,11 +1,6 @@
-data "azurerm_subscriptions" "subscription" {
-  for_each = { for k, v in local.subscriptions : k => v if try(v.deploy_acme, false) }
-  # Environment service connections are associated to the SDS subscriptions
-  # because they need to be associated to at least one even if you are using a different one
-  display_name_prefix = each.key
+data "azurerm_client_config" "current" {
 }
 
-# data "azuread_group" "group" {
-#   display_name     = "DTS Platform Operations"
-#   security_enabled = true
-# }
+data "azurerm_subscription" "current" {
+  subscription_id = data.azurerm_client_config.current.subscription_id
+}

@@ -27,6 +27,7 @@ parameters:
       - stage: 'dcd_cft_sandbox'
         environment: 'sbox'
         component: 'acme'
+        product: 'cft-platform'
         service_connection: 'dcd-cft-sandbox'
         init_subscription: '04d27a32-7a07-48b3-95b8-3c8691e1a263'
         dependsOn: 'Precheck'
@@ -36,8 +37,6 @@ variables:
     value: 60
   - name: agentPool
     value: ubuntu-latest
-  - name: product
-    value: enterprise
   - template: vars/input-variables.yaml@cnp-azuredevops-libraries
 
 
@@ -79,4 +78,4 @@ stages:
                   component: ${{ deployment.component }}
                   serviceConnection: ${{ deployment.service_connection }}
                   terraformInitSubscription: ${{ deployment.init_subscription }}
-                  product: ${{ variables.product }}
+                  product: ${{ deployment.product }}
