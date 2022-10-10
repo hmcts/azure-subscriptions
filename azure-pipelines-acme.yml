@@ -2,7 +2,7 @@ name: Azure Enterprise
 
 resources:
   pipelines:
-    - pipeline: azure-enterprise
+    - pipeline: AzureEnterprise
       source: azure-enterprise
   repositories:
     - repository: cnp-azuredevops-libraries
