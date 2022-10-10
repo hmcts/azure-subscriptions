@@ -3,7 +3,7 @@ name: Azure Enterprise
 resources:
   pipelines:
     - pipeline: AzureEnterprise
-      source: azure-enterprise
+      source: hmcts.azure-enterprise
   repositories:
     - repository: cnp-azuredevops-libraries
       type: github
