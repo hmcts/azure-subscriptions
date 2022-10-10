@@ -9,7 +9,8 @@ resources:
       source: hmcts.azure-enterprise
       trigger:
         branches:
-          - main
+          include:
+            - main
   repositories:
     - repository: cnp-azuredevops-libraries
       type: github
