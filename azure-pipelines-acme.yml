@@ -22,13 +22,13 @@ parameters:
   - name: environment_components
     type: object
     default:
-      # - stage: 'dcd_cft_sandbox'
-      #   environment: 'sbox'
-      #   component: 'acme'
-      #   product: 'cft-platform'
-      #   service_connection: 'dcd-cft-sandbox'
-      #   init_subscription: '04d27a32-7a07-48b3-95b8-3c8691e1a263'
-      #   dependsOn: 'Precheck'
+      - stage: 'dcd_cft_sandbox'
+        environment: 'sbox'
+        component: 'acme'
+        product: 'cft-platform'
+        service_connection: 'dcd-cft-sandbox'
+        init_subscription: '04d27a32-7a07-48b3-95b8-3c8691e1a263'
+        dependsOn: 'Precheck'
 
 variables:
   - name: timeoutInMinutes
@@ -60,20 +60,20 @@ stages:
           #     product: ${{ variables.product }}
           #     test_title: 'Naming conventions'
           #     test_pattern: namingConventions.test.js
-  - ${{ each deployment in parameters.environment_components }}:
-      - stage: ${{ deployment.stage }}
-        dependsOn: ${{ deployment.dependsOn }}
-        jobs:
-          - job: TerraformPlanApply
-            pool:
-              vmImage: ${{ variables.agentPool }}
-            timeoutInMinutes: ${{ variables.timeoutInMinutes }}
-            steps:
-              - template: steps/terraform.yaml@cnp-azuredevops-libraries
-                parameters:
-                  overrideAction: ${{ parameters.overrideAction }}
-                  environment: ${{ deployment.environment }}
-                  component: ${{ deployment.component }}
-                  serviceConnection: ${{ deployment.service_connection }}
-                  terraformInitSubscription: ${{ deployment.init_subscription }}
-                  product: ${{ deployment.product }}
+  # - ${{ each deployment in parameters.environment_components }}:
+  #     - stage: ${{ deployment.stage }}
+  #       dependsOn: ${{ deployment.dependsOn }}
+  #       jobs:
+  #         - job: TerraformPlanApply
+  #           pool:
+  #             vmImage: ${{ variables.agentPool }}
+  #           timeoutInMinutes: ${{ variables.timeoutInMinutes }}
+  #           steps:
+  #             - template: steps/terraform.yaml@cnp-azuredevops-libraries
+  #               parameters:
+  #                 overrideAction: ${{ parameters.overrideAction }}
+  #                 environment: ${{ deployment.environment }}
+  #                 component: ${{ deployment.component }}
+  #                 serviceConnection: ${{ deployment.service_connection }}
+  #                 terraformInitSubscription: ${{ deployment.init_subscription }}
+  #                 product: ${{ deployment.product }}
