@@ -7,7 +7,9 @@ resources:
   pipelines:
     - pipeline: AzureEnterprise
       source: hmcts.azure-enterprise
-  #     trigger: true
+      trigger:
+        branches:
+          - main
   repositories:
     - repository: cnp-azuredevops-libraries
       type: github
