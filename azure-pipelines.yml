@@ -39,12 +39,14 @@ parameters:
       - stage: 'prod_enterprise'
         environment: 'prod'
         component: 'enterprise'
+        product: 'enterprise'
         service_connection: 'GA-Prod-Tenant'
         init_subscription: 04d27a32-7a07-48b3-95b8-3c8691e1a263
         dependsOn: 'sandbox_enterprise'
       - stage: 'prod_video_hearings'
         environment: 'prod'
         component: 'video-hearings'
+        product: 'enterprise'
         service_connection: 'DTS-Video-Hearings-tenant-GA'
         init_subscription: "4b34a614-5deb-4e58-9180-0eaa01ff3dce"
         dependsOn: 'sandbox_enterprise'
