@@ -1,11 +1,9 @@
 name: Azure Enterprise
-trigger:
-  batch: true
-  branches:
-    include:
-      - main
 
 resources:
+  pipelines:
+    - pipeline: azure-enterprise
+      source: azure-enterprise
   repositories:
     - repository: cnp-azuredevops-libraries
       type: github
@@ -24,13 +22,13 @@ parameters:
   - name: environment_components
     type: object
     default:
-      - stage: 'dcd_cft_sandbox'
-        environment: 'sbox'
-        component: 'acme'
-        product: 'cft-platform'
-        service_connection: 'dcd-cft-sandbox'
-        init_subscription: '04d27a32-7a07-48b3-95b8-3c8691e1a263'
-        dependsOn: 'Precheck'
+      # - stage: 'dcd_cft_sandbox'
+      #   environment: 'sbox'
+      #   component: 'acme'
+      #   product: 'cft-platform'
+      #   service_connection: 'dcd-cft-sandbox'
+      #   init_subscription: '04d27a32-7a07-48b3-95b8-3c8691e1a263'
+      #   dependsOn: 'Precheck'
 
 variables:
   - name: timeoutInMinutes
