@@ -1,5 +1,8 @@
 name: Azure Enterprise
 
+trigger:
+  - none
+
 resources:
   pipelines:
     - pipeline: AzureEnterprise
