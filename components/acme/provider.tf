@@ -10,7 +10,7 @@ terraform {
 
 provider "azurerm" {
   features {}
-  alias = subscription
+  alias = "subscription"
 }
 
 data "azurerm_client_config" "core" {}
