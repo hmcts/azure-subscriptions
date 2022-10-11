@@ -4,11 +4,6 @@ trigger:
   branches:
     include:
       - main
-  # paths:
-  #   exclude:
-  #     - azure-pipelines-acme.yml
-  #     - components/acme/*
-  #     - environments/sbox/sbox.tfvars
 
 resources:
   repositories:
@@ -50,13 +45,6 @@ parameters:
         service_connection: 'DTS-Video-Hearings-tenant-GA'
         init_subscription: "4b34a614-5deb-4e58-9180-0eaa01ff3dce"
         dependsOn: 'sandbox_enterprise'
-      - stage: 'dcd_cft_sandbox'
-        environment: 'sbox'
-        component: 'acme'
-        product: 'cft-platform'
-        service_connection: 'dcd-cft-sandbox'
-        init_subscription: '04d27a32-7a07-48b3-95b8-3c8691e1a263'
-        dependsOn: 'prod_enterprise'
 
 variables:
   - name: timeoutInMinutes
