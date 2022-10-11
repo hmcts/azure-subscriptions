@@ -56,14 +56,14 @@ stages:
               keyvaultSecret: 'azure-devops-token'
               serviceConnection: 'DCD-CFT-Sandbox'
 
-          - template: steps/pipeline-tests-jest.yaml@cnp-azuredevops-libraries
-            parameters:
-              workingDirectory: $(Pipeline.Workspace)/s/azure-enterprise/tests
-              junit_output_dir: $(Pipeline.Workspace)/s/azure-enterprise/tests/junit
-              environment: prod
-              product: ${{ variables.product }}
-              test_title: 'Naming conventions'
-              test_pattern: namingConventions.test.js
+          # - template: steps/pipeline-tests-jest.yaml@cnp-azuredevops-libraries
+          #   parameters:
+          #     workingDirectory: $(Pipeline.Workspace)/s/azure-enterprise/tests
+          #     junit_output_dir: $(Pipeline.Workspace)/s/azure-enterprise/tests/junit
+          #     environment: prod
+          #     product: ${{ variables.product }}
+          #     test_title: 'Naming conventions'
+          #     test_pattern: namingConventions.test.js
   - ${{ each deployment in parameters.environment_components }}:
       - stage: ${{ deployment.stage }}
         dependsOn: ${{ deployment.dependsOn }}
