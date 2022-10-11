@@ -1,6 +1,7 @@
 name: Azure Enterprise ACME
 
 trigger: none
+pr: none
 
 resources:
   pipelines:
