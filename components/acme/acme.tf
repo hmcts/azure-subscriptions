@@ -1,8 +1,8 @@
 module "acme" {
   for_each = { for k, v in local.subscriptions : k => v if k == data.azurerm_subscription.current.display_name && try(v.deploy_acme, false) }
-  source = "git::https://github.com/hmcts/terraform-module-acme-function.git?ref=DTSPO-9746/acme-kv"
+  source   = "git::https://github.com/hmcts/terraform-module-acme-function.git?ref=DTSPO-9746/acme-kv"
 
-  providers = { 
+  providers = {
     azurerm = azurerm[each.key]
   }
 
