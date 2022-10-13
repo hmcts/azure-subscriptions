@@ -311,4 +311,4 @@ Some subscriptions may require a function app and related resources to automatic
 
 These resources are managed and maintained in another repository: [hmcts/azure-enterprise-acme](https://github.com/hmcts/azure-enterprise-acme)
 
-Any updates to ACME resources should be managed there.
+Whilst there are dependencies on this repository, any updates specific to ACME resources should be managed there.
