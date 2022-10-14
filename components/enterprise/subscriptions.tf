@@ -9,6 +9,7 @@ module "subscription" {
 
   billing_account_name    = var.billing_account_name
   enrollment_account_name = var.enrollment_account_name
+  deploy_acme             = try(each.value.deploy_acme, false)
 }
 
 module "tags" {
