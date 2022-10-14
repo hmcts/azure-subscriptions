@@ -31,7 +31,7 @@ resource "azuread_application" "app" {
     }
 
     resource_access {
-      id   = "1bfefb4e-e0b5-418b-a88f-73c46d2cc8e9" # Application.ReadWrite.All Application
+      id   = "9a5d68dd-52b0-4cc2-bd40-abcf44ac3a30" # Application.Read.All Application
       type = "Role"
     }
   }
