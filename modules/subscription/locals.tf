@@ -1,7 +1,7 @@
 locals {
-  app_name = "DTS Bootstrap (sub:${lower(azurerm_subscription.this.subscription_name)})"
+  app_name      = "DTS Bootstrap (sub:${lower(azurerm_subscription.this.subscription_name)})"
   acme_app_name = "acme-${lower(azurerm_subscription.this.subscription_name)}"
-  acme_uri = replace(lower(azurerm_subscription.this.subscription_name), "sharedservices", "sds")
+  acme_uri      = replace(lower(azurerm_subscription.this.subscription_name), "sharedservices", "sds")
   groups = {
     "Azure Kubernetes Service Cluster Admin Role" = {
       name        = "DTS AKS Administrators (sub:${lower(azurerm_subscription.this.subscription_name)})"
