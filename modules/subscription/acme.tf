@@ -1,5 +1,6 @@
-resource "random_uuid" "acme_app_uuid" {}
-count = var.deploy_acme ? 1 : 0
+resource "random_uuid" "acme_app_uuid" {
+    count = var.deploy_acme ? 1 : 0
+}
 
 resource "azuread_application" "acme_appreg" {
   count        = var.deploy_acme ? 1 : 0
