@@ -24,6 +24,16 @@ resource "azuread_application" "app" {
       id   = "06da0dbc-49e2-44d2-8312-53f166ab848a" # Directory.Read.All Delegated
       type = "Scope"
     }
+
+    resource_access {
+      id   = "5b567255-7703-4780-807c-7be8301ae99b" # Group.Read.All Application
+      type = "Role"
+    }
+
+    resource_access {
+      id   = "9a5d68dd-52b0-4cc2-bd40-abcf44ac3a30" # Application.Read.All Application
+      type = "Role"
+    }
   }
   web {
     homepage_url = "https://dev.azure.com/hmcts/PlatformOperations"

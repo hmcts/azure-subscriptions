@@ -5,6 +5,7 @@ variable "value" {
 
 variable "billing_account_name" {}
 variable "enrollment_account_name" {}
+variable "deploy_acme" {}
 
 variable "storage_container_name" {
   description = "The name of the storage container to create."

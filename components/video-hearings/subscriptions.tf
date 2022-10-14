@@ -16,6 +16,7 @@ module "subscription" {
   environment             = try(each.value.environment, lower(replace([each.key][0], local.regex_last_section_hyphen, "$1")))
   billing_account_name    = var.billing_account_name
   enrollment_account_name = "323609"
+  deploy_acme             = try(each.value.deploy_acme, false)
 }
 
 module "tags" {

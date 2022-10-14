@@ -208,10 +208,10 @@ If you don't have permission to manage service connections, ask a colleague for 
 ```json
    [
       {
-         "subscription_name": "DCD-CFT-Sandbox", "deploy_acme": "true"
+         "subscription_name": "DCD-CFT-Sandbox"
       },
       {
-         "subscription_name": "DCD-CFTAPPS-SBOX", "deploy_acme": "false"
+         "subscription_name": "DCD-CFTAPPS-SBOX"
       },
    ]
 ```
@@ -304,3 +304,11 @@ If you get a 400 error check you're using the right principal ID, application re
 ### Terraform setup
 
 Copy an existing component, the `video-hearings` folder is a good example for a standalone tenant, or `prod` for a larger tenant with lots of subscriptions.
+
+## Automated Certificate Management Environment (ACME)
+
+Some subscriptions may require a function app and related resources to automatically create and manage SSL certficates from Let's Encrypt.
+
+These resources are managed and maintained in another repository: [hmcts/azure-enterprise-acme](https://github.com/hmcts/azure-enterprise-acme)
+
+Whilst there are dependencies on this repository, any updates specific to ACME resources should be managed there.
