@@ -87,6 +87,14 @@ for subscription in $(echo "${subscriptions[@]}" | jq -c '.[]'); do
 
     secrets='[
             {
+                "resource": "aks_admin_group_id",
+                "secret_name": "aks-admin-rbac-group-id"
+            },
+            {
+                "resource": "aks_user_group_id",
+                "secret_name": "aks-user-rbac-group-id"
+            },
+            {
                 "resource": "sp_app_id",
                 "secret_name": "sp-application-id"
             },
