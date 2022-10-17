@@ -203,6 +203,7 @@ for subscription in $(echo "${subscriptions[@]}" | jq -c '.[]'); do
         GROUP_NAME=$(echo $group | jq -r '.group_name')        
         GROUP_ID=$(az ad group show --group "${GROUP_NAME} (sub:${SUBSCRIPTION_NAME})" --query '{id:id}' -o tsv)
         ROLE_ID=$(az role assignment list --assignee ${GROUP_ID}  --role ${GROUP} --scope /subscriptions/${SUBSCRIPTION_ID} --query '[].{id:id}' -o tsv)
+        AKS_ADMIN_GROUP_ID=$(az ad group show --group "dcd_group_aks_admin_global_v2" --query '{id:id}' -o tsv)
 
             if [ "$1" = "--import" ]; then
                 echo "Importing groups and role assignments into terraform state..."
@@ -217,6 +218,16 @@ for subscription in $(echo "${subscriptions[@]}" | jq -c '.[]'); do
                 elif [ "$GROUP" == "Reader" ]; then
                     echo "Importing reader group members into terraform state..."
                     terraform import -var builtFrom=azure-enterprise -var env=prod -var product=enterprise -var-file=../../environments/prod/prod.tfvars module.subscription[\"${SUBSCRIPTION_NAME}\"].azuread_group_member.members[\"$GROUP-0\"] $GROUP_ID/member/$MGMT_ID
+                elif [ "$GROUP" == "Key Vault Administrator" ]; then
+                    echo "Importing key vault administrator group members into terraform state..."
+                    terraform import -var builtFrom=azure-enterprise -var env=prod -var product=enterprise -var-file=../../environments/prod/prod.tfvars module.subscription[\"${SUBSCRIPTION_NAME}\"].azuread_group_member.members[\"$GROUP-0\"] $GROUP_ID/member/$SP_ID
+                    terraform import -var builtFrom=azure-enterprise -var env=prod -var product=enterprise -var-file=../../environments/prod/prod.tfvars module.subscription[\"${SUBSCRIPTION_NAME}\"].azuread_group_member.members[\"$GROUP-1\"] $GROUP_ID/member/$OPERATIONS_ID
+                elif [ "$GROUP" == "Owner" ]; then
+                    echo "Importing owner group members into terraform state..."
+                    terraform import -var builtFrom=azure-enterprise -var env=prod -var product=enterprise -var-file=../../environments/prod/prod.tfvars module.subscription[\"${SUBSCRIPTION_NAME}\"].azuread_group_member.members[\"$GROUP-0\"] $GROUP_ID/member/$SP_ID
+                elif [ "$GROUP" == "Azure Kubernetes Service Cluster Admin Role" ]; then
+                    echo "Importing azure kubernetes service cluster admin role group members into terraform state..."
+                    terraform import -var builtFrom=azure-enterprise -var env=prod -var product=enterprise -var-file=../../environments/prod/prod.tfvars module.subscription[\"${SUBSCRIPTION_NAME}\"].azuread_group_member.members[\"$GROUP-0\"] $GROUP_ID/member/$AKS_ADMIN_GROUP_ID
                 fi
             
             else
