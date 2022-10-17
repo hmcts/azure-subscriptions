@@ -35,7 +35,7 @@ cft_non_production_subscriptions = {
     environment = "dev"
   }
 }
-cft_production_subscriptions     = {}
+cft_production_subscriptions = {}
 
 sds_sandbox_subscriptions        = {}
 sds_non_production_subscriptions = {}
