@@ -164,11 +164,15 @@ for subscription in $(echo "${subscriptions[@]}" | jq -c '.[]'); do
                 "group_name": "DTS AKS Administrators"
             },
             {
+                "resource": "Azure Kubernetes Service Cluster User Role",
+                "group_name": "DTS AKS Users"
+            },
+            {
                 "resource": "Contributor",
                 "group_name": "DTS Contributors"
             },
             {
-                "resource": "Key Vault Administrators",
+                "resource": "Key Vault Administrator",
                 "group_name": "DTS Key Vault Administrators"
             },
             {
@@ -244,5 +248,20 @@ for subscription in $(echo "${subscriptions[@]}" | jq -c '.[]'); do
                 echo "Role assignment $ROLE with scope ${!SCOPE} and assignee \"${ASSIGNEE}\" will be imported to module.subscription[\"${SUBSCRIPTION_NAME}\"].azurerm_role_assignment.local_${ADDRESS}[\"${ROLE}\"]"
             fi    
     done
+
+    DEPLOY_ACME=$(echo "${subscription}" | jq -r '.deploy_acme')
+
+    if [ "$DEPLOY_ACME" = "true" ]; then
+
+    APP_ID=$(az ad app list --display-name "acme-"${SUBSCRIPTION_NAME} --query '[].{id:id}' -o tsv)
+
+        if [ "$1" = "--import" ]; then
+
+            echo "Importing ACME resources into terraform state..."
+            terraform import -var builtFrom=azure-enterprise -var env=prod -var product=enterprise -var-file=../../environments/prod/prod.tfvars module.subscription[\"${SUBSCRIPTION_NAME}\"].azuread_application.acme_appreg[0] $APP_ID
+        else
+            echo "ACME application registration $APP_ID will be imported to module.subscription.azuread_application.acme_appreg[0]"
+        fi
+    fi
 done
 IFS=$oldIFS
