@@ -117,8 +117,6 @@ for subscription in $(echo "${subscriptions[@]}" | jq -c '.[]'); do
     echo "Setting Azure CLI context to subscription $SUBSCRIPTION_NAME"
     az account set -s $SUBSCRIPTION_NAME
 
-    DEPLOY_ACME=$(echo "${subscription}" | jq -r '.deploy_acme')
-
     # check if alias already exists
     EXISTING_ALIAS=$(az account alias list --only-show-errors | jq --arg SUBSCRIPTION_NAME "$SUBSCRIPTION_NAME" '.value[] | select(.name==$SUBSCRIPTION_NAME)' | jq -r '.name')
 
@@ -246,71 +244,5 @@ for subscription in $(echo "${subscriptions[@]}" | jq -c '.[]'); do
                 echo "Role assignment $ROLE with scope ${!SCOPE} and assignee \"${ASSIGNEE}\" will be imported to module.subscription[\"${SUBSCRIPTION_NAME}\"].azurerm_role_assignment.local_${ADDRESS}[\"${ROLE}\"]"
             fi    
     done
-
-    if [ "$DEPLOY_ACME" = "true" ]; then
-
-    APP_ID=$(az ad app list --display-name "acme-"${SUBSCRIPTION_NAME} --query '[].{id:id}' -o tsv)
-
-    WEBAPP_ID=$(az webapp show --name $(echo "acme"$(echo ${SUBSCRIPTION_NAME} | tr '[:upper:]' '[:lower:]' | sed -e 's/-//g')) --resource-group cft-platform-${ENVIRONMENT}-rg --query '{id:id}' -o tsv)
-
-        if [ "$1" = "--import" ]; then
-
-            # search for keyvault in current subscription. If it exists, it will have to be moved to HMCTS-CONTROL subscription
-            KEYVAULT_ID=$(az keyvault show --name "acme"$(echo ${SUBSCRIPTION_NAME} | tr '[:upper:]' '[:lower:]' | sed -e 's/-//g') --query '{id:id}' -o tsv 2> /dev/null)
-
-            # determine if keyvault needs moved
-            KEYVAULT_RG=$(az keyvault show --name "acme"$(echo ${SUBSCRIPTION_NAME} | tr '[:upper:]' '[:lower:]' | sed -e 's/-//g') --query '{resourceGroup:resourceGroup}' -o tsv 2> /dev/null)
-
-            if [ "$KEYVAULT_RG" == "cft-platform-${ENVIRONMENT}-rg" ]; then
-            echo "ACME keyvault needs moved. Validating if resource can be moved..."
-            VALIDATE_KEYVAULT=$(az resource invoke-action --action validateMoveResources --ids "$(echo $KEYVAULT_ID | sed -e 's/\/providers.*//g')" \
-            --request-body "{  \"resources\": [\"$KEYVAULT_ID\"],\"targetResourceGroup\":\"/subscriptions/${HMCTS_CONTROL_SUBSCRIPTION_ID}/resourceGroups/enterprise-$ENVIRONMENT-rg\" }")
-            
-                if [ "$VALIDATE_KEYVAULT" = "{}" ]; then
-                echo "Validation successful...moving ACME keyvault to resource group enterprise-${ENVIRONMENT}-rg"
-                az resource move --destination-subscription-id ${HMCTS_CONTROL_SUBSCRIPTION_ID} --destination-group enterprise-${ENVIRONMENT}-rg --ids $KEYVAULT_ID
-                fi
-            fi
-
-            sleep 5
-
-            # set variable to resource id of keyvault in HMCTS-CONTROL subscription
-            KEYVAULT_ID="/subscriptions/${HMCTS_CONTROL_SUBSCRIPTION_ID}/resourceGroups/enterprise-${ENVIRONMENT}-rg/providers/Microsoft.KeyVault/vaults/$(echo "acme"$(echo ${SUBSCRIPTION_NAME} | tr '[:upper:]' '[:lower:]' | sed -e 's/-//g'))"
-                
-            # search for storage account in current subscription. If it exists, it will have to be moved to HMCTS-CONTROL subscription
-            STORAGE_ACCOUNT_ID=$(az storage account list --query "[?name=='"acme"$(echo ${SUBSCRIPTION_NAME} | tr '[:upper:]' '[:lower:]' | sed -e 's/-//g')'].{id:id}" -o tsv 2> /dev/null)
-
-            # determine if storage account needs moved
-            STORAGE_RG=$(az storage account show --ids $STORAGE_ACCOUNT_ID --query '{resourceGroup:resourceGroup}' -o tsv 2> /dev/null)
-            
-            if [ "$STORAGE_RG" == "cft-platform-${ENVIRONMENT}-rg" ]; then
-            echo "ACME storage account needs moved. Validating if resource can be moved..."
-            VALIDATE_STORAGE=$(az resource invoke-action --action validateMoveResources --ids "$(echo $STORAGE_ACCOUNT_ID | sed -e 's/\/providers.*//g')" \
-            --request-body "{  \"resources\": [\"$STORAGE_ACCOUNT_ID\"],\"targetResourceGroup\":\"/subscriptions/${HMCTS_CONTROL_SUBSCRIPTION_ID}/resourceGroups/enterprise-$ENVIRONMENT-rg\" }")
-            
-                if [ "$VALIDATE_STORAGE" = "{}" ]; then
-                echo "Validation successful...moving ACME storage account to resource group enterprise-${ENVIRONMENT}-rg"
-                az resource move --destination-subscription-id ${HMCTS_CONTROL_SUBSCRIPTION_ID} --destination-group enterprise-${ENVIRONMENT}-rg --ids $STORAGE_ACCOUNT_ID
-                fi
-            fi
-
-            sleep 5
-
-            # set variable to resource id of storage account in HMCTS-CONTROL subscription
-            STORAGE_ACCOUNT_ID="/subscriptions/${HMCTS_CONTROL_SUBSCRIPTION_ID}/resourceGroups/enterprise-${ENVIRONMENT}-rg/providers/Microsoft.Storage/storageAccounts/$(echo "acme"$(echo ${SUBSCRIPTION_NAME} | tr '[:upper:]' '[:lower:]' | sed -e 's/-//g'))"
-
-            echo "Importing ACME resources into terraform state..."
-            terraform import -var builtFrom=azure-enterprise -var env=prod -var product=enterprise -var-file=../../environments/prod/prod.tfvars module.acme[\"${SUBSCRIPTION_NAME}\"].azuread_application.appreg $APP_ID
-            az webapp delete --ids $WEBAPP_ID
-            az account set -s "HMCTS-CONTROL"
-            terraform import -var builtFrom=azure-enterprise -var env=prod -var product=enterprise -var-file=../../environments/prod/prod.tfvars module.acme[\"${SUBSCRIPTION_NAME}\"].azurerm_key_vault.kv $KEYVAULT_ID
-            terraform import -var builtFrom=azure-enterprise -var env=prod -var product=enterprise -var-file=../../environments/prod/prod.tfvars module.acme[\"${SUBSCRIPTION_NAME}\"].azurerm_storage_account.stg $STORAGE_ACCOUNT_ID
-        else
-            echo "ACME application registration $APP_ID will be imported to module.acme[\"${SUBSCRIPTION_NAME}\"].azuread_application.appreg"
-            echo "ACME keyvault $(echo "acme"$(echo ${SUBSCRIPTION_NAME} | tr '[:upper:]' '[:lower:]' | sed -e 's/-//g')) will be imported to module.acme[\"${SUBSCRIPTION_NAME}\"].azurerm_key_vault.kv"
-            echo "ACME storage account $(echo "acme"$(echo ${SUBSCRIPTION_NAME} | tr '[:upper:]' '[:lower:]' | sed -e 's/-//g')) will be imported to module.acme[\"${SUBSCRIPTION_NAME}\"].azurerm_storage_account.stg"
-            echo "ACME function app $(echo "acme"$(echo ${SUBSCRIPTION_NAME} | tr '[:upper:]' '[:lower:]' | sed -e 's/-//g')) will be deleted. It will be replaced when you run terraform apply."
-        fi
-    fi
 done
 IFS=$oldIFS

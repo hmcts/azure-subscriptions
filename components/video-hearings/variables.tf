@@ -87,3 +87,7 @@ variable "enrollment_account_name" {}
 variable "vh_subscriptions" {
   default = {}
 }
+
+variable "deploy_acme" {
+  default = false
+}
