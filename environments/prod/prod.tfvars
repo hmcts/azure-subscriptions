@@ -30,10 +30,6 @@ cft_non_production_subscriptions = {
   DCD-CNP-DEV = {
     deploy_acme = true
   }
-  DCD-CNP-QA = {
-    deploy_acme = true
-    environment = "dev"
-  }
 }
 cft_production_subscriptions = {}
 
