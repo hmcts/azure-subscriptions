@@ -7,8 +7,35 @@ cft_sandbox_subscriptions = {
     deploy_acme = true
   }
 }
-cft_non_production_subscriptions = {}
-cft_production_subscriptions     = {}
+cft_non_production_subscriptions = {
+  DCD-CFTAPPS-DEMO = {
+    deploy_acme = true
+  }
+  DCD-CFTAPPS-DEV = {
+    deploy_acme = true
+  }
+  DCD-CFTAPPS-ITHC = {
+    deploy_acme = true
+  }
+  DCD-CFTAPPS-TEST = {
+    deploy_acme = true
+  }
+  DCD-CFTAPPSDATA-DEMO = {
+    deploy_acme = true
+  }
+  DCD-CFT-Idam-Dev = {
+    deploy_acme = true
+    environment = "dev"
+  }
+  DCD-CNP-DEV = {
+    deploy_acme = true
+  }
+  DCD-CNP-QA = {
+    deploy_acme = true
+    environment = "test"
+  }
+}
+cft_production_subscriptions = {}
 
 sds_sandbox_subscriptions        = {}
 sds_non_production_subscriptions = {}
