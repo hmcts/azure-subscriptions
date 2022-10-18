@@ -23,12 +23,17 @@ cft_non_production_subscriptions = {
   DCD-CFTAPPSDATA-DEMO = {
     deploy_acme = true
   }
-  DCD-CFTAPPS-Idam-Dev = {
+  DCD-CFT-Idam-Dev = {
     deploy_acme = true
     environment = "dev"
   }
   DCD-CNP-DEV = {
     deploy_acme = true
+    environment = "stg"
+  }
+  DCD-CNP-QA = {
+    deploy_acme = true
+    environment = "test"
   }
 }
 cft_production_subscriptions = {}
