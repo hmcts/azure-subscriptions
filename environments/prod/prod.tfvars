@@ -29,7 +29,6 @@ cft_non_production_subscriptions = {
   }
   DCD-CNP-DEV = {
     deploy_acme = true
-    environment = "stg"
   }
   DCD-CNP-QA = {
     deploy_acme = true
