@@ -42,7 +42,7 @@ cft_production_subscriptions = {
   DCD-CFTAPPS-STG = {
     deploy_acme = true
   }
-  DCD-CNP-PROD = {
+  DCD-CNP-Prod = {
     deploy_acme = true
   }
   DTS-CFTPTL-INTSVC = {
