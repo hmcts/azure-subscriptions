@@ -35,7 +35,25 @@ cft_non_production_subscriptions = {
     environment = "test"
   }
 }
-cft_production_subscriptions = {}
+cft_production_subscriptions = {
+  DCD-CFTAPPS-PROD = {
+    deploy_acme = true
+  }
+  DCD-CFTAPPS-STG = {
+    deploy_acme = true
+  }
+  DCD-CNP-Prod = {
+    deploy_acme = true
+  }
+  DTS-CFTPTL-INTSVC = {
+    deploy_acme = true
+    environment = "ptl"
+  }
+  DTS-CFTSBOX-INTSVC = {
+    deploy_acme = true
+    environment = "sbox"
+  }
+}
 
 sds_sandbox_subscriptions        = {}
 sds_non_production_subscriptions = {}
