@@ -108,11 +108,7 @@ sds_production_subscriptions = {
 
 crime_subscriptions = {}
 
-heritage_sandbox_subscriptions = {
-  DTS-HERITAGE-AVS-SBOX = {
-    environment = "sbox"
-  }
-}
+heritage_sandbox_subscriptions = {}
 heritage_non_production_subscriptions = {
   DTS-HERITAGE-EXTSVC-STG = {
     environment = "stg"
