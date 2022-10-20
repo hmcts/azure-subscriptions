@@ -97,10 +97,12 @@ sds_production_subscriptions = {
   DTS-SHAREDSERVICES-PROD = {
     deploy_acme = true
   }
-  DCD-AWS-Migration = {}
+  DCD-AWS-Migration = {
+    environment = "prod"
+  }
   DCD-CFT-VH-Pilot = {
     deploy_acme = true
-    environment = 
+    environment = "prod"
   }
 }
 
