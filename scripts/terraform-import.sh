@@ -176,7 +176,17 @@ for subscription in $(echo "${subscriptions[@]}" | jq -c '.[]'); do
 
     APP_ID=$(az ad app list --display-name "DTS Bootstrap (sub:${SUBSCRIPTION_NAME})" --query '[].{id:id}' -o tsv)
 
-    SP_ID=$(az ad sp list --display-name "DTS Bootstrap (sub:${SUBSCRIPTION_NAME})" --query '[].{id:id}' -o tsv)
+    if [ "$SUBSCRIPTION_NAME" = "DTS-HERITAGE-EXTSVC-PROD" ]; then
+        APP_ID="5f29910d-50d4-424b-a888-e95c59dc9d70"
+    else 
+        APP_ID=$(az ad app list --display-name "DTS Bootstrap (sub:${SUBSCRIPTION_NAME})" --query '[].{id:id}' -o tsv)
+    fi
+
+    if [ "$SUBSCRIPTION_NAME" = "DTS-HERITAGE-EXTSVC-PROD" ]; then
+        SP_ID="4ef09b72-da7d-4447-a7b3-b979308c9aa2"
+    else 
+        SP_ID=$(az ad sp list --display-name "DTS Bootstrap (sub:${SUBSCRIPTION_NAME})" --query '[].{id:id}' -o tsv)
+    fi
     
     GA_ID=$(az ad sp list --display-name "DTS Operations Bootstrap GA" --query '[].{id:id}' -o tsv)
     MGMT_ID=$(az ad group show --group "DTS Operations (env:mgmt)" --query '{id:id}' -o tsv)
@@ -186,22 +196,22 @@ for subscription in $(echo "${subscriptions[@]}" | jq -c '.[]'); do
 
     if [ "$1" = "--import" ]; then
 
-        if [ -z $(echo "$STATE" | grep azurerm_subscription.this) ]; then
+        if [ -z $(echo "$STATE" | grep -E "azurerm_subscription.this") ]; then
             echo "Importing subscription into terraform state..."
             terraform import -var builtFrom=azure-enterprise -var env=prod -var product=enterprise -var-file=../../environments/prod/prod.tfvars module.subscription[\"${SUBSCRIPTION_NAME}\"].azurerm_subscription.this $ALIAS_ID
         fi
 
-        if [ -z $(echo "$STATE" | grep azuread_application.app) ]; then
+        if [ -z $(echo "$STATE" | grep -E "azuread_application.app") ]; then
             echo "Importing application into terraform state..."
             terraform import -var builtFrom=azure-enterprise -var env=prod -var product=enterprise -var-file=../../environments/prod/prod.tfvars module.subscription[\"${SUBSCRIPTION_NAME}\"].azuread_application.app $APP_ID
         fi
 
-        if [ -z $(echo "$STATE" | grep azuread_service_principal.sp) ]; then
+        if [ -z $(echo "$STATE" | grep -E "azuread_service_principal.sp") ]; then
             echo "Importing service principal into terraform state..."
             terraform import -var builtFrom=azure-enterprise -var env=prod -var product=enterprise -var-file=../../environments/prod/prod.tfvars module.subscription[\"${SUBSCRIPTION_NAME}\"].azuread_service_principal.sp $SP_ID
         fi
 
-        if [ -z $(echo "$STATE" | grep azuredevops_serviceendpoint_azurerm.endpoint) ]; then
+        if [ -z $(echo "$STATE" | grep -E "azuredevops_serviceendpoint_azurerm.endpoint") ]; then
             echo "Importing ADO service endpoint into terraform state..."
             terraform import -var builtFrom=azure-enterprise -var env=prod -var product=enterprise -var-file=../../environments/prod/prod.tfvars module.subscription[\"${SUBSCRIPTION_NAME}\"].azuredevops_serviceendpoint_azurerm.endpoint $ADO_SERVICE_ENDPOINT
         fi
