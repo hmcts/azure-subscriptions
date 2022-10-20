@@ -136,19 +136,19 @@ for subscription in $(echo "${subscriptions[@]}" | jq -c '.[]'); do
     SECRET_ID=$(az keyvault secret show --name $SECRET_NAME --vault-name $(echo c${SUBSCRIPTION_ID:0:8}${SUBSCRIPTION_ID:24:32}kv) --query '{id:id}' -o tsv)
 
     if [ "$1" = "--import" ]; then
-        if [[ -z $(echo "$STATE" | grep azurerm_key_vault_secret.aks_admin_group_id) && "$SECRET_NAME" == "aks_admin_group_id" ]]; then
+        if [[ -z $(echo "$STATE" | grep azurerm_key_vault_secret.aks_admin_group_id) && "$SECRET_NAME" == "aks-admin-rbac-group-id" ]]; then
             echo "Importing aks_admin_group_id keyvault secret into terraform state..."
             terraform import -var builtFrom=azure-enterprise -var env=prod -var product=enterprise -var-file=../../environments/prod/prod.tfvars module.subscription[\"${SUBSCRIPTION_NAME}\"].azurerm_key_vault_secret.aks_admin_group_id $SECRET_ID
-        elif [[ -z $(echo "$STATE" | grep azurerm_key_vault_secret.aks_user_group_id) && "$SECRET_NAME" == "aks_user_group_id" ]]; then
+        elif [[ -z $(echo "$STATE" | grep azurerm_key_vault_secret.aks_user_group_id) && "$SECRET_NAME" == "aks-user-rbac-group-id" ]]; then
             echo "Importing aks_user_group_id keyvault secret into terraform state..."
             terraform import -var builtFrom=azure-enterprise -var env=prod -var product=enterprise -var-file=../../environments/prod/prod.tfvars module.subscription[\"${SUBSCRIPTION_NAME}\"].azurerm_key_vault_secret.aks_user_group_id $SECRET_ID
-        elif [[ -z $(echo "$STATE" | grep azurerm_key_vault_secret.sp_app_id) && "$SECRET_NAME" == "sp_app_id" ]]; then
+        elif [[ -z $(echo "$STATE" | grep azurerm_key_vault_secret.sp_app_id) && "$SECRET_NAME" == "sp-application-id" ]]; then
             echo "Importing sp_app_id keyvault secret into terraform state..."
             terraform import -var builtFrom=azure-enterprise -var env=prod -var product=enterprise -var-file=../../environments/prod/prod.tfvars module.subscription[\"${SUBSCRIPTION_NAME}\"].azurerm_key_vault_secret.sp_app_id $SECRET_ID
-        elif [[ -z $(echo "$STATE" | grep azurerm_key_vault_secret.sp_object_id) && "$SECRET_NAME" == "sp_object_id" ]]; then
+        elif [[ -z $(echo "$STATE" | grep azurerm_key_vault_secret.sp_object_id) && "$SECRET_NAME" == "sp-object-id" ]]; then
             echo "Importing ap_object_id keyvault secret into terraform state..."
             terraform import -var builtFrom=azure-enterprise -var env=prod -var product=enterprise -var-file=../../environments/prod/prod.tfvars module.subscription[\"${SUBSCRIPTION_NAME}\"].azurerm_key_vault_secret.sp_object_id $SECRET_ID
-        elif [[ -z $(echo "$STATE" | grep azurerm_key_vault_secret.sp_token) && "$SECRET_NAME" == "sp_token" ]]; then
+        elif [[ -z $(echo "$STATE" | grep azurerm_key_vault_secret.sp_token) && "$SECRET_NAME" == "sp-token" ]]; then
             echo "Importing sp_token keyvault secret into terraform state..."
             terraform import -var builtFrom=azure-enterprise -var env=prod -var product=enterprise -var-file=../../environments/prod/prod.tfvars module.subscription[\"${SUBSCRIPTION_NAME}\"].azurerm_key_vault_secret.sp_token $SECRET_ID
         fi
@@ -358,7 +358,7 @@ for subscription in $(echo "${subscriptions[@]}" | jq -c '.[]'); do
         ROLE_ID=$(az role assignment list --assignee ${ASSIGNEE} --role ${ROLE} --scope ${!SCOPE} --query '[].{id:id}' -o tsv)
 
             if [ "$1" = "--import" ]; then
-                if [ -z $(echo "$STATE" | grep "azurerm_role_assignment.local_role_assignments\\[\"${ROLE}\"\\]") ]; then
+                if [[ -z $(echo "$STATE" | grep -E "azurerm_role_assignment.local_role_assignments\\[\"${ROLE}\"\\]") ]]; then
                     echo "Importing role assignments into terraform state..."
                     terraform import -var builtFrom=azure-enterprise -var env=prod -var product=enterprise -var-file=../../environments/prod/prod.tfvars module.subscription[\"${SUBSCRIPTION_NAME}\"].azurerm_role_assignment.local_${ADDRESS}[\"${ROLE}\"] $ROLE_ID
                 fi
