@@ -108,11 +108,36 @@ sds_production_subscriptions = {
 
 crime_subscriptions = {}
 
-heritage_sandbox_subscriptions        = {}
-heritage_non_production_subscriptions = {}
-heritage_production_subscriptions     = {}
+heritage_sandbox_subscriptions = {
+  DTS-HERITAGE-AVS-SBOX = {
+    environment = "sbox"
+  }
+}
+heritage_non_production_subscriptions = {
+  DTS-HERITAGE-EXTSVC-STG = {
+    environment = "stg"
+  }
+  DTS-HERITAGE-INTSVC-STG = {
+    environment = "stg"
+  }
+}
+heritage_production_subscriptions = {
+  DTS-HERITAGE-EXTSVC-PROD = {
+    environment = "prod"
+  }
+  DTS-HERITAGE-INTSVC-PROD = {
+    environment = "prod"
+  }
+}
 
-security_subscriptions = {}
+security_subscriptions = {
+  HMCTS-SOC-SBOX = {
+    deploy_acme = true
+  }
+  HMCTS-SOC-PROD = {
+    deploy_acme = true
+  }
+}
 
 platform_sandbox_subscriptions        = {}
 platform_non_production_subscriptions = {}
