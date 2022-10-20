@@ -63,9 +63,7 @@ sds_sandbox_subscriptions = {
     deploy_acme = true
     environment = "ptlsbox"
   }
-  DCD-MI-SBOX = {
-    deploy_acme = true
-  }
+  DCD-MI-SBOX = {}
 }
 sds_non_production_subscriptions = {
   DTS-SHAREDSERVICES-DEMO = {
