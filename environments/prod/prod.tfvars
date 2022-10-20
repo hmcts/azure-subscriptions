@@ -55,9 +55,42 @@ cft_production_subscriptions = {
   }
 }
 
-sds_sandbox_subscriptions        = {}
-sds_non_production_subscriptions = {}
-sds_production_subscriptions     = {}
+sds_sandbox_subscriptions = {
+  DTS-SHAREDSERVICES-SBOX = {
+    deploy_acme = true
+  }
+  DTS-SHAREDSERVICESPTL-SBOX = {
+    deploy_acme = true
+    environment = "ptlsbox"
+  }
+  DCD-MI-SBOX = {}
+}
+sds_non_production_subscriptions = {
+  DTS-SHAREDSERVICES-DEMO = {
+    deploy_acme = true
+  }
+  DTS-SHAREDSERVICES-DEV = {
+    deploy_acme = true
+  }
+  DTS-SHAREDSERVICES-ITHC = {
+    deploy_acme = true
+  }
+  DTS-SHAREDSERVICES-TEST = {
+    deploy_acme = true
+  }
+  DTS-SHAREDSERVICESPTL = {
+    deploy_acme = true
+    environment = "ptl"
+  }
+  DTS-SHAREDSERVICES-SBOX = {
+    deploy_acme = true
+  }
+  Reform-CFT-VH-Dev = {
+    deploy_acme = true
+    environment = "dev"
+  }
+}
+sds_production_subscriptions = {}
 
 crime_subscriptions = {}
 
