@@ -90,7 +90,19 @@ sds_non_production_subscriptions = {
     environment = "dev"
   }
 }
-sds_production_subscriptions = {}
+sds_production_subscriptions = {
+  DTS-SHAREDSERVICES-STG = {
+    deploy_acme = true
+  }
+  DTS-SHAREDSERVICES-PROD = {
+    deploy_acme = true
+  }
+  DCD-AWS-Migration = {}
+  DCD-CFT-VH-Pilot = {
+    deploy_acme = true
+    environment = 
+  }
+}
 
 crime_subscriptions = {}
 
