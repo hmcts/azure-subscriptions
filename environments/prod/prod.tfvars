@@ -141,16 +141,16 @@ platform_sandbox_subscriptions = {
   }
   DTS-MANAGEMENT-SBOX-INTSVC = {
     environment = "sbox"
-    product = "mgmt"
+    product     = "mgmt"
   }
   HMCTS-HUB-SBOX = {
     deploy_acme = true
-    product = "hub"
+    product     = "hub"
   }
   HMCTS-HUB-SBOX-INTSVC = {
     environment = "sbox"
     deploy_acme = true
-    product = "hub"
+    product     = "hub"
   }
 }
 platform_non_production_subscriptions = {
@@ -159,38 +159,38 @@ platform_non_production_subscriptions = {
   }
   DTS-MANAGEMENT-NONPROD-INTSVC = {
     environment = "stg"
-    product = "mgmt"
+    product     = "mgmt"
   }
   HMCTS-HUB-DEV = {
     deploy_acme = true
-    product = "hub"
+    product     = "hub"
   }
   HMCTS-HUB-NONPROD-INTSVC = {
     environment = "stg"
-    product = "hub"
+    product     = "hub"
   }
   HMCTS-HUB-TEST = {
     deploy_acme = true
-    product = "hub"
+    product     = "hub"
   }
 }
 platform_production_subscriptions = {
   HMCTS-CONTROL = {
     environment = "prod"
-    product = "enterprise"
+    product     = "enterprise"
   }
   DTS-MANAGEMENT-PROD-INTSVC = {
     environment = "prod"
-    product = "mgmt"
+    product     = "mgmt"
   }
   HMCTS-HUB-PROD-INTSVC = {
     environment = "prod"
     deploy_acme = true
-    product = "hub"
+    product     = "hub"
   }
   Reform-CFT-Mgmt = {
     environment = "prod"
-    product = "cft-platform"
+    product     = "cft-platform"
   }
 }
 
