@@ -135,9 +135,49 @@ security_subscriptions = {
   }
 }
 
-platform_sandbox_subscriptions        = {}
-platform_non_production_subscriptions = {}
-platform_production_subscriptions     = {}
+platform_sandbox_subscriptions        = {
+  DTS-MANAGEMENT-SBOX = {}
+  DTS-MANAGEMENT-SBOX-INTSVC = {
+    environment = "sbox"
+  }
+  HMCTS-HUB-SBOX = {
+    deploy_acme = true
+  }
+  HMCTS-HUB-SBOX-INTSVC = {
+    environment = "sbox"
+    deploy_acme = true
+  }
+}
+platform_non_production_subscriptions = {
+  DTS-MANAGEMENT-TEST = {}
+  DTS-MANAGEMENT-NONPROD-INTSVC = {
+    environment = "stg"
+  }
+  HMCTS-HUB-DEV = {
+    deploy_acme = true
+  }
+  HMCTS-HUB-NONPROD-INTSVC = {
+    environment = "stg"
+  }
+  HMCTS-HUB-TEST = {
+    deploy_acme = true
+  }
+}
+platform_production_subscriptions     = {
+  HMCTS-CONTROL = {
+    environment = "prod"
+  }
+  DTS-MANAGEMENT-PROD-INTSVC = {
+    environment = "prod"
+  }
+  HMCTS-HUB-PROD-INTSVC = {
+    environment = "prod"
+    deploy_acme = true
+  }
+  Reform-CFT-Mgmt = {
+    environment = "prod"
+  }
+}
 
 vh_subscriptions = {
   DTS-VH-PROD = {}
