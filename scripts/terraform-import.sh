@@ -146,7 +146,7 @@ for subscription in $(echo "${subscriptions[@]}" | jq -c '.[]'); do
             echo "Importing sp_app_id keyvault secret into terraform state..."
             terraform import -var builtFrom=azure-enterprise -var env=prod -var product=enterprise -var-file=../../environments/prod/prod.tfvars module.subscription[\"${SUBSCRIPTION_NAME}\"].azurerm_key_vault_secret.sp_app_id $SECRET_ID
         elif [[ -z $(echo "$STATE" | grep azurerm_key_vault_secret.sp_object_id) && "$SECRET_NAME" == "sp-object-id" ]]; then
-            echo "Importing ap_object_id keyvault secret into terraform state..."
+            echo "Importing sp_object_id keyvault secret into terraform state..."
             terraform import -var builtFrom=azure-enterprise -var env=prod -var product=enterprise -var-file=../../environments/prod/prod.tfvars module.subscription[\"${SUBSCRIPTION_NAME}\"].azurerm_key_vault_secret.sp_object_id $SECRET_ID
         elif [[ -z $(echo "$STATE" | grep azurerm_key_vault_secret.sp_token) && "$SECRET_NAME" == "sp-token" ]]; then
             echo "Importing sp_token keyvault secret into terraform state..."
