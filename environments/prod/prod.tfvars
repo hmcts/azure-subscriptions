@@ -176,8 +176,9 @@ platform_non_production_subscriptions = {
 }
 platform_production_subscriptions = {
   HMCTS-CONTROL = {
-    environment = "prod"
-    product     = "enterprise"
+    environment      = "prod"
+    product          = "enterprise"
+    replication_type = "RAGRS"
   }
   DTS-MANAGEMENT-PROD-INTSVC = {
     environment = "prod"
