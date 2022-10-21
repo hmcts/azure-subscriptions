@@ -14,7 +14,7 @@ module "subscription" {
 
 module "tags" {
   for_each    = local.subscriptions
-  source      = "git::https://github.com/hmcts/terraform-module-common-tags.git?ref=master"
+  source      = "git::https://github.com/hmcts/terraform-module-common-tags.git?ref=DTSPO-9746/mgmt-env"
   environment = try(each.value.environment, lower(replace([each.key][0], local.regex_last_section_hyphen, "$1")))
   product     = try(each.value.product, replace(regex("cft_|sds_", [each.value.group][0]), local.regex_first_section_underscore, "$1-platform"), replace(regex("security", [each.value.group][0]), local.regex_string, "soc"), replace([each.value.group][0], local.regex_first_section_underscore, "$1"))
   builtFrom   = var.builtFrom

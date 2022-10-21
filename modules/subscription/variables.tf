@@ -59,8 +59,8 @@ variable "environment" {
   default = ""
 
   validation {
-    condition     = contains(["demo", "dev", "ithc", "ptl", "ptlsbox", "prod", "sbox", "stg", "test"], var.environment)
-    error_message = "Valid values for environment are (demo, dev, ithc, ptl, ptlsbox, prod, sbox, stg, test)."
+    condition     = contains(["demo", "dev", "ithc", "mgmt", "ptl", "ptlsbox", "prod", "sbox", "stg", "test"], var.environment)
+    error_message = "Valid values for environment are (demo, dev, ithc, mgmt, ptl, ptlsbox, prod, sbox, stg, test)."
   }
 }
 

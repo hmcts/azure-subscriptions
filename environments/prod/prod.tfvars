@@ -189,8 +189,8 @@ platform_production_subscriptions = {
     product     = "hub"
   }
   Reform-CFT-Mgmt = {
-    environment = "prod"
-    product     = "cft-platform"
+    environment = "mgmt"
+    product     = "mgmt"
   }
 }
 
