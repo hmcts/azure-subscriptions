@@ -135,7 +135,7 @@ security_subscriptions = {
   }
 }
 
-platform_sandbox_subscriptions        = {
+platform_sandbox_subscriptions = {
   DTS-MANAGEMENT-SBOX = {}
   DTS-MANAGEMENT-SBOX-INTSVC = {
     environment = "sbox"
@@ -163,7 +163,7 @@ platform_non_production_subscriptions = {
     deploy_acme = true
   }
 }
-platform_production_subscriptions     = {
+platform_production_subscriptions = {
   HMCTS-CONTROL = {
     environment = "prod"
   }
