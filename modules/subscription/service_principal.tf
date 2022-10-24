@@ -6,6 +6,8 @@ resource "random_uuid" "app_uuid" {}
 
 resource "azuread_application" "app" {
   display_name = local.app_name
+  owners       = [data.azuread_client_config.current.object_id]
+
   api {
     oauth2_permission_scope {
       admin_consent_description  = "Allow the application to access ${local.app_name} on behalf of the signed-in user."
@@ -53,5 +55,6 @@ resource "azuread_application_password" "token" {
 }
 
 resource "azuread_service_principal" "sp" {
+  owners         = [data.azuread_client_config.current.object_id]
   application_id = azuread_application.app.application_id
 }
