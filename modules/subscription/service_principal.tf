@@ -6,7 +6,6 @@ resource "random_uuid" "app_uuid" {}
 
 resource "azuread_application" "app" {
   display_name = local.app_name
-  owners       = [data.azurerm_client_config.current.object_id]
 
   api {
     oauth2_permission_scope {
@@ -55,6 +54,5 @@ resource "azuread_application_password" "token" {
 }
 
 resource "azuread_service_principal" "sp" {
-  owners         = [data.azurerm_client_config.current.object_id]
   application_id = azuread_application.app.application_id
 }
