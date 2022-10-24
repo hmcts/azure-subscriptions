@@ -201,20 +201,22 @@ If you don't have permission to manage service connections, ask a colleague for 
 
    A [bash script](scripts/terraform-import.sh) has been provided to automate this process.
 
-3. Before running the bash script, ensure you have azure-cli installed and logged in as well as terraform and jq.
+3. Before running the bash script, ensure you have azure-cli installed and logged in. Ensure terraform and jq are installed also.
 
 4. Create a file called subscriptions.json in the scripts folder and create a json array with the subscription to be imported and its details e.g.
 
 ```json
    [
       {
-         "subscription_name": "DCD-CFT-Sandbox"
+         "subscription_name": "DCD-CFT-Sandbox", "deploy_acme": "true", "environment": "sbox"
       },
       {
-         "subscription_name": "DCD-CFTAPPS-SBOX"
-      },
+         "subscription_name": "DCD-CFTAPPS-SBOX", "deploy_acme": "true", "environment": "sbox"
+      }
    ]
 ```
+
+An [example file](scripts/subscriptions.json.example) has also been provided.
 
 5. Run terraform init inside the components/enterprise directory for the environment you are targeting.
 
