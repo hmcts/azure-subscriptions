@@ -59,10 +59,6 @@ sds_sandbox_subscriptions = {
   DTS-SHAREDSERVICES-SBOX = {
     deploy_acme = true
   }
-  DTS-SHAREDSERVICESPTL-SBOX = {
-    deploy_acme = true
-    environment = "ptlsbox"
-  }
   DCD-MI-SBOX = {}
 }
 sds_non_production_subscriptions = {
@@ -77,10 +73,6 @@ sds_non_production_subscriptions = {
   }
   DTS-SHAREDSERVICES-TEST = {
     deploy_acme = true
-  }
-  DTS-SHAREDSERVICESPTL = {
-    deploy_acme = true
-    environment = "ptl"
   }
   DTS-SHAREDSERVICES-SBOX = {
     deploy_acme = true
@@ -103,6 +95,14 @@ sds_production_subscriptions = {
   DCD-CFT-VH-Pilot = {
     deploy_acme = true
     environment = "prod"
+  }
+  DTS-SHAREDSERVICESPTL = {
+    deploy_acme = true
+    environment = "ptl"
+  }
+  DTS-SHAREDSERVICESPTL-SBOX = {
+    deploy_acme = true
+    environment = "ptlsbox"
   }
 }
 
