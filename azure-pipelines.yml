@@ -5,6 +5,14 @@ trigger:
     include:
       - main
 
+schedules:
+- cron: "0 7 * * *" # first day at 8am
+  displayName: Every day at 8am GMT
+  branches:
+    include:
+    - main
+  always: true
+
 resources:
   repositories:
     - repository: cnp-azuredevops-libraries
