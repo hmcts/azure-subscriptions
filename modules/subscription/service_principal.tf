@@ -1,5 +1,5 @@
 resource "time_rotating" "one_year" {
-  rotation_days = 365
+  rotation_days = 90
 }
 
 resource "random_uuid" "app_uuid" {}
