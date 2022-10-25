@@ -314,3 +314,19 @@ Some subscriptions may require a function app and related resources to automatic
 These resources are managed and maintained in another repository: [hmcts/azure-enterprise-acme](https://github.com/hmcts/azure-enterprise-acme)
 
 Whilst there are dependencies on this repository, any updates specific to ACME resources should be managed there.
+
+## Azure DevOps manual service connection secret auto-rotation
+
+This repo contains code to create service connections in Azure DevOps.
+
+These service connections are backed by Azure AD Service Principals with client secrets.
+
+The client secrets are generated using the `azuread_application_password` resource.
+
+In order to automatically manage the rotation of these secrets, a `time_rotating` terraform resource has been used in conjunction with `azuread_application_password`.
+
+The Azure DevOps pipeline will run automatically every day at 8am to refresh the terraform state which contains the rotation timestamp.
+
+When the timestamp is surpassed by the current time, the `time_rotating` resource will be refreshed and the `azuread_application_password` token will be updated to a newly generated value.
+
+This value will then be used to update the service connection in Azure DevOps.
