@@ -6,7 +6,7 @@ trigger:
       - main
 
 schedules:
-- cron: "0 8 1-7 * mon"
+- cron: "0 7 1-7 * mon" # first monday of every month at 8am
   displayName: Every day at 10am GMT
   branches:
     include:
