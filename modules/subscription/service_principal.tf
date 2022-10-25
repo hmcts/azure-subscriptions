@@ -1,4 +1,4 @@
-resource "time_rotating" "one_year" {
+resource "time_rotating" "rotation_period" {
   rotation_days = 90
 }
 
@@ -48,7 +48,7 @@ resource "azuread_application" "app" {
 resource "azuread_application_password" "token" {
   application_object_id = azuread_application.app.id
   rotate_when_changed = {
-    rotation = time_rotating.one_year.id
+    rotation = time_rotating.rotation_period.id
   }
 }
 
