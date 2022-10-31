@@ -6,6 +6,7 @@ cft_sandbox_subscriptions = {
   DCD-CFTAPPS-SBOX = {
     deploy_acme = true
   }
+  DCD-ROBOTICS-SBOX = {}
 }
 cft_non_production_subscriptions = {
   DCD-CFTAPPS-DEMO = {
@@ -51,6 +52,9 @@ cft_production_subscriptions = {
   }
   DTS-CFTSBOX-INTSVC = {
     deploy_acme = true
+    environment = "sbox"
+  }
+  Reform-CFT-MI-SB = {
     environment = "sbox"
   }
 }
@@ -152,6 +156,7 @@ platform_sandbox_subscriptions = {
     deploy_acme = true
     product     = "hub"
   }
+  DTS-DACS-SBOX = {}
 }
 platform_non_production_subscriptions = {
   DTS-MANAGEMENT-TEST = {
