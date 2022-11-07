@@ -34,7 +34,7 @@ cft_non_production_subscriptions = {
     deploy_acme = true
     environment = "test"
   }
-  DTS-ROBOTICS-DEV = {
+  DCD-ROBOTICS-DEV = {
     environment = "dev"
   }
 }
