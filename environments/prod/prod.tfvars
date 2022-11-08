@@ -201,10 +201,10 @@ platform_non_production_subscriptions = {
     deploy_acme = true
     product     = "hub"
   }
-   DCD-RDO-Development = {
-    environment = "stg"  
-    product     = "rdo"
-   }
+  #  DCD-RDO-Development = {
+  #   environment = "stg"  
+  #   product     = "rdo"
+  #  }
 }
 platform_production_subscriptions = {
   HMCTS-CONTROL = {
