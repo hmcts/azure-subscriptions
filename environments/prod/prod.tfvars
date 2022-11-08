@@ -110,27 +110,27 @@ sds_production_subscriptions = {
 }
 
 crime_subscriptions = {
-  # CRIME-ADO-POC = {
-  #   environment = "poc"
-  # }
-  # MoJ Common Platform Non-Functional Testing = {
-  #   environment = "testing"
-  # }
-  # MoJ Common Platform Non-Live Management = {
-  #   environment = "mgmt"
-  # }
-  # MoJ Common Platform Online Plea Pre-Production = {
-  #   environment = "poc"
-  # }
-  # MoJ Common Platform Pilot = {
-  #   environment = "prod"
-  # }
-  # MoJ Common Platform System Integration Testing = {
-  #   environment = "testing"
-  # }
-  # MOJ DCD Atlassian NLE = {
-  #   environment = "nle"
-  # }
+  CRIME-ADO-POC = {
+    environment = "dev"
+  }
+  MoJ Common Platform Non-Functional Testing = {
+    environment = "test"
+  }
+  MoJ Common Platform Non-Live Management = {
+    environment = "stg"
+  }
+  MoJ Common Platform Online Plea Pre-Production = {
+    environment = "dev"
+  }
+  MoJ Common Platform Pilot = {
+    environment = "dev"
+  }
+  MoJ Common Platform System Integration Testing = {
+    environment = "test"
+  }
+  MOJ DCD Atlassian NLE = {
+    environment = "dev"
+  }
 }
 
 heritage_sandbox_subscriptions = {}
@@ -141,9 +141,9 @@ heritage_non_production_subscriptions = {
   DTS-HERITAGE-INTSVC-STG = {
     environment = "stg"
   }
-  # DTS-ARCHIVING-TEST = {
-  #   environment = "test"
-  # }
+  DTS-ARCHIVING-TEST = {
+    environment = "test"
+  }
 }
 heritage_production_subscriptions = {
   DTS-HERITAGE-EXTSVC-PROD = {
@@ -201,9 +201,10 @@ platform_non_production_subscriptions = {
     deploy_acme = true
     product     = "hub"
   }
-  # DCD-RDO-Development = {
-  #   product     = "rdo"
-  # }
+   DCD-RDO-Development = {
+    environment = "stg"  
+    product     = "rdo"
+   }
 }
 platform_production_subscriptions = {
   HMCTS-CONTROL = {
