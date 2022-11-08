@@ -113,22 +113,22 @@ crime_subscriptions = {
   CRIME-ADO-POC = {
     environment = "dev"
   }
-  MoJ Common Platform Non-Functional Testing = {
+  "MoJ Common Platform Non-Functional Testing" = {
     environment = "test"
   }
-  MoJ Common Platform Non-Live Management = {
+  "MoJ Common Platform Non-Live Management" = {
     environment = "stg"
   }
-  MoJ Common Platform Online Plea Pre-Production = {
+  "MoJ Common Platform Online Plea Pre-Production" = {
     environment = "dev"
   }
-  MoJ Common Platform Pilot = {
+  "MoJ Common Platform Pilot" = {
     environment = "dev"
   }
-  MoJ Common Platform System Integration Testing = {
+  "MoJ Common Platform System Integration Testing" = {
     environment = "test"
   }
-  MOJ DCD Atlassian NLE = {
+  "MOJ DCD Atlassian NLE "= {
     environment = "dev"
   }
 }
@@ -201,10 +201,10 @@ platform_non_production_subscriptions = {
     deploy_acme = true
     product     = "hub"
   }
-  #  DCD-RDO-Development = {
-  #   environment = "stg"  
-  #   product     = "rdo"
-  #  }
+   DCD-RDO-Development = {
+    environment = "stg"  
+    product     = "rdo"
+   }
 }
 platform_production_subscriptions = {
   HMCTS-CONTROL = {
