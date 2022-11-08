@@ -128,7 +128,7 @@ crime_subscriptions = {
   "MoJ Common Platform System Integration Testing" = {
     environment = "test"
   }
-  "MOJ DCD Atlassian NLE "= {
+  "MOJ DCD Atlassian NLE " = {
     environment = "dev"
   }
 }
@@ -201,10 +201,10 @@ platform_non_production_subscriptions = {
     deploy_acme = true
     product     = "hub"
   }
-   DCD-RDO-Development = {
-    environment = "stg"  
+  DCD-RDO-Development = {
+    environment = "stg"
     product     = "rdo"
-   }
+  }
 }
 platform_production_subscriptions = {
   HMCTS-CONTROL = {
