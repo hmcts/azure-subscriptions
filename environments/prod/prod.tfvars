@@ -106,7 +106,28 @@ sds_production_subscriptions = {
   }
 }
 
-crime_subscriptions = {}
+crime_subscriptions = {
+  "MoJ Common Platform Online Plea Production" = {
+    environment = "prod"
+    product     = "crime"
+  }
+  "MoJ Common Platform Production" = {
+    environment = "prod"
+    product     = "crime"
+  }
+  "MoJ Common Platform Security Operations" = {
+    environment = "prod"
+    product     = "crime"
+  }
+  "MOJ DCD Atlassian LVE" = {
+    environment = "prod"
+    product     = "crime"
+  }
+  "MoJ Operational Services Validation" = {
+    environment = "prod"
+    product     = "crime"
+  }
+}
 
 heritage_sandbox_subscriptions = {}
 heritage_non_production_subscriptions = {
@@ -123,6 +144,10 @@ heritage_production_subscriptions = {
   }
   DTS-HERITAGE-INTSVC-PROD = {
     environment = "prod"
+  }
+  DTS-ARCHIVING-PROD = {
+    environment = "prod"
+    product     = "heritage"
   }
 }
 
@@ -191,6 +216,14 @@ platform_production_subscriptions = {
   }
   Reform-CFT-Mgmt = {
     environment = "mgmt"
+    product     = "mgmt"
+  }
+  DCD-RDO-Production = {
+    environment = "prod"
+    product     = "mgmt"
+  }
+  "Access to Azure Active Directory" = {
+    environment = "prod"
     product     = "mgmt"
   }
 }
