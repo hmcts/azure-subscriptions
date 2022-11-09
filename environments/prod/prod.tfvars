@@ -128,7 +128,7 @@ crime_subscriptions = {
   "MoJ Common Platform System Integration Testing" = {
     environment = "test"
   }
-  "MOJ DCD Atlassian NLE " = {
+  "MOJ DCD Atlassian NLE" = {
     environment = "dev"
   }
 }
@@ -203,7 +203,7 @@ platform_non_production_subscriptions = {
   }
   DCD-RDO-Development = {
     environment = "stg"
-    product     = "rdo"
+    product     = "cft-platform"
   }
 }
 platform_production_subscriptions = {
