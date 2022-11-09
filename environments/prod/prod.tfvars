@@ -128,7 +128,7 @@ crime_subscriptions = {
   "MoJ Common Platform System Integration Testing" = {
     environment = "test"
   }
-  "MOJ DCD Atlassian NLE "= {
+  "MOJ DCD Atlassian NLE" = {
     environment = "dev"
   }
 }
