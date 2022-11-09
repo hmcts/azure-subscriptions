@@ -181,7 +181,9 @@ platform_sandbox_subscriptions = {
     deploy_acme = true
     product     = "hub"
   }
-  DTS-DACS-SBOX = {}
+  DTS-DACS-SBOX = {
+  product       = "enterprise"
+  }
 }
 platform_non_production_subscriptions = {
   DTS-MANAGEMENT-TEST = {
