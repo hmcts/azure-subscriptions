@@ -182,7 +182,7 @@ platform_sandbox_subscriptions = {
     product     = "hub"
   }
   DTS-DACS-SBOX = {
-  product       = "enterprise"
+    product = "enterprise"
   }
 }
 platform_non_production_subscriptions = {
