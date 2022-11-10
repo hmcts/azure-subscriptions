@@ -36,7 +36,7 @@ sed -i 's/cft_non_production_subscriptions/CFT-NonProd:::mg/g; s/cft_production_
 # open mermaid code block and add diagram hierarchy
 sed -i '1s/^/```mermaid\ngraph TD\nclassDef mg stroke:#ffffff,stroke-width:4px\nRoot:::mg --> HMCTS\nHMCTS:::mg --> CFT:::mg\nHMCTS:::mg --> SDS:::mg\nHMCTS:::mg --> Crime:::mg\nHMCTS:::mg --> Heritage:::mg\nHMCTS:::mg --> Security:::mg\nHMCTS:::mg --> Platform:::mg\nHMCTS:::mg --> VH\nCFT:::mg --> CFT-NonProd:::mg\nCFT:::mg --> CFT-Prod:::mg\nCFT:::mg --> CFT-Sandbox:::mg\nSDS:::mg --> SDS-NonProd:::mg\nSDS:::mg --> SDS-Prod:::mg\nSDS:::mg --> SDS-Sandbox:::mg\nHeritage:::mg --> Heritage-NonProd:::mg\nHeritage:::mg --> Heritage-Prod:::mg\nHeritage:::mg --> Heritage-Sandbox:::mg\nPlatform:::mg --> Platform-NonProd:::mg\nPlatform:::mg --> Platform-Prod:::mg\nPlatform:::mg --> Platform-Sandbox:::mg\'$'\n/g' /tmp/prod.json
 
-# close mermaid code block to json
+# close mermaid code block
 echo "\`\`\`" >> /tmp/prod.json
 
 # replace current mermaid code block in README with updated content

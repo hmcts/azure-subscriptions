@@ -49,7 +49,7 @@ If you add a new management group, be sure to update the [script](scripts/create
 
 The script can be run manually on a Linux VM or in a docker container to test out structural changes.
 
-Management group nodes are highlighted with the thick white border. Subscription nodes have a thinner blue/grey border.
+Management group nodes are highlighted with a thick white border as denoted by `:::mg`. Subscription nodes use the default blue/grey border.
 
 ## New subscription
 
