@@ -25,7 +25,6 @@ Heritage --> Heritage-Sandbox
 Platform --> Platform-NonProd
 Platform --> Platform-Prod
 Platform --> Platform-Sandbox
-VH --> VH-Prod
 CFT-NonProd --> DCD-CFTAPPS-DEMO   --- DCD-CFTAPPS-DEV   --- DCD-CFTAPPS-ITHC   --- DCD-CFTAPPS-TEST   --- DCD-CFTAPPSDATA-DEMO   --- DCD-CFT-Idam-Dev   --- DCD-CNP-DEV   --- DCD-CNP-QA  
 CFT-Prod --> DCD-CFTAPPS-PROD   --- DCD-CFTAPPS-STG   --- DCD-CNP-Prod   --- DTS-CFTPTL-INTSVC   --- DTS-CFTSBOX-INTSVC  
 CFT-Sandbox --> DCD-CFT-Sandbox   --- DCD-CFTAPPS-SBOX  
