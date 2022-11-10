@@ -1,4 +1,4 @@
-yj -c < ../environments/prod/prod.tfvars > /tmp/prod.json
+yj -c < ./environments/prod/prod.tfvars > /tmp/prod.json
 jq 'del(.enrollment_account_name)' /tmp/prod.json > /tmp/prod2.json && mv /tmp/prod2.json /tmp/prod.json
 jq 'del(.add_service_connection_to_ado)' /tmp/prod.json > /tmp/prod2.json && mv /tmp/prod2.json /tmp/prod.json
 jq 'del(.[] | .[] | . | .[] | .[] | .)' /tmp/prod.json > /tmp/prod2.json && mv /tmp/prod2.json /tmp/prod.json
@@ -12,4 +12,4 @@ sed -i 's/cft_non_production_subscriptions/CFT-NonProd/g; s/cft_production_subsc
 sed -i '1s/^/```mermaid\ngraph TD\nRoot --> HMCTS\nHMCTS --> CFT\nHMCTS --> SDS\nHMCTS --> Crime\nHMCTS --> Heritage\nHMCTS --> Security\nHMCTS --> Platform\nHMCTS --> VH\nCFT --> CFT-NonProd\nCFT --> CFT-Prod\nCFT --> CFT-Sandbox\nSDS --> SDS-NonProd\nSDS --> SDS-Prod\nSDS --> SDS-Sandbox\nHeritage --> Heritage-NonProd\nHeritage --> Heritage-Prod\nHeritage --> Heritage-Sandbox\nPlatform --> Platform-NonProd\nPlatform --> Platform-Prod\nPlatform --> Platform-Sandbox\nVH --> VH-Prod\'$'\n/g' /tmp/prod.json
 echo "\`\`\`" >> /tmp/prod.json
 
-sed -i -e '/```mermaid/{:a; N; /\n```$/!ba; r /tmp/prod.json' -e 'd;}' ../README.md
+sed -i -e '/```mermaid/{:a; N; /\n```$/!ba; r /tmp/prod.json' -e 'd;}' README.md
