@@ -113,18 +113,23 @@ sds_production_subscriptions = {
 crime_subscriptions = {
   "MoJ Common Platform Online Plea Production" = {
     environment = "prod"
+    product     = "crime-platform"
   }
   "MoJ Common Platform Production" = {
     environment = "prod"
+    product     = "crime-platform"
   }
   "MoJ Common Platform Security Operations" = {
     environment = "prod"
+    product     = "crime-platform"
   }
   "MOJ DCD Atlassian LVE" = {
     environment = "prod"
+    product     = "crime-platform"
   }
   "MoJ Operational Services Validation" = {
     environment = "prod"
+    product     = "crime-platform"
   }
 }
 
