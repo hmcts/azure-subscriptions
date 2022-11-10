@@ -41,6 +41,14 @@ Security --> HMCTS-SOC-SBOX   --- HMCTS-SOC-PROD
 VH --> DTS-VH-PROD  
 ```
 
+## Diagram setup
+
+The diagram above is generated automatically from the subscriptions listed in `environments/prod/prod.tfvars`.
+
+If you add a new management group, be sure to update the [script](scripts/create-mermaid-diagram.sh#L10-L11) so the desired structure is accurately reflected in the diagram.
+
+The script can be run manually on a Linux VM or in a docker container to test out structural changes.
+
 ## New subscription
 
 ### Naming the subscription
