@@ -5,28 +5,40 @@ Simplified for our use-cases / retrofitting.
 
 ```mermaid
 graph TD
-    Root --> HMCTS
-    HMCTS --> CFT
-    HMCTS --> SDS
-    HMCTS --> Crime
-    HMCTS --> Heritage
-    HMCTS --> Security
-    HMCTS --> Platform
-    CFT --> CFT-Sandbox
-    CFT --> CFT-NonProd
-    CFT --> CFT-Prod
-
-    SDS --> SDS-Sandbox
-    SDS --> SDS-NonProd
-    SDS --> SDS-Prod
-
-    Heritage --> Heritage-Sandbox
-    Heritage --> Heritage-NonProd
-    Heritage --> Heritage-Prod
-
-    Platform --> Platform-Sandbox
-    Platform --> Platform-NonProd
-    Platform --> Platform-Prod
+Root --> HMCTS
+HMCTS --> CFT
+HMCTS --> SDS
+HMCTS --> Crime
+HMCTS --> Heritage
+HMCTS --> Security
+HMCTS --> Platform
+HMCTS --> VH
+CFT --> CFT-NonProd
+CFT --> CFT-Prod
+CFT --> CFT-Sandbox
+SDS --> SDS-NonProd
+SDS --> SDS-Prod
+SDS --> SDS-Sandbox
+Heritage --> Heritage-NonProd
+Heritage --> Heritage-Prod
+Heritage --> Heritage-Sandbox
+Platform --> Platform-NonProd
+Platform --> Platform-Prod
+Platform --> Platform-Sandbox
+VH --> VH-Prod
+CFT-NonProd --> DCD-CFTAPPS-DEMO   --- DCD-CFTAPPS-DEV   --- DCD-CFTAPPS-ITHC   --- DCD-CFTAPPS-TEST   --- DCD-CFTAPPSDATA-DEMO   --- DCD-CFT-Idam-Dev   --- DCD-CNP-DEV   --- DCD-CNP-QA  
+CFT-Prod --> DCD-CFTAPPS-PROD   --- DCD-CFTAPPS-STG   --- DCD-CNP-Prod   --- DTS-CFTPTL-INTSVC   --- DTS-CFTSBOX-INTSVC  
+CFT-Sandbox --> DCD-CFT-Sandbox   --- DCD-CFTAPPS-SBOX  
+Heritage-NonProd --> DTS-HERITAGE-EXTSVC-STG   --- DTS-HERITAGE-INTSVC-STG  
+Heritage-Prod --> DTS-HERITAGE-EXTSVC-PROD   --- DTS-HERITAGE-INTSVC-PROD  
+Platform-NonProd --> DTS-MANAGEMENT-TEST   --- DTS-MANAGEMENT-NONPROD-INTSVC   --- HMCTS-HUB-DEV   --- HMCTS-HUB-NONPROD-INTSVC   --- HMCTS-HUB-TEST  
+Platform-Prod --> HMCTS-CONTROL   --- DTS-MANAGEMENT-PROD-INTSVC   --- HMCTS-HUB-PROD-INTSVC   --- Reform-CFT-Mgmt  
+Platform-Sandbox --> DTS-MANAGEMENT-SBOX   --- DTS-MANAGEMENT-SBOX-INTSVC   --- HMCTS-HUB-SBOX   --- HMCTS-HUB-SBOX-INTSVC  
+SDS-NonProd --> DTS-SHAREDSERVICES-DEMO   --- DTS-SHAREDSERVICES-DEV   --- DTS-SHAREDSERVICES-ITHC   --- DTS-SHAREDSERVICES-TEST   --- Reform-CFT-VH-Dev  
+SDS-Prod --> DTS-SHAREDSERVICES-STG   --- DTS-SHAREDSERVICES-PROD   --- DCD-AWS-Migration   --- DCD-CFT-VH-Pilot   --- DTS-SHAREDSERVICESPTL   --- DTS-SHAREDSERVICESPTL-SBOX  
+SDS-Sandbox --> DTS-SHAREDSERVICES-SBOX   --- DCD-MI-SBOX  
+Security --> HMCTS-SOC-SBOX   --- HMCTS-SOC-PROD  
+VH --> DTS-VH-PROD  
 ```
 
 ## New subscription
