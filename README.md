@@ -115,8 +115,8 @@ Create a 'help request' in the [#platops-help](https://hmcts-reform.slack.com/ap
 4. Ensure you update the `subscription.group` field to a key that represents your management group, e.g. `crime_non_production`
 5. Add your new management group to [subscriptions.tf](https://github.com/hmcts/azure-enterprise/blob/main/components/enterprise/subscriptions.tf)
    - make sure you add a new `local` variable for the management group and modify the `local.subscriptions` variable to add the new local you created
-6. Update the [create-mermaid-diagram script](scripts/create-mermaid-diagram.sh) to add your new management group
-   - append the top level of your new management group to the sed command on [L34](scripts/create-mermaid-diagram.sh#L34) `s/vh_subscriptions/VH:::mg/g; s/new_subscriptions/NEW-Prod:::mg/g'`
+6. Update the [create-mermaid-diagram script](scripts/create-mermaid-diagram.sh) to add your new management group:
+   - append the top level of your new management group to the sed command on [L34](scripts/create-mermaid-diagram.sh#L34) `s/vh_subscriptions/VH:::mg/g; s/new_subscriptions/NEW:::mg/g'`
    - append the environments for your new management group to the sed command on [L37](scripts/create-mermaid-diagram.sh#L37) `Platform-Sandbox:::mg\'$'\n/g; NEW-Sandbox:::mg\'$'\n/g;'`
 
 <!-- TODO update this when we get a better example that's just doing what is required --> 
