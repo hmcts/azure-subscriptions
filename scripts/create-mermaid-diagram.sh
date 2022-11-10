@@ -1,4 +1,4 @@
-yj -c < ./environments/prod/prod.tfvars > /tmp/prod.json
+~/yj -c < ./environments/prod/prod.tfvars > /tmp/prod.json
 jq 'del(.enrollment_account_name)' /tmp/prod.json > /tmp/prod2.json && mv /tmp/prod2.json /tmp/prod.json
 jq 'del(.add_service_connection_to_ado)' /tmp/prod.json > /tmp/prod2.json && mv /tmp/prod2.json /tmp/prod.json
 jq 'del(.[] | .[] | . | .[] | .[] | .)' /tmp/prod.json > /tmp/prod2.json && mv /tmp/prod2.json /tmp/prod.json
