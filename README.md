@@ -3,7 +3,42 @@
 Inspired by [Azure/terraform-azurerm-caf-enterprise-scale](https://github.com/Azure/terraform-azurerm-caf-enterprise-scale).
 Simplified for our use-cases / retrofitting.
 
-```mermaid 
+```mermaid
+graph TD
+classDef mg stroke:#ffffff,stroke-width:4px
+Root:::mg --> HMCTS
+HMCTS:::mg --> CFT:::mg
+HMCTS:::mg --> SDS:::mg
+HMCTS:::mg --> Crime:::mg
+HMCTS:::mg --> Heritage:::mg
+HMCTS:::mg --> Security:::mg
+HMCTS:::mg --> Platform:::mg
+HMCTS:::mg --> VH
+CFT:::mg --> CFT-NonProd:::mg
+CFT:::mg --> CFT-Prod:::mg
+CFT:::mg --> CFT-Sandbox:::mg
+SDS:::mg --> SDS-NonProd:::mg
+SDS:::mg --> SDS-Prod:::mg
+SDS:::mg --> SDS-Sandbox:::mg
+Heritage:::mg --> Heritage-NonProd:::mg
+Heritage:::mg --> Heritage-Prod:::mg
+Heritage:::mg --> Heritage-Sandbox:::mg
+Platform:::mg --> Platform-NonProd:::mg
+Platform:::mg --> Platform-Prod:::mg
+Platform:::mg --> Platform-Sandbox:::mg
+CFT-NonProd:::mg --> DCD-CFTAPPS-DEMO   --- DCD-CFTAPPS-DEV   --- DCD-CFTAPPS-ITHC   --- DCD-CFTAPPS-TEST   --- DCD-CFTAPPSDATA-DEMO   --- DCD-CFT-Idam-Dev   --- DCD-CNP-DEV   --- DCD-CNP-QA  
+CFT-Prod:::mg --> DCD-CFTAPPS-PROD   --- DCD-CFTAPPS-STG   --- DCD-CNP-Prod   --- DTS-CFTPTL-INTSVC   --- DTS-CFTSBOX-INTSVC  
+CFT-Sandbox:::mg --> DCD-CFT-Sandbox   --- DCD-CFTAPPS-SBOX  
+Heritage-NonProd:::mg --> DTS-HERITAGE-EXTSVC-STG   --- DTS-HERITAGE-INTSVC-STG  
+Heritage-Prod:::mg --> DTS-HERITAGE-EXTSVC-PROD   --- DTS-HERITAGE-INTSVC-PROD  
+Platform-NonProd:::mg --> DTS-MANAGEMENT-TEST   --- DTS-MANAGEMENT-NONPROD-INTSVC   --- HMCTS-HUB-DEV   --- HMCTS-HUB-NONPROD-INTSVC   --- HMCTS-HUB-TEST  
+Platform-Prod:::mg --> HMCTS-CONTROL   --- DTS-MANAGEMENT-PROD-INTSVC   --- HMCTS-HUB-PROD-INTSVC   --- Reform-CFT-Mgmt  
+Platform-Sandbox:::mg --> DTS-MANAGEMENT-SBOX   --- DTS-MANAGEMENT-SBOX-INTSVC   --- HMCTS-HUB-SBOX   --- HMCTS-HUB-SBOX-INTSVC  
+SDS-NonProd:::mg --> DTS-SHAREDSERVICES-DEMO   --- DTS-SHAREDSERVICES-DEV   --- DTS-SHAREDSERVICES-ITHC   --- DTS-SHAREDSERVICES-TEST   --- Reform-CFT-VH-Dev  
+SDS-Prod:::mg --> DTS-SHAREDSERVICES-STG   --- DTS-SHAREDSERVICES-PROD   --- DCD-AWS-Migration   --- DCD-CFT-VH-Pilot   --- DTS-SHAREDSERVICESPTL   --- DTS-SHAREDSERVICESPTL-SBOX  
+SDS-Sandbox:::mg --> DTS-SHAREDSERVICES-SBOX   --- DCD-MI-SBOX  
+Security:::mg --> HMCTS-SOC-SBOX   --- HMCTS-SOC-PROD  
+VH:::mg --> DTS-VH-PROD  
 ```
 
 ## Diagram setup
