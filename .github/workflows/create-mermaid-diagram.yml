@@ -19,8 +19,8 @@ jobs:
           wget https://github.com/sclevine/yj/releases/download/v5.1.0/yj-linux-amd64 -O ~/yj
           chmod +x ~/yj
           alias yj="~/yj"
+          yj -v
           sudo apt-get install -y jq
-
 
       - name: Setup Script
         run: |
