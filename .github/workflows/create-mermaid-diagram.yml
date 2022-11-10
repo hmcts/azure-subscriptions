@@ -16,8 +16,9 @@ jobs:
 
       - name: Install pre-requisites
         run: |
-          wget https://github.com/sclevine/yj/releases/download/v5.1.0/yj-linux-amd64 -O /bin/yj
-          chmod +x /usr/bin/yj
+          wget https://github.com/sclevine/yj/releases/download/v5.1.0/yj-linux-amd64 -O ~/yj
+          chmod +x ~/yj
+          mv ~/yj /usr/bin
           sudo apt-get install -y jq
 
 
