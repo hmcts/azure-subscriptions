@@ -31,12 +31,12 @@ grep -vE '\{\}' /tmp/prod.json >> /tmp/prod2.json && mv /tmp/prod2.json /tmp/pro
 sed -i 's/{//g; s/}//g; s|[][]| |g; s/\, / --> /g; s/\,/ --- /g; s/\"//g; s/\\//g; s/://g' /tmp/prod.json
 
 # rename management groups
-sed -i 's/cft_non_production_subscriptions/CFT-NonProd/g; s/cft_production_subscriptions/CFT-Prod/g; s/cft_sandbox_subscriptions/CFT-Sandbox/g; s/crime_subscriptions/Crime/g; s/heritage_non_production_subscriptions/Heritage-NonProd/g; s/heritage_production_subscriptions/Heritage-Prod/g; s/heritage_sandbox_subscriptions/Heritage-Sandbox/g; s/platform_non_production_subscriptions/Platform-NonProd/g; s/platform_production_subscriptions/Platform-Prod/g; s/platform_sandbox_subscriptions/Platform-Sandbox/g; s/sds_non_production_subscriptions/SDS-NonProd/g; s/sds_production_subscriptions/SDS-Prod/g; s/sds_sandbox_subscriptions/SDS-Sandbox/g; s/security_subscriptions/Security/g; s/vh_subscriptions/VH/g' /tmp/prod.json
+sed -i 's/cft_non_production_subscriptions/CFT-NonProd:::mg/g; s/cft_production_subscriptions/CFT-Prod:::mg/g; s/cft_sandbox_subscriptions/CFT-Sandbox:::mg/g; s/crime_subscriptions/Crime:::mg/g; s/heritage_non_production_subscriptions/Heritage-NonProd:::mg/g; s/heritage_production_subscriptions/Heritage-Prod:::mg/g; s/heritage_sandbox_subscriptions/Heritage-Sandbox:::mg/g; s/platform_non_production_subscriptions/Platform-NonProd:::mg/g; s/platform_production_subscriptions/Platform-Prod:::mg/g; s/platform_sandbox_subscriptions/Platform-Sandbox:::mg/g; s/sds_non_production_subscriptions/SDS-NonProd:::mg/g; s/sds_production_subscriptions/SDS-Prod:::mg/g; s/sds_sandbox_subscriptions/SDS-Sandbox:::mg/g; s/security_subscriptions/Security:::mg/g; s/vh_subscriptions/VH:::mg/g' /tmp/prod.json
 
-# add diagram hierarchy
-sed -i '1s/^/```mermaid\ngraph TD\nRoot --> HMCTS\nHMCTS --> CFT\nHMCTS --> SDS\nHMCTS --> Crime\nHMCTS --> Heritage\nHMCTS --> Security\nHMCTS --> Platform\nHMCTS --> VH\nCFT --> CFT-NonProd\nCFT --> CFT-Prod\nCFT --> CFT-Sandbox\nSDS --> SDS-NonProd\nSDS --> SDS-Prod\nSDS --> SDS-Sandbox\nHeritage --> Heritage-NonProd\nHeritage --> Heritage-Prod\nHeritage --> Heritage-Sandbox\nPlatform --> Platform-NonProd\nPlatform --> Platform-Prod\nPlatform --> Platform-Sandbox\'$'\n/g' /tmp/prod.json
+# open mermaid code block and add diagram hierarchy
+sed -i '1s/^/```mermaid\ngraph TD\nclassDef mg stroke:#ffffff,stroke-width:4px\nRoot:::mg --> HMCTS\nHMCTS:::mg --> CFT:::mg\nHMCTS:::mg --> SDS:::mg\nHMCTS:::mg --> Crime:::mg\nHMCTS:::mg --> Heritage:::mg\nHMCTS:::mg --> Security:::mg\nHMCTS:::mg --> Platform:::mg\nHMCTS:::mg --> VH\nCFT:::mg --> CFT-NonProd:::mg\nCFT:::mg --> CFT-Prod:::mg\nCFT:::mg --> CFT-Sandbox:::mg\nSDS:::mg --> SDS-NonProd:::mg\nSDS:::mg --> SDS-Prod:::mg\nSDS:::mg --> SDS-Sandbox:::mg\nHeritage:::mg --> Heritage-NonProd:::mg\nHeritage:::mg --> Heritage-Prod:::mg\nHeritage:::mg --> Heritage-Sandbox:::mg\nPlatform:::mg --> Platform-NonProd:::mg\nPlatform:::mg --> Platform-Prod:::mg\nPlatform:::mg --> Platform-Sandbox:::mg\'$'\n/g' /tmp/prod.json
 
-# add mermaid code block to json
+# close mermaid code block to json
 echo "\`\`\`" >> /tmp/prod.json
 
 # replace current mermaid code block in README with updated content
