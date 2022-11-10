@@ -45,7 +45,7 @@ VH:::mg --> DTS-VH-PROD
 
 The diagram above is generated automatically from the subscriptions listed in `environments/prod/prod.tfvars` via a [GitHub Action](.github/workdlows/create-mermaid-diagram.yml).
 
-If you add a new management group, be sure to update the [script](scripts/create-mermaid-diagram.sh#L10-L11) so the desired structure is accurately reflected in the diagram.
+If you add a new management group, be sure to update the [script](scripts/create-mermaid-diagram.sh#L34-L37) so the desired structure is accurately reflected in the diagram.
 
 The script can be run manually on a Linux VM or in a docker container to test out structural changes.
 
@@ -115,7 +115,9 @@ Create a 'help request' in the [#platops-help](https://hmcts-reform.slack.com/ap
 4. Ensure you update the `subscription.group` field to a key that represents your management group, e.g. `crime_non_production`
 5. Add your new management group to [subscriptions.tf](https://github.com/hmcts/azure-enterprise/blob/main/components/enterprise/subscriptions.tf)
    - make sure you add a new `local` variable for the management group and modify the `local.subscriptions` variable to add the new local you created
-6. Update the mermaid diagram in this file to include the new management group
+6. Update the [create-mermaid-diagram script](scripts/create-mermaid-diagram.sh) to add your new management group
+   - append the top level of your new management group to the sed command on [L34](scripts/create-mermaid-diagram.sh#L34) `s/vh_subscriptions/VH:::mg/g; s/new_subscriptions/NEW-Prod:::mg/g'`
+   - append the environments for your new management group to the sed command on [L37](scripts/create-mermaid-diagram.sh#L37) `Platform-Sandbox:::mg\'$'\n/g; NEW-Sandbox:::mg\'$'\n/g;'`
 
 <!-- TODO update this when we get a better example that's just doing what is required --> 
 [Example pull request](https://github.com/hmcts/azure-enterprise/pull/11)
