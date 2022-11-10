@@ -229,10 +229,6 @@ platform_production_subscriptions = {
     environment = "prod"
     product     = "mgmt"
   }
-  "Access to Azure Active Directory" = {
-    environment = "prod"
-    product     = "mgmt"
-  }
 }
 
 vh_subscriptions = {
