@@ -114,7 +114,6 @@ sds_production_subscriptions = {
 }
 
 crime_subscriptions = {
-<<<<<<< HEAD
   CRIME-ADO-POC = {
     environment = "dev"
     product     = "crime-platform"
@@ -141,7 +140,6 @@ crime_subscriptions = {
   }
   "MOJ DCD Atlassian NLE" = {
     environment = "dev"
-=======
   "MoJ Common Platform Online Plea Production" = {
     environment = "prod"
     product     = "crime-platform"
@@ -160,7 +158,6 @@ crime_subscriptions = {
   }
   "MoJ Operational Services Validation" = {
     environment = "prod"
->>>>>>> main
     product     = "crime-platform"
   }
 }
