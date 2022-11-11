@@ -6,6 +6,7 @@ cft_sandbox_subscriptions = {
   DCD-CFTAPPS-SBOX = {
     deploy_acme = true
   }
+  DCD-ROBOTICS-SBOX = {}
 }
 cft_non_production_subscriptions = {
   DCD-CFTAPPS-DEMO = {
@@ -54,6 +55,9 @@ cft_production_subscriptions = {
   }
   DTS-CFTSBOX-INTSVC = {
     deploy_acme = true
+    environment = "sbox"
+  }
+  Reform-CFT-MI-SB = {
     environment = "sbox"
   }
 }
@@ -110,6 +114,7 @@ sds_production_subscriptions = {
 }
 
 crime_subscriptions = {
+<<<<<<< HEAD
   CRIME-ADO-POC = {
     environment = "dev"
     product     = "crime-platform"
@@ -136,6 +141,26 @@ crime_subscriptions = {
   }
   "MOJ DCD Atlassian NLE" = {
     environment = "dev"
+=======
+  "MoJ Common Platform Online Plea Production" = {
+    environment = "prod"
+    product     = "crime-platform"
+  }
+  "MoJ Common Platform Production" = {
+    environment = "prod"
+    product     = "crime-platform"
+  }
+  "MoJ Common Platform Security Operations" = {
+    environment = "prod"
+    product     = "crime-platform"
+  }
+  "MOJ DCD Atlassian LVE" = {
+    environment = "prod"
+    product     = "crime-platform"
+  }
+  "MoJ Operational Services Validation" = {
+    environment = "prod"
+>>>>>>> main
     product     = "crime-platform"
   }
 }
@@ -158,6 +183,10 @@ heritage_production_subscriptions = {
   }
   DTS-HERITAGE-INTSVC-PROD = {
     environment = "prod"
+  }
+  DTS-ARCHIVING-PROD = {
+    environment = "prod"
+    product     = "heritage"
   }
 }
 
@@ -186,6 +215,9 @@ platform_sandbox_subscriptions = {
     environment = "sbox"
     deploy_acme = true
     product     = "hub"
+  }
+  DTS-DACS-SBOX = {
+    product = "enterprise"
   }
 }
 platform_non_production_subscriptions = {
@@ -230,6 +262,10 @@ platform_production_subscriptions = {
   }
   Reform-CFT-Mgmt = {
     environment = "mgmt"
+    product     = "mgmt"
+  }
+  DCD-RDO-Production = {
+    environment = "prod"
     product     = "mgmt"
   }
 }
