@@ -140,6 +140,7 @@ crime_subscriptions = {
   }
   "MOJ DCD Atlassian NLE" = {
     environment = "dev"
+  }
   "MoJ Common Platform Online Plea Production" = {
     environment = "prod"
     product     = "crime-platform"
