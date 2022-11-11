@@ -112,24 +112,31 @@ sds_production_subscriptions = {
 crime_subscriptions = {
   CRIME-ADO-POC = {
     environment = "dev"
+    product     = "crime-platform"
   }
   "MoJ Common Platform Non-Functional Testing" = {
     environment = "test"
+    product     = "crime-platform"
   }
   "MoJ Common Platform Non-Live Management" = {
     environment = "stg"
+    product     = "crime-platform"
   }
   "MoJ Common Platform Online Plea Pre-Production" = {
     environment = "dev"
+    product     = "crime-platform"
   }
   "MoJ Common Platform Pilot" = {
     environment = "dev"
+    product     = "crime-platform"
   }
   "MoJ Common Platform System Integration Testing" = {
     environment = "test"
+    product     = "crime-platform"
   }
   "MOJ DCD Atlassian NLE" = {
     environment = "dev"
+    product     = "crime-platform"
   }
 }
 
@@ -203,7 +210,7 @@ platform_non_production_subscriptions = {
   }
    DCD-RDO-Development = {
     environment = "stg"  
-    product     = "rdo"
+    product     = "cft-platform"
    }
 }
 platform_production_subscriptions = {
