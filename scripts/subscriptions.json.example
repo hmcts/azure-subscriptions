@@ -1,5 +1,0 @@
-[
-    {
-        "subscription_name": "DCD-CFT-Sandbox", "deploy_acme": "true", "environment": "sbox"
-    }
-]
