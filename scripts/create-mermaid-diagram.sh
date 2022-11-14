@@ -47,6 +47,7 @@ sed -i '/^Crime/s/ --> / --> Crime[/g' /tmp/prod.json
 awk -i inplace -v w='Crime\\[' '{while($0~w) sub(w,"Crime"++c)}1' /tmp/prod.json
 sed -i '/^Crime/s/MoJ /[MoJ /g' /tmp/prod.json
 sed -i '/^Crime/s/MOJ /[MOJ /g' /tmp/prod.json
+sed -i '/^Crime/s/CRIME-/[CRIME-/g' /tmp/prod.json
 
 # close mermaid code block
 echo "\`\`\`" >> /tmp/prod.json
