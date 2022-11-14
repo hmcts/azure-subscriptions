@@ -48,7 +48,7 @@ The diagram above is generated automatically from the subscriptions listed in `e
 
 If you add a new management group, be sure to update the [script](scripts/create-mermaid-diagram.sh#L34-L37) so the desired structure is accurately reflected in the diagram.
 
-The script can be run manually on a Linux VM or in a docker container to test out structural changes.
+The script works on both macOS and Linux.
 
 Management group nodes are highlighted with a thick red border as denoted by `:::mg`. Subscription nodes use the default blue/grey border.
 
