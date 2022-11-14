@@ -39,7 +39,7 @@ sed -i '1s/^/```mermaid\ngraph TD\nclassDef mg stroke:#ff1100,stroke-width:4px\n
 # replace extra spaces
 sed -i 's/[ ][ ]*/ /g' /tmp/prod.json
 
-# replace any subscriptions that have spaces
+# format Crime subscriptions due to names having spaces
 sed -i '/^Crime/s/ --- /] --- Crime[/g' /tmp/prod.json
 sed -i '/^Crime/s/$/]/' /tmp/prod.json
 sed -i '/^Crime/s/ ]/]/g' /tmp/prod.json
