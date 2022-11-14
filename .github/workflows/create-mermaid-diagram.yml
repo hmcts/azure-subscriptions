@@ -11,6 +11,10 @@ jobs:
   create-mermaid-diagram:
     runs-on: ubuntu-latest
     steps:
+      - name: Set up Homebrew
+        id: set-up-homebrew
+        uses: Homebrew/actions/setup-homebrew@master
+
       - name: Checkout
         uses: actions/checkout@v3
 
