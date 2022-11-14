@@ -36,6 +36,18 @@ sed -i 's/cft_non_production_subscriptions/CFT-NonProd:::mg/g; s/cft_production_
 # open mermaid code block and add diagram hierarchy
 sed -i '1s/^/```mermaid\ngraph TD\nclassDef mg stroke:#ff1100,stroke-width:4px\nRoot:::mg --> HMCTS\nHMCTS:::mg --> CFT:::mg\nHMCTS:::mg --> SDS:::mg\nHMCTS:::mg --> Crime:::mg\nHMCTS:::mg --> Heritage:::mg\nHMCTS:::mg --> Security:::mg\nHMCTS:::mg --> Platform:::mg\nHMCTS:::mg --> VH\nCFT:::mg --> CFT-NonProd:::mg\nCFT:::mg --> CFT-Prod:::mg\nCFT:::mg --> CFT-Sandbox:::mg\nSDS:::mg --> SDS-NonProd:::mg\nSDS:::mg --> SDS-Prod:::mg\nSDS:::mg --> SDS-Sandbox:::mg\nHeritage:::mg --> Heritage-NonProd:::mg\nHeritage:::mg --> Heritage-Prod:::mg\nHeritage:::mg --> Heritage-Sandbox:::mg\nPlatform:::mg --> Platform-NonProd:::mg\nPlatform:::mg --> Platform-Prod:::mg\nPlatform:::mg --> Platform-Sandbox:::mg\'$'\n/g' /tmp/prod.json
 
+# replace extra spaces
+sed -i 's/[ ][ ]*/ /g' /tmp/prod.json
+
+# replace any subscriptions that have spaces
+sed -i '/^Crime/s/ --- /] --- Crime[/g' /tmp/prod.json
+sed -i '/^Crime/s/$/]/' /tmp/prod.json
+sed -i '/^Crime/s/ ]/]/g' /tmp/prod.json
+sed -i '/^Crime/s/ --> / --> Crime[/g' /tmp/prod.json
+awk -i inplace -v w='Crime\\[' '{while($0~w) sub(w,"Crime"++c)}1' /tmp/prod.json
+sed -i '/^Crime/s/MoJ /[MoJ /g' /tmp/prod.json
+sed -i '/^Crime/s/MOJ /[MOJ /g' /tmp/prod.json
+
 # close mermaid code block
 echo "\`\`\`" >> /tmp/prod.json
 

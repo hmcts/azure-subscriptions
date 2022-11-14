@@ -26,20 +26,20 @@ Heritage:::mg --> Heritage-Sandbox:::mg
 Platform:::mg --> Platform-NonProd:::mg
 Platform:::mg --> Platform-Prod:::mg
 Platform:::mg --> Platform-Sandbox:::mg
-CFT-NonProd:::mg --> DCD-CFTAPPS-DEMO   --- DCD-CFTAPPS-DEV   --- DCD-CFTAPPS-ITHC   --- DCD-CFTAPPS-TEST   --- DCD-CFTAPPSDATA-DEMO   --- DCD-CFT-Idam-Dev   --- DCD-CNP-DEV   --- DCD-CNP-QA  
-CFT-Prod:::mg --> DCD-CFTAPPS-PROD   --- DCD-CFTAPPS-STG   --- DCD-CNP-Prod   --- DTS-CFTPTL-INTSVC   --- DTS-CFTSBOX-INTSVC   --- Reform-CFT-MI-SB  
-CFT-Sandbox:::mg --> DCD-CFT-Sandbox   --- DCD-CFTAPPS-SBOX   --- DCD-ROBOTICS-SBOX  
-Crime:::mg --> MoJ Common Platform Online Plea Production   --- MoJ Common Platform Production   --- MoJ Common Platform Security Operations   --- MOJ DCD Atlassian LVE   --- MoJ Operational Services Validation  
-Heritage-NonProd:::mg --> DTS-HERITAGE-EXTSVC-STG   --- DTS-HERITAGE-INTSVC-STG  
-Heritage-Prod:::mg --> DTS-HERITAGE-EXTSVC-PROD   --- DTS-HERITAGE-INTSVC-PROD   --- DTS-ARCHIVING-PROD  
-Platform-NonProd:::mg --> DTS-MANAGEMENT-TEST   --- DTS-MANAGEMENT-NONPROD-INTSVC   --- HMCTS-HUB-DEV   --- HMCTS-HUB-NONPROD-INTSVC   --- HMCTS-HUB-TEST  
-Platform-Prod:::mg --> HMCTS-CONTROL   --- DTS-MANAGEMENT-PROD-INTSVC   --- HMCTS-HUB-PROD-INTSVC   --- Reform-CFT-Mgmt   --- DCD-RDO-Production  
-Platform-Sandbox:::mg --> DTS-MANAGEMENT-SBOX   --- DTS-MANAGEMENT-SBOX-INTSVC   --- HMCTS-HUB-SBOX   --- HMCTS-HUB-SBOX-INTSVC   --- DTS-DACS-SBOX  
-SDS-NonProd:::mg --> DTS-SHAREDSERVICES-DEMO   --- DTS-SHAREDSERVICES-DEV   --- DTS-SHAREDSERVICES-ITHC   --- DTS-SHAREDSERVICES-TEST   --- Reform-CFT-VH-Dev  
-SDS-Prod:::mg --> DTS-SHAREDSERVICES-STG   --- DTS-SHAREDSERVICES-PROD   --- DCD-AWS-Migration   --- DCD-CFT-VH-Pilot   --- DTS-SHAREDSERVICESPTL   --- DTS-SHAREDSERVICESPTL-SBOX  
-SDS-Sandbox:::mg --> DTS-SHAREDSERVICES-SBOX   --- DCD-MI-SBOX  
-Security:::mg --> HMCTS-SOC-SBOX   --- HMCTS-SOC-PROD  
-VH:::mg --> DTS-VH-PROD  
+CFT-NonProd:::mg --> DCD-CFTAPPS-DEMO --- DCD-CFTAPPS-DEV --- DCD-CFTAPPS-ITHC --- DCD-CFTAPPS-TEST --- DCD-CFTAPPSDATA-DEMO --- DCD-CFT-Idam-Dev --- DCD-CNP-DEV --- DCD-CNP-QA 
+CFT-Prod:::mg --> DCD-CFTAPPS-PROD --- DCD-CFTAPPS-STG --- DCD-CNP-Prod --- DTS-CFTPTL-INTSVC --- DTS-CFTSBOX-INTSVC --- Reform-CFT-MI-SB 
+CFT-Sandbox:::mg --> DCD-CFT-Sandbox --- DCD-CFTAPPS-SBOX --- DCD-ROBOTICS-SBOX 
+Crime:::mg --> Crime1[MoJ Common Platform Online Plea Production] --- Crime2[MoJ Common Platform Production] --- Crime3[MoJ Common Platform Security Operations] --- Crime4[MOJ DCD Atlassian LVE] --- Crime5[MoJ Operational Services Validation]
+Heritage-NonProd:::mg --> DTS-HERITAGE-EXTSVC-STG --- DTS-HERITAGE-INTSVC-STG 
+Heritage-Prod:::mg --> DTS-HERITAGE-EXTSVC-PROD --- DTS-HERITAGE-INTSVC-PROD --- DTS-ARCHIVING-PROD 
+Platform-NonProd:::mg --> DTS-MANAGEMENT-TEST --- DTS-MANAGEMENT-NONPROD-INTSVC --- HMCTS-HUB-DEV --- HMCTS-HUB-NONPROD-INTSVC --- HMCTS-HUB-TEST 
+Platform-Prod:::mg --> HMCTS-CONTROL --- DTS-MANAGEMENT-PROD-INTSVC --- HMCTS-HUB-PROD-INTSVC --- Reform-CFT-Mgmt --- DCD-RDO-Production 
+Platform-Sandbox:::mg --> DTS-MANAGEMENT-SBOX --- DTS-MANAGEMENT-SBOX-INTSVC --- HMCTS-HUB-SBOX --- HMCTS-HUB-SBOX-INTSVC --- DTS-DACS-SBOX 
+SDS-NonProd:::mg --> DTS-SHAREDSERVICES-DEMO --- DTS-SHAREDSERVICES-DEV --- DTS-SHAREDSERVICES-ITHC --- DTS-SHAREDSERVICES-TEST --- Reform-CFT-VH-Dev 
+SDS-Prod:::mg --> DTS-SHAREDSERVICES-STG --- DTS-SHAREDSERVICES-PROD --- DCD-AWS-Migration --- DCD-CFT-VH-Pilot --- DTS-SHAREDSERVICESPTL --- DTS-SHAREDSERVICESPTL-SBOX 
+SDS-Sandbox:::mg --> DTS-SHAREDSERVICES-SBOX --- DCD-MI-SBOX 
+Security:::mg --> HMCTS-SOC-SBOX --- HMCTS-SOC-PROD 
+VH:::mg --> DTS-VH-PROD 
 ```
 
 ## Diagram setup
