@@ -26,13 +26,13 @@ Heritage:::mg --> Heritage-Sandbox:::mg
 Platform:::mg --> Platform-NonProd:::mg
 Platform:::mg --> Platform-Prod:::mg
 Platform:::mg --> Platform-Sandbox:::mg
-CFT-NonProd:::mg --> DCD-CFTAPPS-DEMO --- DCD-CFTAPPS-DEV --- DCD-CFTAPPS-ITHC --- DCD-CFTAPPS-TEST --- DCD-CFTAPPSDATA-DEMO --- DCD-CFT-Idam-Dev --- DCD-CNP-DEV --- DCD-CNP-QA 
+CFT-NonProd:::mg --> DCD-CFTAPPS-DEMO --- DCD-CFTAPPS-DEV --- DCD-CFTAPPS-ITHC --- DCD-CFTAPPS-TEST --- DCD-CFTAPPSDATA-DEMO --- DCD-CFT-Idam-Dev --- DCD-CNP-DEV --- DCD-CNP-QA --- DCD-ROBOTICS-DEV 
 CFT-Prod:::mg --> DCD-CFTAPPS-PROD --- DCD-CFTAPPS-STG --- DCD-CNP-Prod --- DTS-CFTPTL-INTSVC --- DTS-CFTSBOX-INTSVC --- Reform-CFT-MI-SB 
 CFT-Sandbox:::mg --> DCD-CFT-Sandbox --- DCD-CFTAPPS-SBOX --- DCD-ROBOTICS-SBOX 
-Crime:::mg --> Crime1[MoJ Common Platform Online Plea Production] --- Crime2[MoJ Common Platform Production] --- Crime3[MoJ Common Platform Security Operations] --- Crime4[MOJ DCD Atlassian LVE] --- Crime5[MoJ Operational Services Validation]
-Heritage-NonProd:::mg --> DTS-HERITAGE-EXTSVC-STG --- DTS-HERITAGE-INTSVC-STG 
+Crime:::mg --> Crime1CRIME-ADO-POC] --- Crime2[MoJ Common Platform Non-Functional Testing] --- Crime3[MoJ Common Platform Non-Live Management] --- Crime4[MoJ Common Platform Online Plea Pre-Production] --- Crime5[MoJ Common Platform Pilot] --- Crime6[MoJ Common Platform System Integration Testing] --- Crime7[MOJ DCD Atlassian NLE] --- Crime8[MoJ Common Platform Online Plea Production] --- Crime9[MoJ Common Platform Production] --- Crime10[MoJ Common Platform Security Operations] --- Crime11[MOJ DCD Atlassian LVE] --- Crime12[MoJ Operational Services Validation]
+Heritage-NonProd:::mg --> DTS-HERITAGE-EXTSVC-STG --- DTS-HERITAGE-INTSVC-STG --- DTS-ARCHIVING-TEST 
 Heritage-Prod:::mg --> DTS-HERITAGE-EXTSVC-PROD --- DTS-HERITAGE-INTSVC-PROD --- DTS-ARCHIVING-PROD 
-Platform-NonProd:::mg --> DTS-MANAGEMENT-TEST --- DTS-MANAGEMENT-NONPROD-INTSVC --- HMCTS-HUB-DEV --- HMCTS-HUB-NONPROD-INTSVC --- HMCTS-HUB-TEST 
+Platform-NonProd:::mg --> DTS-MANAGEMENT-TEST --- DTS-MANAGEMENT-NONPROD-INTSVC --- HMCTS-HUB-DEV --- HMCTS-HUB-NONPROD-INTSVC --- HMCTS-HUB-TEST --- DCD-RDO-Development 
 Platform-Prod:::mg --> HMCTS-CONTROL --- DTS-MANAGEMENT-PROD-INTSVC --- HMCTS-HUB-PROD-INTSVC --- Reform-CFT-Mgmt --- DCD-RDO-Production 
 Platform-Sandbox:::mg --> DTS-MANAGEMENT-SBOX --- DTS-MANAGEMENT-SBOX-INTSVC --- HMCTS-HUB-SBOX --- HMCTS-HUB-SBOX-INTSVC --- DTS-DACS-SBOX 
 SDS-NonProd:::mg --> DTS-SHAREDSERVICES-DEMO --- DTS-SHAREDSERVICES-DEV --- DTS-SHAREDSERVICES-ITHC --- DTS-SHAREDSERVICES-TEST --- Reform-CFT-VH-Dev 
