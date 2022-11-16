@@ -12,6 +12,7 @@ HMCTS:::mg --> Security:::mg
 HMCTS:::mg --> Crime:::mg
 HMCTS:::mg --> CFT:::mg
 HMCTS:::mg --> Heritage:::mg
+HMCTS:::mg --> Mynew:::mg
 HMCTS:::mg --> Platform:::mg
 HMCTS:::mg --> SDS:::mg
 SDS --> SDS-Sandbox:::mg
@@ -20,6 +21,7 @@ SDS --> SDS-NonProd:::mg
 Platform --> Platform-Sandbox:::mg
 Platform --> Platform-Prod:::mg
 Platform --> Platform-NonProd:::mg
+Mynew --> Mynew-Sandbox:::mg
 Heritage --> Heritage-Prod:::mg
 Heritage --> Heritage-NonProd:::mg
 CFT --> CFT-Sandbox:::mg
@@ -31,6 +33,7 @@ CFT-Sandbox:::mg --> DCD-CFT-Sandbox --- DCD-CFTAPPS-SBOX --- DCD-ROBOTICS-SBOX
 Crime:::mg --> Crime1[CRIME-ADO-POC] --- Crime2[MoJ Common Platform Non-Functional Testing] --- Crime3[MoJ Common Platform Non-Live Management] --- Crime4[MoJ Common Platform Online Plea Pre-Production] --- Crime5[MoJ Common Platform Pilot] --- Crime6[MoJ Common Platform System Integration Testing] --- Crime7[MOJ DCD Atlassian NLE] --- Crime8[MoJ Common Platform Online Plea Production] --- Crime9[MoJ Common Platform Production] --- Crime10[MoJ Common Platform Security Operations] --- Crime11[MOJ DCD Atlassian LVE] --- Crime12[MoJ Operational Services Validation]
 Heritage-NonProd:::mg --> DTS-HERITAGE-EXTSVC-STG --- DTS-HERITAGE-INTSVC-STG --- DTS-ARCHIVING-TEST 
 Heritage-Prod:::mg --> DTS-HERITAGE-EXTSVC-PROD --- DTS-HERITAGE-INTSVC-PROD --- DTS-ARCHIVING-PROD 
+Mynew-Sandbox:::mg --> Sub1 
 Platform-NonProd:::mg --> DTS-MANAGEMENT-TEST --- DTS-MANAGEMENT-NONPROD-INTSVC --- HMCTS-HUB-DEV --- HMCTS-HUB-NONPROD-INTSVC --- HMCTS-HUB-TEST --- DCD-RDO-Development 
 Platform-Prod:::mg --> HMCTS-CONTROL --- DTS-MANAGEMENT-PROD-INTSVC --- HMCTS-HUB-PROD-INTSVC --- Reform-CFT-Mgmt --- DCD-RDO-Production 
 Platform-Sandbox:::mg --> DTS-MANAGEMENT-SBOX --- DTS-MANAGEMENT-SBOX-INTSVC --- HMCTS-HUB-SBOX --- HMCTS-HUB-SBOX-INTSVC --- DTS-DACS-SBOX 
