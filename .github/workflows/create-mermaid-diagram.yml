@@ -1,0 +1,30 @@
+name: create-mermaid-diagram
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+    paths:
+    - environments/*
+
+jobs:
+  create-mermaid-diagram:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Homebrew
+        id: set-up-homebrew
+        uses: Homebrew/actions/setup-homebrew@master
+
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Script
+        run: |
+          chmod +x scripts/create-mermaid-diagram.sh
+
+      - name: Create mermaid diagram
+        run: ./scripts/create-mermaid-diagram.sh
+        working-directory: ./
+        shell: bash
+
+      - uses: stefanzweifel/git-auto-commit-action@v4

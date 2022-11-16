@@ -5,29 +5,52 @@ Simplified for our use-cases / retrofitting.
 
 ```mermaid
 graph TD
-    Root --> HMCTS
-    HMCTS --> CFT
-    HMCTS --> SDS
-    HMCTS --> Crime
-    HMCTS --> Heritage
-    HMCTS --> Security
-    HMCTS --> Platform
-    CFT --> CFT-Sandbox
-    CFT --> CFT-NonProd
-    CFT --> CFT-Prod
-
-    SDS --> SDS-Sandbox
-    SDS --> SDS-NonProd
-    SDS --> SDS-Prod
-
-    Heritage --> Heritage-Sandbox
-    Heritage --> Heritage-NonProd
-    Heritage --> Heritage-Prod
-
-    Platform --> Platform-Sandbox
-    Platform --> Platform-NonProd
-    Platform --> Platform-Prod
+classDef mg stroke:#ff1100,stroke-width:4px
+Root:::mg --> HMCTS
+HMCTS:::mg --> CFT:::mg
+HMCTS:::mg --> SDS:::mg
+HMCTS:::mg --> Crime:::mg
+HMCTS:::mg --> Heritage:::mg
+HMCTS:::mg --> Security:::mg
+HMCTS:::mg --> Platform:::mg
+HMCTS:::mg --> VH
+CFT:::mg --> CFT-NonProd:::mg
+CFT:::mg --> CFT-Prod:::mg
+CFT:::mg --> CFT-Sandbox:::mg
+SDS:::mg --> SDS-NonProd:::mg
+SDS:::mg --> SDS-Prod:::mg
+SDS:::mg --> SDS-Sandbox:::mg
+Heritage:::mg --> Heritage-NonProd:::mg
+Heritage:::mg --> Heritage-Prod:::mg
+Heritage:::mg --> Heritage-Sandbox:::mg
+Platform:::mg --> Platform-NonProd:::mg
+Platform:::mg --> Platform-Prod:::mg
+Platform:::mg --> Platform-Sandbox:::mg
+CFT-NonProd:::mg --> DCD-CFTAPPS-DEMO --- DCD-CFTAPPS-DEV --- DCD-CFTAPPS-ITHC --- DCD-CFTAPPS-TEST --- DCD-CFTAPPSDATA-DEMO --- DCD-CFT-Idam-Dev --- DCD-CNP-DEV --- DCD-CNP-QA --- DCD-ROBOTICS-DEV 
+CFT-Prod:::mg --> DCD-CFTAPPS-PROD --- DCD-CFTAPPS-STG --- DCD-CNP-Prod --- DTS-CFTPTL-INTSVC --- DTS-CFTSBOX-INTSVC --- Reform-CFT-MI-SB 
+CFT-Sandbox:::mg --> DCD-CFT-Sandbox --- DCD-CFTAPPS-SBOX --- DCD-ROBOTICS-SBOX 
+Crime:::mg --> Crime1[CRIME-ADO-POC] --- Crime2[MoJ Common Platform Non-Functional Testing] --- Crime3[MoJ Common Platform Non-Live Management] --- Crime4[MoJ Common Platform Online Plea Pre-Production] --- Crime5[MoJ Common Platform Pilot] --- Crime6[MoJ Common Platform System Integration Testing] --- Crime7[MOJ DCD Atlassian NLE] --- Crime8[MoJ Common Platform Online Plea Production] --- Crime9[MoJ Common Platform Production] --- Crime10[MoJ Common Platform Security Operations] --- Crime11[MOJ DCD Atlassian LVE] --- Crime12[MoJ Operational Services Validation]
+Heritage-NonProd:::mg --> DTS-HERITAGE-EXTSVC-STG --- DTS-HERITAGE-INTSVC-STG --- DTS-ARCHIVING-TEST 
+Heritage-Prod:::mg --> DTS-HERITAGE-EXTSVC-PROD --- DTS-HERITAGE-INTSVC-PROD --- DTS-ARCHIVING-PROD 
+Platform-NonProd:::mg --> DTS-MANAGEMENT-TEST --- DTS-MANAGEMENT-NONPROD-INTSVC --- HMCTS-HUB-DEV --- HMCTS-HUB-NONPROD-INTSVC --- HMCTS-HUB-TEST --- DCD-RDO-Development 
+Platform-Prod:::mg --> HMCTS-CONTROL --- DTS-MANAGEMENT-PROD-INTSVC --- HMCTS-HUB-PROD-INTSVC --- Reform-CFT-Mgmt --- DCD-RDO-Production 
+Platform-Sandbox:::mg --> DTS-MANAGEMENT-SBOX --- DTS-MANAGEMENT-SBOX-INTSVC --- HMCTS-HUB-SBOX --- HMCTS-HUB-SBOX-INTSVC --- DTS-DACS-SBOX 
+SDS-NonProd:::mg --> DTS-SHAREDSERVICES-DEMO --- DTS-SHAREDSERVICES-DEV --- DTS-SHAREDSERVICES-ITHC --- DTS-SHAREDSERVICES-TEST --- DTS-SHAREDSERVICES-SBOX --- Reform-CFT-VH-Dev 
+SDS-Prod:::mg --> DTS-SHAREDSERVICES-STG --- DTS-SHAREDSERVICES-PROD --- DCD-AWS-Migration --- DCD-CFT-VH-Pilot --- DTS-SHAREDSERVICESPTL --- DTS-SHAREDSERVICESPTL-SBOX 
+SDS-Sandbox:::mg --> DTS-SHAREDSERVICES-SBOX --- DCD-MI-SBOX 
+Security:::mg --> HMCTS-SOC-SBOX --- HMCTS-SOC-PROD 
+VH:::mg --> DTS-VH-PROD 
 ```
+
+## Diagram setup
+
+The diagram above is generated automatically from the subscriptions listed in `environments/prod/prod.tfvars` via a [GitHub Action](.github/workdlows/create-mermaid-diagram.yml).
+
+If you add a new management group, be sure to update the [script](scripts/create-mermaid-diagram.sh#L34-L37) so the desired structure is accurately reflected in the diagram.
+
+The script works on both macOS and Linux.
+
+Management group nodes are highlighted with a thick red border as denoted by `:::mg`. Subscription nodes use the default blue/grey border.
 
 ## New subscription
 
@@ -93,7 +116,9 @@ Create a 'help request' in the [#platops-help](https://hmcts-reform.slack.com/ap
 4. Ensure you update the `subscription.group` field to a key that represents your management group, e.g. `crime_non_production`
 5. Add your new management group to [subscriptions.tf](https://github.com/hmcts/azure-enterprise/blob/main/components/enterprise/subscriptions.tf)
    - make sure you add a new `local` variable for the management group and modify the `local.subscriptions` variable to add the new local you created
-6. Update the mermaid diagram in this file to include the new management group
+6. Update the [create-mermaid-diagram script](scripts/create-mermaid-diagram.sh) to add your new management group:
+   - append the top level of your new management group to the sed command on [L34](scripts/create-mermaid-diagram.sh#L34) `s/vh_subscriptions/VH:::mg/g; s/new_subscriptions/NEW:::mg/g'`
+   - append the environments for your new management group to the sed command on [L37](scripts/create-mermaid-diagram.sh#L37) `Platform-Sandbox:::mg\'$'\n/g; NEW-Sandbox:::mg\'$'\n/g;'`
 
 <!-- TODO update this when we get a better example that's just doing what is required --> 
 [Example pull request](https://github.com/hmcts/azure-enterprise/pull/11)
