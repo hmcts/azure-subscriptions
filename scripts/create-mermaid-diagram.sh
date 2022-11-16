@@ -59,15 +59,37 @@ grep -vE '\{\}' /tmp/prod.json >> /tmp/prod2.json && mv /tmp/prod2.json /tmp/pro
 $sed_command -i 's/{//g; s/}//g; s|[][]| |g; s/\, / --> /g; s/\,/ --- /g; s/\"//g; s/\\//g; s/://g' /tmp/prod.json
 
 # # rename management groups
-$sed_command -i 's/cft_non_production_subscriptions/CFT-NonProd:::mg/g; s/cft_production_subscriptions/CFT-Prod:::mg/g; s/cft_sandbox_subscriptions/CFT-Sandbox:::mg/g; s/crime_subscriptions/Crime:::mg/g; s/heritage_non_production_subscriptions/Heritage-NonProd:::mg/g; s/heritage_production_subscriptions/Heritage-Prod:::mg/g; s/heritage_sandbox_subscriptions/Heritage-Sandbox:::mg/g; s/platform_non_production_subscriptions/Platform-NonProd:::mg/g; s/platform_production_subscriptions/Platform-Prod:::mg/g; s/platform_sandbox_subscriptions/Platform-Sandbox:::mg/g; s/sds_non_production_subscriptions/SDS-NonProd:::mg/g; s/sds_production_subscriptions/SDS-Prod:::mg/g; s/sds_sandbox_subscriptions/SDS-Sandbox:::mg/g; s/security_subscriptions/Security:::mg/g; s/vh_subscriptions/VH:::mg/g' /tmp/prod.json
+$sed_command -i 's/_subscriptions//g' /tmp/prod.json
+$sed_command -i 's/_sandbox/-Sandbox/g' /tmp/prod.json
+$sed_command -i 's/_non_production/-NonProd/g' /tmp/prod.json
+$sed_command -i 's/_production/-Prod/g' /tmp/prod.json
+$sed_command -i 's/\b\(.\)/\u\1/g' /tmp/prod.json
+$sed_command -i 's/Cft/CFT/g; s/Sds/SDS/g; s/Vh/VH/g' /tmp/prod.json
+$sed_command -i 's/ -->/:::mg -->/g' /tmp/prod.json
 
-# # open mermaid code block and add diagram hierarchy
-$sed_command -i '1s/^/```mermaid\ngraph TD\nclassDef mg stroke:#ff1100,stroke-width:4px\nRoot:::mg --> HMCTS\nHMCTS:::mg --> CFT:::mg\nHMCTS:::mg --> SDS:::mg\nHMCTS:::mg --> Crime:::mg\nHMCTS:::mg --> Heritage:::mg\nHMCTS:::mg --> Security:::mg\nHMCTS:::mg --> Platform:::mg\nHMCTS:::mg --> VH\nCFT:::mg --> CFT-NonProd:::mg\nCFT:::mg --> CFT-Prod:::mg\nCFT:::mg --> CFT-Sandbox:::mg\nSDS:::mg --> SDS-NonProd:::mg\nSDS:::mg --> SDS-Prod:::mg\nSDS:::mg --> SDS-Sandbox:::mg\nHeritage:::mg --> Heritage-NonProd:::mg\nHeritage:::mg --> Heritage-Prod:::mg\nHeritage:::mg --> Heritage-Sandbox:::mg\nPlatform:::mg --> Platform-NonProd:::mg\nPlatform:::mg --> Platform-Prod:::mg\nPlatform:::mg --> Platform-Sandbox:::mg\'$'\n/g' /tmp/prod.json
+# open mermaid code block and add diagram hierarchy
 
-# # replace extra spaces
+$awk_command -F'[:-]' '{print $1 " --> " $1"-"$2}' /tmp/prod.json > /tmp/prod2.json
+while read line; do
+$sed_command -i "1s/^/$line:::mg\n/g" /tmp/prod.json
+done < /tmp/prod2.json
+$sed_command -i '/-:::mg$/d' /tmp/prod.json
+
+$awk_command '{print $1}' /tmp/prod.json > /tmp/prod2.json
+$sed_command -i 's/:::mg//g' /tmp/prod2.json
+$sed_command -i 's/\-.*$//' /tmp/prod2.json
+$awk_command -i inplace '!NF || !seen[$0]++' /tmp/prod2.json 
+while read line; do
+$sed_command -i "1s/^/HMCTS:::mg --> $line:::mg\n/g" /tmp/prod.json
+done < /tmp/prod2.json
+
+$sed_command -i '1s/^/```mermaid\ngraph TD\nclassDef mg stroke:#ff1100,stroke-width:4px\nRoot:::mg --> HMCTS\nHMCTS:::mg -->\'$'\n/g' /tmp/prod.json
+$sed_command -i '/-->$/d' /tmp/prod.json
+
+# replace extra spaces
 $sed_command -i 's/[ ][ ]*/ /g' /tmp/prod.json
 
-# # format Crime subscriptions due to names having spaces
+# format Crime subscriptions due to names having spaces
 $sed_command -i '/^Crime/s/ --- /] --- Crime[/g' /tmp/prod.json
 $sed_command -i '/^Crime/s/$/]/' /tmp/prod.json
 $sed_command -i '/^Crime/s/ ]/]/g' /tmp/prod.json
@@ -77,8 +99,9 @@ $sed_command -i '/^Crime/s/MoJ /[MoJ /g' /tmp/prod.json
 $sed_command -i '/^Crime/s/MOJ /[MOJ /g' /tmp/prod.json
 $sed_command -i '/^Crime/s/CRIME-/[CRIME-/g' /tmp/prod.json
 
-# # close mermaid code block
+# close mermaid code block
 echo "\`\`\`" >> /tmp/prod.json
 
-# # replace current mermaid code block in README with updated content
+# replace current mermaid code block in README with updated content
 $sed_command -i -e '/```mermaid/{:a; N; /\n```$/!ba; r /tmp/prod.json' -e 'd;}' README.md
+

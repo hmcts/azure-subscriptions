@@ -7,25 +7,24 @@ Simplified for our use-cases / retrofitting.
 graph TD
 classDef mg stroke:#ff1100,stroke-width:4px
 Root:::mg --> HMCTS
-HMCTS:::mg --> CFT:::mg
-HMCTS:::mg --> SDS:::mg
-HMCTS:::mg --> Crime:::mg
-HMCTS:::mg --> Heritage:::mg
+HMCTS:::mg --> VH:::mg
 HMCTS:::mg --> Security:::mg
+HMCTS:::mg --> Crime:::mg
+HMCTS:::mg --> CFT:::mg
+HMCTS:::mg --> Heritage:::mg
 HMCTS:::mg --> Platform:::mg
-HMCTS:::mg --> VH
-CFT:::mg --> CFT-NonProd:::mg
-CFT:::mg --> CFT-Prod:::mg
-CFT:::mg --> CFT-Sandbox:::mg
-SDS:::mg --> SDS-NonProd:::mg
-SDS:::mg --> SDS-Prod:::mg
-SDS:::mg --> SDS-Sandbox:::mg
-Heritage:::mg --> Heritage-NonProd:::mg
-Heritage:::mg --> Heritage-Prod:::mg
-Heritage:::mg --> Heritage-Sandbox:::mg
-Platform:::mg --> Platform-NonProd:::mg
-Platform:::mg --> Platform-Prod:::mg
-Platform:::mg --> Platform-Sandbox:::mg
+HMCTS:::mg --> SDS:::mg
+SDS --> SDS-Sandbox:::mg
+SDS --> SDS-Prod:::mg
+SDS --> SDS-NonProd:::mg
+Platform --> Platform-Sandbox:::mg
+Platform --> Platform-Prod:::mg
+Platform --> Platform-NonProd:::mg
+Heritage --> Heritage-Prod:::mg
+Heritage --> Heritage-NonProd:::mg
+CFT --> CFT-Sandbox:::mg
+CFT --> CFT-Prod:::mg
+CFT --> CFT-NonProd:::mg
 CFT-NonProd:::mg --> DCD-CFTAPPS-DEMO --- DCD-CFTAPPS-DEV --- DCD-CFTAPPS-ITHC --- DCD-CFTAPPS-TEST --- DCD-CFTAPPSDATA-DEMO --- DCD-CFT-Idam-Dev --- DCD-CNP-DEV --- DCD-CNP-QA --- DCD-ROBOTICS-DEV 
 CFT-Prod:::mg --> DCD-CFTAPPS-PROD --- DCD-CFTAPPS-STG --- DCD-CNP-Prod --- DTS-CFTPTL-INTSVC --- DTS-CFTSBOX-INTSVC --- Reform-CFT-MI-SB 
 CFT-Sandbox:::mg --> DCD-CFT-Sandbox --- DCD-CFTAPPS-SBOX --- DCD-ROBOTICS-SBOX 
@@ -46,7 +45,9 @@ VH:::mg --> DTS-VH-PROD
 
 The diagram above is generated automatically from the subscriptions listed in `environments/prod/prod.tfvars` via a [GitHub Action](.github/workdlows/create-mermaid-diagram.yml).
 
-If you add a new management group, be sure to update the [script](scripts/create-mermaid-diagram.sh#L34-L37) so the desired structure is accurately reflected in the diagram.
+If you add a new management group and subscriptions to `prod.tfvars`, this will be automatically reflected in the diagram.
+
+If you need any custom formatting, you must edit the script.
 
 The script works on both macOS and Linux.
 
