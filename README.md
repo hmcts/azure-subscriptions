@@ -49,6 +49,8 @@ If you add a new management group and subscriptions to `prod.tfvars`, this will 
 
 If you need any custom formatting, you must edit the script.
 
+Empty management groups will not be shown in the diagram.
+
 The script works on both macOS and Linux.
 
 Management group nodes are highlighted with a thick red border as denoted by `:::mg`. Subscription nodes use the default blue/grey border.
