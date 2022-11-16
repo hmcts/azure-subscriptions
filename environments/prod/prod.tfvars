@@ -1,3 +1,7 @@
+mynew_sandbox_subscriptions = {
+  sub1 = {}
+}
+
 cft_sandbox_subscriptions = {
   DCD-CFT-Sandbox = {
     environment = "sbox"
