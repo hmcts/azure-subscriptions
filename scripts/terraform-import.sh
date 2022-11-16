@@ -393,7 +393,7 @@ for subscription in $(echo "${subscriptions[@]}" | jq -c '.[]'); do
         fi
     fi
 
-    # remove user permissions to key vault
+    remove user permissions to key vault
     echo "Deleting key vault access policy for current user"
     az keyvault delete-policy --name $(echo c${SUBSCRIPTION_ID:0:8}${SUBSCRIPTION_ID:24:32}kv) --object-id $USER_ID &> /dev/null
 done
