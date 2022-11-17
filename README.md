@@ -45,9 +45,6 @@ VH:::mg --> DTS-VH-PROD
 
 The diagram above is generated automatically from the subscriptions listed in `environments/prod/prod.tfvars` via a [GitHub Action](.github/workdlows/create-mermaid-diagram.yml).
 
-If you add a new management group and subscriptions to `prod.tfvars`, this will be automatically reflected in the diagram.
-
-If you need any custom formatting, you must edit the script.
 
 Empty management groups will not be shown in the diagram.
 
