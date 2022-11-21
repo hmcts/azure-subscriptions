@@ -159,7 +159,7 @@ crime_subscriptions = {
     environment = "prod"
     product     = "crime-platform"
   }
-  "MoJ Operational Services" = {
+  "MoJ Common Platform Operational Services" = {
     environment = "prod"
     product     = "crime-platform"
   }
