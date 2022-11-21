@@ -159,6 +159,14 @@ crime_subscriptions = {
     environment = "prod"
     product     = "crime-platform"
   }
+  "MoJ Operational Services" = {
+    environment = "prod"
+    product     = "crime-platform"
+  }
+  "MoJ Common Platform Pre-Production" = {
+    environment = "stg"
+    product     = "crime-platform"
+  }
 }
 
 heritage_sandbox_subscriptions = {}
