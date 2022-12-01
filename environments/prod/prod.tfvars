@@ -179,7 +179,7 @@ heritage_non_production_subscriptions = {
   }
   DTS-ARCHIVING-TEST = {
     environment = "test"
-    product = "arm"
+    product     = "arm"
   }
 }
 heritage_production_subscriptions = {
