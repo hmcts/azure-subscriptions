@@ -77,3 +77,9 @@ variable "project_id" {
 variable "custom_roles" {
   default = {}
 }
+
+variable "versioning_enabled" {
+  type        = bool
+  default     = true
+  description = "Should the versioning be enabled on storage account"
+}

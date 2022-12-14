@@ -7,6 +7,7 @@ resource "azurerm_storage_account" "sa" {
   account_replication_type        = var.replication_type
   tags                            = var.common_tags
   allow_nested_items_to_be_public = false
+  versioning_enabled              = var.versioning_enabled
 }
 
 resource "azurerm_storage_container" "sc" {
