@@ -74,6 +74,7 @@ stages:
               keyvaultName: 'infra-vault-nonprod'
               keyvaultSecret: 'azure-devops-token'
               serviceConnection: 'DCD-CFT-Sandbox'
+              overrideAction: ${{ parameters.overrideAction }}
 
           - bash: |
               wget -O /tmp/yj https://github.com/sclevine/yj/releases/download/v5.1.0/yj-linux-amd64
