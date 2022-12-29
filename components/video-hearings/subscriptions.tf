@@ -20,9 +20,10 @@ module "subscription" {
 }
 
 module "tags" {
-  for_each    = local.subscriptions
-  source      = "git::https://github.com/hmcts/terraform-module-common-tags.git?ref=master"
-  environment = try(each.value.environment, lower(replace([each.key][0], local.regex_last_section_hyphen, "$1")))
-  product     = var.product
-  builtFrom   = var.builtFrom
+  for_each     = local.subscriptions
+  source       = "git::https://github.com/hmcts/terraform-module-common-tags.git?ref=master"
+  environment  = try(each.value.environment, lower(replace([each.key][0], local.regex_last_section_hyphen, "$1")))
+  product      = var.product
+  builtFrom    = var.builtFrom
+  expiresAfter = var.expiresAfter
 }
