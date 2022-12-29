@@ -101,6 +101,6 @@ variable "add_service_connection_to_ado" {
 }
 
 variable "expiresAfter" {
-  description = "Date when Sandbox resources can be deleted. Format: YYYY-MM-DD
+  description = "Date when Sandbox resources can be deleted. Format: YYYY-MM-DD"
   default     = "3000-01-01"
 }
