@@ -91,3 +91,8 @@ variable "vh_subscriptions" {
 variable "deploy_acme" {
   default = false
 }
+
+variable "expiresAfter" {
+  description = "Date when Sandbox resources can be deleted. Format: YYYY-MM-DD"
+  default     = "3000-01-01"
+}
