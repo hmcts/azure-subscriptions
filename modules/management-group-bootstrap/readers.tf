@@ -14,3 +14,11 @@ resource "azurerm_role_assignment" "readers" {
   scope                = "/providers/Microsoft.Management/managementGroups/${each.value.id}"
   role_definition_name = "Reader"
 }
+
+resource "azurerm_role_assignment" "app_gateway_backend_health_reader" {
+  for_each = var.groups
+
+  principal_id         = azuread_group.readers[each.value.id].object_id
+  scope                = "/providers/Microsoft.Management/managementGroups/${each.value.id}"
+  role_definition_name = "Application Gateway Backend Health Reader"
+}
