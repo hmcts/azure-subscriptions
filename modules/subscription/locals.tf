@@ -85,7 +85,8 @@ locals {
       principal_id = data.azuread_group.dts_operations.object_id
       scope        = "/subscriptions/${azurerm_subscription.this.subscription_id}"
     }
-    "Application Gateway Backend Health Reader" = {
+    #Application Gateway Backend Health Reader
+    "159469f4-6e46-4b09-aa73-8e2f243aa784" = {
       principal_id = azuread_group.groups["Reader"].id
       scope        = "/subscriptions/${azurerm_subscription.this.subscription_id}"
     }
