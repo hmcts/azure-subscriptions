@@ -10,4 +10,13 @@ resource "azurerm_role_assignment" "local_role_assignments" {
   scope                = each.value.scope
   role_definition_name = each.key
   principal_id         = each.value.principal_id
+
+}
+
+resource "azurerm_role_assignment" "local_custom_role_assignments" {
+  for_each             = local.custom_role_assignments
+  scope                = each.value.scope
+  role_definition_id   = each.value.role_id
+  principal_id         = each.value.principal_id
+
 }
