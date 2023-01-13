@@ -21,7 +21,7 @@ resource "azurerm_role_assignment" "local_custom_role_assignments" {
 }
 
 data "azurerm_role_definition" "custom_role_definitions" {
-  for_each           = [ for k, v in var.custom_roles : v if keys(local.custom_role_assignments, v) ]
+  for_each           = [for k, v in var.custom_roles : v if keys(local.custom_role_assignments, v)]
   role_definition_id = each.value
 
 }
