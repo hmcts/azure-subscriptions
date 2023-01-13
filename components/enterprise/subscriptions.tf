@@ -25,5 +25,5 @@ module "tags" {
 }
 
 output "custom_roles" {
-  value = module.enterprise.custom_roles[*]
+  value = module.enterprise.custom_roles["Application Gateway Backend Health Reader"]
 }
