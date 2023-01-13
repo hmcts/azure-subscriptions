@@ -1,5 +1,5 @@
 resource "azurerm_role_definition" "custom_role_definitions" {
-  for_each    = local.custom_role_assignments
+  for_each = local.custom_role_assignments
 
   name        = each.key
   description = each.value.description
