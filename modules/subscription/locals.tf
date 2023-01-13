@@ -90,7 +90,6 @@ locals {
   custom_role_assignments = {
     "Application Gateway Backend Health Reader" = {
       principal_id = azuread_group.groups["Reader"].id
-      role_id      = "159469f4-6e46-4b09-aa73-8e2f243aa784"
       scope        = "/subscriptions/${azurerm_subscription.this.subscription_id}"
     },
   }
