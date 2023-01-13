@@ -12,7 +12,7 @@ module "subscription" {
   deploy_acme             = try(each.value.deploy_acme, false)
   replication_type        = try(each.value.replication_type, "ZRS")
 
-  custom_roles = module.enterprise.custom_roles
+  custom_roles = module.enterprise.custom_roles[*]
 }
 
 module "tags" {
@@ -25,5 +25,5 @@ module "tags" {
 }
 
 output "custom_roles" {
-  value = module.enterprise.custom_roles
+  value = module.enterprise.custom_roles[*]
 }
