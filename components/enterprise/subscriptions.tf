@@ -23,7 +23,3 @@ module "tags" {
   builtFrom    = var.builtFrom
   expiresAfter = var.expiresAfter
 }
-
-output "custom_roles" {
-  value = module.enterprise.custom_roles
-}
