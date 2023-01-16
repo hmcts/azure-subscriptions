@@ -5,6 +5,8 @@ module "enterprise" {
   root_name      = var.root_name
   root_parent_id = data.azurerm_client_config.core.tenant_id
 
+  custom_roles = module.enterprise.custom_roles
+
   management_groups = {
     HMCTS = {
       display_name               = "HMCTS"
