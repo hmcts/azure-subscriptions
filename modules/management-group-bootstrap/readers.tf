@@ -15,26 +15,9 @@ resource "azurerm_role_assignment" "readers" {
   role_definition_name = "Reader"
 }
 
-locals {
-  custom_role_assignments = [
-    "Application Gateway Backend Health Reader"
-  ]
-
-  #  role_assignments = distinct(flatten([
-  #    for group in var.groups : [
-  #      for role in var.custom_roles : {
-  #        group = group.id
-  #        role  = role.role_definition_id
-  #      }
-  #  ]]))
-
-  group_assignment_product = setproduct(keys(var.groups), local.custom_role_assignments)
-
-}
-
 resource "azurerm_role_assignment" "custom_role_assignments_readers" {
   for_each = {
-    for association in local.group_assignment_product : "${association[0]} - ${association[1]}" => {
+    for association in local.group_assignment_product_readers : "${association[0]} - ${association[1]}" => {
       group = association[0]
       role  = association[1]
   } }
