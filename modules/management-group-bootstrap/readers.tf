@@ -25,7 +25,7 @@ locals {
       for role in var.custom_roles : {
         group = group.id
         role  = role.role_definition_id
-      } if contains(local.custom_role_assignments, role.name)
+      }
   ]]))
 }
 
