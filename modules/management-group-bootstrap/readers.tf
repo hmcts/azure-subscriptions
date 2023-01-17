@@ -21,17 +21,17 @@ locals {
   ]
 
   role_assignments = distinct(flatten([
-  for group in var.groups : [
-  for role in var.custom_roles : {
-    group   = group.id
-    role    = role
-  } if contains(keys(local.custom_role_assignments), k)
+    for group in var.groups : [
+      for role in var.custom_roles : {
+        group = group.id
+        role  = role
+      } if contains(keys(local.custom_role_assignments), k)
   ]]))
 }
 
 
 resource "azurerm_role_assignment" "custom_role_assignments_readers" {
-  for_each = { for k,v in local.role_assignments: "${k}-${v.group}" => v }
+  for_each = { for k, v in local.role_assignments : "${k}-${v.group}" => v }
 
 
   principal_id       = azuread_group.readers[each.value.group].object_id
