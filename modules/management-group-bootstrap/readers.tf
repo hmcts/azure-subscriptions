@@ -21,11 +21,11 @@ locals {
   ]
 
   role_assignments = distinct(flatten([
-    for group in var.groups : [
-      for role in var.custom_roles : {
-        group = group.id
-        role  = role
-      } if contains(local.custom_role_assignments, group.id)
+  for group in var.groups : [
+  for role in var.custom_roles : {
+    group   = group.id
+    role    = role
+  } if contains(local.custom_role_assignments, role)
   ]]))
 }
 
