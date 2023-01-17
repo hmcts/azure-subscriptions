@@ -373,8 +373,18 @@ To create a custom role you need to update the [locals.tf](./modules/enterprise/
 ```
 
 ### Assigning custom roles
-
 To assign a Custom Role, the role itself needs to be created in this repo first using the instructions above.
+
+#### Management Groups
+Once the role has been created we can assign it by updating the [locals.tf](./modules/management-group-bootstrap/locals.tf) file in the subscription module. You will need to add the name of the custom role to the `custom_role_assignments_readers` list to assign to the Management Group's Readers Group.
+
+```terraform
+  custom_role_assignments_readers = [
+   "Application Gateway Backend Health Reader"
+]
+```
+
+#### Subscriptions 
 
 Once the role has been created we can assign it by updating the [locals.tf](./modules/subscription/locals.tf) file in the subscription module. You will need to add the name of the custom role, the ID of the principal being assigned to the role and the scope of the permission.
 
