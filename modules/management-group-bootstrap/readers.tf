@@ -29,12 +29,14 @@ locals {
   ]]))
 }
 
-
 resource "azurerm_role_assignment" "custom_role_assignments_readers" {
   for_each = { for k, v in local.role_assignments : "${k}-${v.group}" => v }
-
 
   principal_id       = azuread_group.readers[each.value.group].object_id
   scope              = "/providers/Microsoft.Management/managementGroups/${each.value.group}"
   role_definition_id = var.custom_roles[each.value.role].role_definition_id
+}
+
+output "role_assignments" {
+  value = local.role_assignments
 }
