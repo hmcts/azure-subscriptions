@@ -31,7 +31,7 @@ locals {
 
 
 resource "azurerm_role_assignment" "custom_role_assignments_readers" {
-  for_each = { for k,v in local.role_assignments: "${k}-${v.group}" => v }
+  for_each = { for k, v in local.role_assignments : "${k}-${v.group}" => v }
 
 
   principal_id       = azuread_group.readers[each.value.group].object_id
