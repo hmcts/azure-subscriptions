@@ -43,7 +43,7 @@ VH:::mg --> DTS-VH-PROD
 
 ## Diagram setup
 
-The diagram above is generated automatically from the subscriptions listed in `environments/prod/prod.tfvars` via a [GitHub Action](.github/workdlows/create-mermaid-diagram.yml).
+The diagram above is generated automatically from the subscriptions listed in `environments/prod/prod.tfvars` via a [GitHub Action](.github/workflows/create-mermaid-diagram.yml).
 
 
 Empty management groups will not be shown in the diagram.
@@ -355,3 +355,45 @@ The Azure DevOps pipeline will run automatically every day at 8am to refresh the
 When the timestamp is surpassed by the current time, the `time_rotating` resource will be refreshed and the `azuread_application_password` token will be updated to a newly generated value.
 
 This value will then be used to update the service connection in Azure DevOps.
+
+## Creating and assigning custom roles
+
+### Creating a custom role 
+
+To create a custom role you need to update the [locals.tf](./modules/enterprise/locals.tf) file in the enterprise module and update the `custom_roles` local value with the name of the role, the description, the scope and the actions allowed.
+
+```terraform
+  custom_roles = {
+    "Application Gateway Backend Health Reader" = {
+      description = "View backend health on the Application Gateway"
+      scope       = "/providers/Microsoft.Management/managementGroups/HMCTS"
+      actions     = ["Microsoft.Network/applicationGateways/backendhealth/action"]
+    },
+  }
+```
+
+### Assigning custom roles
+To assign a Custom Role, the role itself needs to be created in this repo first using the instructions above.
+
+#### Management Groups
+Once the role has been created we can assign it by updating the [locals.tf](./modules/management-group-bootstrap/locals.tf) file in the subscription module. You will need to add the name of the custom role to the `custom_role_assignments_readers` list to assign to the Management Group's Readers Group.
+
+```terraform
+  custom_role_assignments_readers = [
+   "Application Gateway Backend Health Reader"
+]
+```
+
+#### Subscriptions 
+
+Once the role has been created we can assign it by updating the [locals.tf](./modules/subscription/locals.tf) file in the subscription module. You will need to add the name of the custom role, the ID of the principal being assigned to the role and the scope of the permission.
+
+```terraform
+  custom_role_assignments = {
+    "Application Gateway Backend Health Reader" = {
+      principal_id = azuread_group.groups["Reader"].id
+      scope        = "/subscriptions/${azurerm_subscription.this.subscription_id}"
+    },
+  }
+```
+
