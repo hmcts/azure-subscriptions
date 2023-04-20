@@ -73,3 +73,7 @@ variable "project_id" {
   # PlatformOperations project
   default = "c8947a39-47e3-4236-8bc8-51ff42dbda51"
 }
+
+variable "custom_roles" {
+  default = {}
+}

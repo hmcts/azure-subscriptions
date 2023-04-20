@@ -1,9 +1,9 @@
 terraform {
-  required_version = "1.2.9"
+  required_version = "1.4.5"
   required_providers {
     azuredevops = {
       source  = "microsoft/azuredevops"
-      version = "0.1.8"
+      version = "0.4.0"
     }
   }
 }
