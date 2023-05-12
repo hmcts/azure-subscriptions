@@ -16,6 +16,6 @@ resource "azurerm_role_assignment" "local_role_assignments" {
 resource "azurerm_role_assignment" "local_custom_role_assignments" {
   for_each           = { for k, v in var.custom_roles : k => v if contains(keys(local.custom_role_assignments), k) }
   scope              = "/subscriptions/${azurerm_subscription.this.subscription_id}"
-  role_definition_id = "/subscriptions/${azurerm_subscription.this.subscription_id}/${each.value.role_definition_resource_id}"
+  role_definition_id = "/subscriptions/${azurerm_subscription.this.subscription_id}${each.value.role_definition_resource_id}"
   principal_id       = local.custom_role_assignments[each.key].principal_id
 }
