@@ -64,7 +64,6 @@ variable "environment" {
   }
 }
 
-variable "pipeline_environment" {}
 variable "common_tags" {
   description = "Common tag to be applied"
   type        = map(string)
