@@ -11,3 +11,8 @@ resource "azuread_group_member" "members" {
   group_object_id  = azuread_group.groups[each.value.role].id
   member_object_id = each.value.member
 }
+
+resource "azuread_group_member" "dts_operation_members" {
+  group_object_id  = "DTS Operations (env: ${var.environment})"
+  member_object_id = azuread_service_principal.sp.object_id
+}
