@@ -55,7 +55,7 @@ cft_production_subscriptions = {
   }
   DTS-CFTSBOX-INTSVC = {
     deploy_acme = true
-    environment = "sbox"
+    environment = "ptlsbox"
   }
   Reform-CFT-MI-SB = {
     environment = "sbox"
