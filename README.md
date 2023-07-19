@@ -283,6 +283,22 @@ It will be automatically deleted after 90 days or can be force deleted after 72 
 
 Once the subscription has been fully deleted it can be removed from terraform.
 
+To remove from terraform you will probably need to remove it from the state file:
+
+```bash
+SUBSCRIPTION_NAME='MoJ Common Platform Online Plea Pre-Production'
+terraform state list | grep $SUBSCRIPTION_NAME | xargs -d'\n' -n1 terraform state rm
+```
+
+On MacOS you will want to use `gxargs` instead of `xargs`:
+
+```bash
+brew install findutils
+
+SUBSCRIPTION_NAME='MoJ Common Platform Online Plea Pre-Production'
+terraform state list | grep $SUBSCRIPTION_NAME | gxargs -d'\n' -n1 terraform state rm
+```
+
 ## Adding another tenant
 
 We aim to manage the subscriptions for all our tenants as part of this repository, that way we have one place to manage the enterprise from.
