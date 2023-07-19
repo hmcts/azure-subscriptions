@@ -123,10 +123,6 @@ crime_subscriptions = {
     environment = "stg"
     product     = "crime-platform"
   }
-  "MoJ Common Platform Online Plea Pre-Production" = {
-    environment = "stg"
-    product     = "crime-platform"
-  }
   "MoJ Common Platform Pilot" = {
     environment = "prod"
     product     = "crime-platform"
@@ -137,10 +133,6 @@ crime_subscriptions = {
   }
   "MOJ DCD Atlassian NLE" = {
     environment = "stg"
-    product     = "crime-platform"
-  }
-  "MoJ Common Platform Online Plea Production" = {
-    environment = "prod"
     product     = "crime-platform"
   }
   "MoJ Common Platform Production" = {
