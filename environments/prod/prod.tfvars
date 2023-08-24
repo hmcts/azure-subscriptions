@@ -111,20 +111,8 @@ crime_subscriptions = {
     environment = "prod"
     product     = "crime-platform"
   }
-  "MoJ Common Platform Non-Functional Testing" = {
-    environment = "stg"
-    product     = "crime-platform"
-  }
   "MoJ Common Platform Non-Live Management" = {
     environment = "stg"
-    product     = "crime-platform"
-  }
-  "MoJ Common Platform Pilot" = {
-    environment = "prod"
-    product     = "crime-platform"
-  }
-  "MoJ Common Platform System Integration Testing" = {
-    environment = "test"
     product     = "crime-platform"
   }
   "MOJ DCD Atlassian NLE" = {
@@ -132,10 +120,6 @@ crime_subscriptions = {
     product     = "crime-platform"
   }
   "MoJ Common Platform Production" = {
-    environment = "prod"
-    product     = "crime-platform"
-  }
-  "MoJ Common Platform Security Operations" = {
     environment = "prod"
     product     = "crime-platform"
   }
