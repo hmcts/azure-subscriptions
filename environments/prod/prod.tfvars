@@ -143,8 +143,9 @@ crime_subscriptions = {
 
 heritage_sandbox_subscriptions = {}
 heritage_non_production_subscriptions = {
-  DTS-HERITAGE-EXTSVC-STG = {
-    environment = "stg"
+
+  DTS-HERITAGE-INTSVC-DEV = {
+    environment = "dev"
   }
   DTS-HERITAGE-INTSVC-STG = {
     environment = "stg"
