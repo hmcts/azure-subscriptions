@@ -1,0 +1,48 @@
+[
+    {
+       "subscription_name": "DCD-CFT-Sandbox", "deploy_acme": "true", "environment": "sbox"
+    },
+    {
+      "subscription_name": "DCD-CFTAPPS-SBOX", "deploy_acme": "true"
+   },
+   {
+      "subscription_name": "DCD-ROBOTICS-SBOX", "deploy_acme": "true"
+   },
+   {
+      "subscription_name": " DCD-CFTAPPS-DEMO", "deploy_acme": "true"
+   },
+   {
+      "subscription_name": "DCD-CFTAPPS-PROD", "deploy_acme": "true", "environment": "prod"
+   },
+   {
+      "subscription_name": "DCD-CNP-Prod", "deploy_acme": "true", "environment": "prod"
+   },
+   {
+      "subscription_name": "DCD-RDO-Production", "deploy_acme": "true", "environment": "prod"
+   },
+   {
+      "subscription_name": "DTS-ARCHIVING-PROD", "deploy_acme": "true", "environment": "prod"
+   },
+   {
+      "subscription_name": "DTS-HERITAGE-EXTSVC-PROD", "deploy_acme": "true", "environment": "prod"
+   },
+   {
+      "subscription_name": "DTS-HERITAGE-INTSVC-PROD", "deploy_acme": "true", "environment": "prod"
+   },
+   {
+      "subscription_name": "DTS-MANAGEMENT-PROD-INTSVC", "deploy_acme": "true", "environment": "prod"
+   },
+   {
+      "subscription_name": "HMCTS-SOC-PROD", "deploy_acme": "true", "environment": "prod"
+   },
+   {
+      "subscription_name": "HMCTS-HUB-PROD-INTSVC", "deploy_acme": "true", "environment": "prod"
+   },
+   {
+      "subscription_name": "MoJ Common Platform Pre-Production", "deploy_acme": "true", "environment": "stg"
+   },
+   {
+      "subscription_name": "MoJ Common Platform Production", "deploy_acme": "true", "environment": "prod"
+   }
+]
+(UserNotAuthorized) User does not have access Microsoft.Subscription/aliases/write over scope providers/Microsoft.Subscription/aliases/DTS-HERITAGE-INTSVC-STG
