@@ -1,7 +1,7 @@
 resource "azuredevops_serviceendpoint_azurerm" "endpoint" {
   count                 = var.add_service_connection_to_ado == true ? 1 : 0
   project_id            = var.project_id
-  service_endpoint_name = "OPS-APPROVAL-GATE-${upper(var.env)}-ENVS"
+  service_endpoint_name = "Glimr-APPROVAL-GATE-${upper(var.env)}-ENVS"
   credentials {
     serviceprincipalid  = azuread_service_principal.sp.application_id
     serviceprincipalkey = azuread_application_password.token.value
