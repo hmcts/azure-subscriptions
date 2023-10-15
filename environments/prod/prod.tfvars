@@ -141,8 +141,15 @@ crime_subscriptions = {
   }
 }
 
-heritage_sandbox_subscriptions = {}
+heritage_sandbox_subscriptions = {
+  DTS-DLRMINGEST-SBOX = {
+    environment = "sbox"
+  }
+}
 heritage_non_production_subscriptions = {
+  DTS-DLRMINGEST-STG = {
+    environment = "stg"
+  }
   DTS-HERITAGE-EXTSVC-STG = {
     environment = "stg"
   }
@@ -158,6 +165,9 @@ heritage_non_production_subscriptions = {
   }
 }
 heritage_production_subscriptions = {
+  DTS-DLRMINGEST-PROD = {
+    environment = "prod"
+  }
   DTS-HERITAGE-EXTSVC-PROD = {
     environment = "prod"
   }
