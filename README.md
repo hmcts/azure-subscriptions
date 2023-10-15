@@ -29,7 +29,7 @@ CFT-NonProd:::mg --> DCD-CFTAPPS-DEMO --- DCD-CFTAPPS-DEV --- DCD-CFTAPPS-ITHC -
 CFT-Prod:::mg --> DCD-CFTAPPS-PROD --- DCD-CFTAPPS-STG --- DCD-CNP-Prod --- DTS-CFTPTL-INTSVC --- DTS-CFTSBOX-INTSVC --- Reform-CFT-MI-SB 
 CFT-Sandbox:::mg --> DCD-CFT-Sandbox --- DCD-CFTAPPS-SBOX --- DCD-ROBOTICS-SBOX 
 Crime:::mg --> Crime1[CRIME-ADO-POC] --- Crime2[MoJ Common Platform Non-Live Management] --- Crime3[MOJ DCD Atlassian NLE] --- Crime4[MoJ Common Platform Production] --- Crime5[MOJ DCD Atlassian LVE] --- Crime6[MoJ Operational Services Validation] --- Crime7[MoJ Common Platform Operational Services] --- Crime8[MoJ Common Platform Pre-Production]
-Heritage-NonProd:::mg --> DTS-HERITAGE-EXTSVC-STG --- DTS-HERITAGE-INTSVC-STG --- DTS-ARCHIVING-TEST 
+Heritage-NonProd:::mg --> DTS-HERITAGE-EXTSVC-STG --- DTS-HERITAGE-INTSVC-STG --- DTS-HERITAGE-INTSVC-DEV --- DTS-ARCHIVING-TEST 
 Heritage-Prod:::mg --> DTS-HERITAGE-EXTSVC-PROD --- DTS-HERITAGE-INTSVC-PROD --- DTS-ARCHIVING-PROD 
 Platform-NonProd:::mg --> DTS-MANAGEMENT-TEST --- DTS-MANAGEMENT-NONPROD-INTSVC --- HMCTS-HUB-DEV --- HMCTS-HUB-NONPROD-INTSVC --- HMCTS-HUB-TEST --- DCD-RDO-Development 
 Platform-Prod:::mg --> HMCTS-CONTROL --- DTS-MANAGEMENT-PROD-INTSVC --- HMCTS-HUB-PROD-INTSVC --- Reform-CFT-Mgmt --- DCD-RDO-Production 

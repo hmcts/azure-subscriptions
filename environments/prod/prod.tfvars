@@ -149,6 +149,9 @@ heritage_non_production_subscriptions = {
   DTS-HERITAGE-INTSVC-STG = {
     environment = "stg"
   }
+  DTS-HERITAGE-INTSVC-DEV = {
+    environment = "dev"
+  }
   DTS-ARCHIVING-TEST = {
     environment = "test"
     product     = "arm"
