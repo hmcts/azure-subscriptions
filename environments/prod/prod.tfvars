@@ -142,12 +142,12 @@ crime_subscriptions = {
 }
 
 heritage_sandbox_subscriptions = {
-  DTS-DLRMINGEST-SBOX = {
+  DTS-DATAINGEST-SBOX = {
     environment = "sbox"
   }
 }
 heritage_non_production_subscriptions = {
-  DTS-DLRMINGEST-STG = {
+  DTS-DATAINGEST-STG = {
     environment = "stg"
   }
   DTS-HERITAGE-EXTSVC-STG = {
@@ -165,7 +165,7 @@ heritage_non_production_subscriptions = {
   }
 }
 heritage_production_subscriptions = {
-  DTS-DLRMINGEST-PROD = {
+  DTS-DATAINGEST-PROD = {
     environment = "prod"
   }
   DTS-HERITAGE-EXTSVC-PROD = {
