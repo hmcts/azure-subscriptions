@@ -19,7 +19,7 @@ module "custom_role_assignments" {
   source          = "../../modules/custom_role_assignments"
   subscription_id = module.subscription[each.key].subscription_id
   reader_group_id = module.subscription[each.key].reader_group_id
-  custom_roles = module.enterprise.custom_roles
+  custom_roles    = module.enterprise.custom_roles
 }
 
 module "tags" {
