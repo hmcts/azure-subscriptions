@@ -21,7 +21,7 @@ module "custom_role_assignments" {
   reader_group_id = module.subscription[each.key].reader_group_id
   custom_roles    = module.enterprise.custom_roles
 
-  depends_on = [ module.enterprise ]
+  depends_on = [module.enterprise]
 }
 
 module "tags" {
