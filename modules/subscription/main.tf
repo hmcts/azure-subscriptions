@@ -19,3 +19,7 @@ output "subscription_id" {
 output "subscription_name" {
   value = azurerm_subscription.this.subscription_name
 }
+
+output "reader_group_id" {
+  value = azuread_group.groups["Reader"].id
+}

@@ -11,7 +11,14 @@ module "subscription" {
   enrollment_account_name = var.enrollment_account_name
   deploy_acme             = try(each.value.deploy_acme, false)
   replication_type        = try(each.value.replication_type, "ZRS")
+}
 
+module "custom_role_assignments" {
+  for_each = local.subscriptions
+
+  source          = "../../modules/custom_role_assignments"
+  subscription_id = module.subscription[each.key].subscription_id
+  reader_group_id = module.subscription[each.key].reader_group_id
   custom_roles = module.enterprise.custom_roles
 }
 
