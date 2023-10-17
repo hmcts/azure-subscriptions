@@ -16,7 +16,7 @@ jobs:
         uses: Homebrew/actions/setup-homebrew@master
 
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Script
         run: |
