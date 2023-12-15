@@ -7,10 +7,11 @@ module "subscription" {
   common_tags = module.tags[each.key].common_tags
   environment = try(each.value.environment, lower(replace([each.key][0], local.regex_last_section_hyphen, "$1")))
 
-  billing_account_name    = var.billing_account_name
-  enrollment_account_name = var.enrollment_account_name
-  deploy_acme             = try(each.value.deploy_acme, false)
-  replication_type        = try(each.value.replication_type, "ZRS")
+  billing_account_name       = var.billing_account_name
+  enrollment_account_name    = var.enrollment_account_name
+  deploy_acme                = try(each.value.deploy_acme, false)
+  replication_type           = try(each.value.replication_type, "ZRS")
+  additional_api_permissions = try(each.value.additional_api_permissions, {})
 }
 
 module "custom_role_assignments" {
