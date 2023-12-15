@@ -35,6 +35,19 @@ resource "azuread_application" "app" {
       type = "Role"
     }
   }
+  dynamic "required_resource_access" {
+    for_each = var.additional_api_permissions
+    content {
+      resource_app_id = required_resource_access.key
+      dynamic "resource_access" {
+        for_each = required_resource_access.value
+        content {
+          id   = resource_access.key
+          type = resource_access.value
+        }
+      }
+    }
+  }
   web {
     homepage_url = "https://dev.azure.com/hmcts/PlatformOperations"
 

@@ -415,3 +415,26 @@ Once the role has been created we can assign it by updating the [locals.tf](./mo
   }
 ```
 
+## Adding additional API Permissions to ADO Service Principals
+
+By default the pipeline will add the following API permissions to the ADO Service Principals:
+- Directory.Read.All Delegated
+- Group.Read.All Application
+- Application.Read.All Application
+
+To add additional permissions to allow the ADO service principal to interact with other resources, add a `additional_api_permissions` property to the subscription definition in the `*.tfvars` file.
+
+### Example
+
+The example below will add API permissions for Microsoft Purview to the `DTS-SHAREDSERVICES-DEV` service principal.
+
+```terraform
+DTS-SHAREDSERVICES-DEV = {
+  deploy_acme = true
+  additional_api_permissions = {
+    "73c2949e-da2d-457a-9607-fcc665198967" = {
+      "817468d0-81dd-4cb5-94ac-07ca133fbbf6" = "Scope"
+    }
+  }
+}
+```

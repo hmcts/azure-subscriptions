@@ -79,3 +79,9 @@ variable "versioning_enabled" {
   default     = true
   description = "Should the versioning be enabled on storage account"
 }
+
+variable "additional_api_permissions" {
+  type        = map(map(string))
+  description = "Additional API permissions to be added to the application"
+  default     = {}
+}
