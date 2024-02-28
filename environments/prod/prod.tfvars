@@ -93,6 +93,11 @@ sds_production_subscriptions = {
   }
   DTS-SHAREDSERVICES-PROD = {
     deploy_acme = true
+    additional_api_permissions = {
+      "73c2949e-da2d-457a-9607-fcc665198967" = {
+        "817468d0-81dd-4cb5-94ac-07ca133fbbf6" = "Scope"
+      }
+    }
   }
   DCD-AWS-Migration = {
     environment = "prod"
