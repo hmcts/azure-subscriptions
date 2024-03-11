@@ -80,7 +80,7 @@ resource "azurerm_key_vault_secret" "sp_object_id" {
 
 resource "azurerm_key_vault_secret" "sp_app_id" {
   name         = "sp-application-id"
-  value        = azuread_application.app.application_id
+  value        = azuread_application.app.client_id
   key_vault_id = azurerm_key_vault.kv.id
 }
 

@@ -33,4 +33,5 @@ resource "azuread_application" "acme_appreg" {
       type = "Scope"
     }
   }
+  notes = var.notes
 }
