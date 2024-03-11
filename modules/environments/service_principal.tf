@@ -33,6 +33,7 @@ resource "azuread_application" "app" {
       id_token_issuance_enabled     = true
     }
   }
+  notes = var.notes
 }
 
 resource "azuread_application_password" "token" {
@@ -43,5 +44,5 @@ resource "azuread_application_password" "token" {
 }
 
 resource "azuread_service_principal" "sp" {
-  application_id = azuread_application.app.application_id
+  client_id = azuread_application.app.client_id
 }

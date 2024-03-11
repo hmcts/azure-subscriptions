@@ -85,3 +85,8 @@ variable "additional_api_permissions" {
   description = "Additional API permissions to be added to the application"
   default     = {}
 }
+variable "notes" {
+  type        = string
+  description = "User defined Notes for the service prinicipal"
+  default     = "This service principal created by hmcts/azure-enterprise repository"
+}
