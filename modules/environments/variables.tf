@@ -24,7 +24,7 @@ variable "project_id" {
 
 variable "notes" {
   type        = string
-  description = "User defined Notes for the service prinicipal"
+  description = "User defined Notes for the service principal"
   default     = "This service principal created by hmcts/azure-enterprise repository"
 }
 
