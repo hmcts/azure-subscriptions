@@ -2,7 +2,7 @@ resource "azuread_group" "reservation_purchaser" {
   for_each = var.groups
 
 
-  display_name            = "DTS Reservations Purchaser (mg:${each.value.id})"
+  display_name            = "DTS Reservation Purchaser (mg:${each.value.id})"
   prevent_duplicate_names = true
   security_enabled        = true
 }
