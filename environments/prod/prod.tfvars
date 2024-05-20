@@ -219,6 +219,10 @@ platform_sandbox_subscriptions = {
   DTS-DACS-SBOX = {
     product = "enterprise"
   }
+  CP-COPILOT-BETA = {
+    environment = "sbox"
+    product     = "enterprise"
+  }
 }
 platform_non_production_subscriptions = {
   DTS-MANAGEMENT-TEST = {
