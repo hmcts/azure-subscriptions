@@ -103,9 +103,9 @@ stages:
               - task: AzureKeyVault@2
                 displayName: Retrieve keyvault secrets for ADO secret
                 inputs:
-                  ConnectedServiceName: ${{ deployment.service_connection }}
+                  ConnectedServiceName: 'DCD-CFT-Sandbox'
                   keyVaultName: 'infra-vault-nonprod'
-                  secretsFilter: "azure-devops-sp-token"
+                  secretsFilter: 'azure-devops-sp-token'
                   runAsPreJob: false
   
               - template: steps/terraform.yaml@cnp-azuredevops-libraries
