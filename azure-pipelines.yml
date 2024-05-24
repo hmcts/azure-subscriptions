@@ -100,6 +100,14 @@ stages:
               vmImage: ${{ variables.agentPool }}
             timeoutInMinutes: ${{ variables.timeoutInMinutes }}
             steps:
+              - task: AzureKeyVault@2
+                displayName: Retrieve keyvault secrets for ADO secret
+                inputs:
+                  ConnectedServiceName: ${{ deployment.service_connection }}
+                  keyVaultName: 'infra-vault-nonprod'
+                  secretsFilter: "azure-devops-sp-token"
+                  runAsPreJob: false
+  
               - template: steps/terraform.yaml@cnp-azuredevops-libraries
                 parameters:
                   overrideAction: ${{ parameters.overrideAction }}
@@ -108,3 +116,5 @@ stages:
                   serviceConnection: ${{ deployment.service_connection }}
                   terraformInitSubscription: ${{ deployment.init_subscription }}
                   product: ${{ variables.product }}
+                  terraformEnvironmentVariables:
+                    ARM_CLIENT_SECRET: $(azure-devops-sp-token)
