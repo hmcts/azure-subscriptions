@@ -106,8 +106,9 @@ stages:
                   ConnectedServiceName: 'DCD-CFT-Sandbox'
                   keyVaultName: 'infra-vault-nonprod'
                   secretsFilter: 'azure-devops-sp-token'
-                  runAsPreJob: false
-  
+              - bash: |
+                  echo "##vso[task.setvariable variable=ARM_CLIENT_SECRET;issecret=true]$(azure-devops-sp-token)"
+                displayName: 'Set ARM_CLIENT_SECRET as Env Variable'
               - template: steps/terraform.yaml@cnp-azuredevops-libraries
                 parameters:
                   overrideAction: ${{ parameters.overrideAction }}
@@ -116,5 +117,3 @@ stages:
                   serviceConnection: ${{ deployment.service_connection }}
                   terraformInitSubscription: ${{ deployment.init_subscription }}
                   product: ${{ variables.product }}
-                  terraformEnvironmentVariables:
-                    ARM_CLIENT_SECRET: $(azure-devops-sp-token)
