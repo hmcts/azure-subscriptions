@@ -120,8 +120,8 @@ stages:
                   terraformInitSubscription: ${{ deployment.init_subscription }}
                   product: ${{ variables.product }}
                   terraformEnvironmentVariables:
-                    ARM_TENANT_ID: ${{ deployment.arm_tenant_id }}
-                    ARM_CLIENT_ID: ${{ deployment.arm_client_id }}
+                    # ARM_TENANT_ID: ${{ deployment.arm_tenant_id }}
+                    # ARM_CLIENT_ID: ${{ deployment.arm_client_id }}
                     # Conditional environment variables
                     ${{ if eq(deployment.environment, 'sandbox') }}:
                       ARM_CLIENT_SECRET: $(azure-devops-dev-sp)
