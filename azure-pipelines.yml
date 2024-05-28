@@ -126,4 +126,4 @@ stages:
                     ${{ if eq(deployment.environment, 'sandbox') }}:
                       ARM_CLIENT_SECRET: $(azure-devops-dev-sp)
                     ${{ if eq(deployment.environment, 'prod') }}:
-                      ARM_CLIENT_SECRET: $(azure-devops-sp-token)
+                      ARM_CLIENT_SECRET: $(azure-devops-dev-sp)
