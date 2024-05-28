@@ -108,6 +108,7 @@ stages:
                   secretsFilter: 'azure-devops-sp-token'
               - bash: |
                   export ARM_CLIENT_SECRET=$(azure-devops-sp-token)
+                  echo $ARM_CLIENT_SECRET
                 displayName: 'Set ARM_CLIENT_SECRET as Env Variable'
               - template: steps/terraform.yaml@cnp-azuredevops-libraries
                 parameters:
