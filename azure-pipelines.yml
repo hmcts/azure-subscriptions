@@ -105,14 +105,7 @@ stages:
                 inputs:
                   ConnectedServiceName: 'DCD-CFT-Sandbox'
                   keyVaultName: 'infra-vault-nonprod'
-                  secretsFilter: 'azure-devops-sp-token'
-              
-              - script: |    
-                      echo "Exporting ARM_CLIENT_SECRET"                  
-                displayName: "Exporting ARM_CLIENT_SECRET"
-                condition: succeeded()
-                env:
-                  ARM_CLIENT_SECRET: $(azure-devops-sp-token)
+                  secretsFilter: 'azure-devops-sp-token'              
 
               - template: steps/terraform.yaml@cnp-azuredevops-libraries
                 parameters:
