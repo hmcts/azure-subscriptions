@@ -107,7 +107,7 @@ stages:
                   keyVaultName: 'infra-vault-nonprod'
                   secretsFilter: 'azure-devops-sp-token'
               - bash: |
-                  echo "##vso[task.setvariable variable=ARM_CLIENT_SECRET;issecret=true]$(azure-devops-sp-token)"
+                  export ARM_CLIENT_SECRET=$(azure-devops-sp-token)
                 displayName: 'Set ARM_CLIENT_SECRET as Env Variable'
               - template: steps/terraform.yaml@cnp-azuredevops-libraries
                 parameters:
