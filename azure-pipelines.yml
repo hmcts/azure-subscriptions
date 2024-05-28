@@ -106,10 +106,14 @@ stages:
                   ConnectedServiceName: 'DCD-CFT-Sandbox'
                   keyVaultName: 'infra-vault-nonprod'
                   secretsFilter: 'azure-devops-sp-token'
-              - bash: |
-                  export ARM_CLIENT_SECRET=$(azure-devops-sp-token)
-                  echo $ARM_CLIENT_SECRET
-                displayName: 'Set ARM_CLIENT_SECRET as Env Variable'
+              
+              - script: |    
+                      echo "Exporting ARM_CLIENT_SECRET"                  
+                displayName: "Exporting ARM_CLIENT_SECRET"
+                condition: succeeded()
+                env:
+                  ARM_CLIENT_SECRET: $(azure-devops-sp-token)
+
               - template: steps/terraform.yaml@cnp-azuredevops-libraries
                 parameters:
                   overrideAction: ${{ parameters.overrideAction }}
