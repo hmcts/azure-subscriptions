@@ -38,12 +38,16 @@ parameters:
         service_connection: 'GA-development-tenant'
         init_subscription: '55922b0d-5c33-467f-91b9-42c4059d310c'
         dependsOn: 'Precheck'
+        arm_tenant_id: "e575f663-b30a-4786-89ad-319842dfe853"
+        arm_client_id: "e31bea8c-d553-4720-b0da-69d45f466e8a" # DTS Operations Bootstrap GA
       - stage: 'prod_enterprise'
         environment: 'prod'
         component: 'enterprise'
         service_connection: 'GA-Prod-Tenant'
         init_subscription: 04d27a32-7a07-48b3-95b8-3c8691e1a263
         dependsOn: 'sandbox_enterprise'
+        arm_tenant_id: "531ff96d-0ae9-462a-8d2d-bec7c0b42082" 
+        arm_client_id: "10936009-a112-4733-bb2a-94ee240b79ff" # azure-devops-sp
       - stage: 'prod_video_hearings'
         environment: 'prod'
         component: 'video-hearings'
@@ -105,7 +109,7 @@ stages:
                 inputs:
                   ConnectedServiceName: 'DCD-CFT-Sandbox'
                   keyVaultName: 'infra-vault-nonprod'
-                  secretsFilter: 'azure-devops-sp-token'              
+                  secretsFilter: 'azure-devops-sp-token, azure-devops-dev-sp'
 
               - template: steps/terraform.yaml@cnp-azuredevops-libraries
                 parameters:
@@ -115,3 +119,11 @@ stages:
                   serviceConnection: ${{ deployment.service_connection }}
                   terraformInitSubscription: ${{ deployment.init_subscription }}
                   product: ${{ variables.product }}
+                  terraformEnvironmentVariables:
+                    ARM_TENANT_ID: ${{ deployment.arm_tenant_id }}
+                    ARM_CLIENT_ID: ${{ deployment.arm_client_id }}
+                    # Conditional environment variables
+                    ${{ if eq(deployment.environment, 'sandbox') }}:
+                      ARM_CLIENT_SECRET: $(azure-devops-dev-sp)
+                    ${{ if eq(deployment.environment, 'prod') }}:
+                      ARM_CLIENT_SECRET: $(azure-devops-sp-token)
