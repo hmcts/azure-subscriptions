@@ -438,3 +438,29 @@ DTS-SHAREDSERVICES-DEV = {
   }
 }
 ```
+## Known Issues
+
+### Use of PAT token
+
+We are aware that use of the PAT token is not ideal way to authenticate against Azure Devops and its best to use Service Principal or managed identity.  We have attempted to change that without success because of following reasons.
+
+- One of the major reason we can't able to change PAT token to service principal or managed identity is because we have multiple tenant on this repo and Azure Devops only allows to link to one Azure tenant.  Which means we can not use identity from other tenant to add as user on ADO to  authenticate.
+
+We can use something called *Azure Lighthouse* to manage multiple tenants and have identity configure on multiple tenant but don't think its worth the effort in this scenario.
+[Blog post](https://andrewmatveychuk.com/how-to-deploy-to-another-tenant-with-azure-devops/) if we like to go through that route
+ 
+
+- There also seem to be existing bug on the *azuredevops* provider.  We expect the Service Principal access to work at least on prod_enterprise  step but it seems its not even working for that because of bug on *azuredevops* provider.  Its throwing this error when trying to use the service principal to authenticate to ADO.
+
+[Reported here](https://github.com/microsoft/terraform-provider-azuredevops/issues/1045)
+
+```terraform
+ Error: Request cancelled
+│ 
+│   with module.subscription["DTS-DATAINGEST-STG"].azuredevops_serviceendpoint_azurerm.endpoint,
+│   on ../../modules/subscription/azure_devops.tf line 1, in resource "azuredevops_serviceendpoint_azurerm" "endpoint":
+│    1: resource "azuredevops_serviceendpoint_azurerm" "endpoint" {
+│ 
+│ The plugin.(*GRPCProvider).UpgradeResourceState request was cancelled.
+
+```
