@@ -444,7 +444,7 @@ DTS-SHAREDSERVICES-DEV = {
 
 We are aware that use of the PAT token is not ideal way to authenticate against Azure Devops and its best to use Service Principal or managed identity.  We have attempted to change that without success because of following reasons.
 
-- One of the major reason we can't able to change PAT token to service principal or managed identity is because we have multiple tenant this repo and Azure Devops only allows to link to one Azure tenant.  Which means we can not use identity from other tenant to add as user on ADO to  authenticate.
+- One of the major reason we can't able to change PAT token to service principal or managed identity is because we have multiple tenant on this repo and Azure Devops only allows to link to one Azure tenant.  Which means we can not use identity from other tenant to add as user on ADO to  authenticate.
 
 We can use something called *Azure Lighthouse* to manage multiple tenants and have identity configure on multiple tenant but don't think its worth the effort in this scenario.
 [Blog post](https://andrewmatveychuk.com/how-to-deploy-to-another-tenant-with-azure-devops/) if we like to go through that route
