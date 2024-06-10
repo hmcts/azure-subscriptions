@@ -53,9 +53,6 @@ cft_production_subscriptions = {
     deploy_acme = true
     environment = "ptlsbox"
   }
-  Reform-CFT-MI-SB = {
-    environment = "sbox"
-  }
 }
 
 sds_sandbox_subscriptions = {
@@ -206,10 +203,6 @@ platform_sandbox_subscriptions = {
   DTS-MANAGEMENT-SBOX-INTSVC = {
     environment = "sbox"
     product     = "mgmt"
-  }
-  HMCTS-HUB-SBOX = {
-    deploy_acme = true
-    product     = "hub"
   }
   HMCTS-HUB-SBOX-INTSVC = {
     environment = "sbox"
