@@ -29,15 +29,6 @@ parameters:
       - plan
       - apply
 
-  - name: environment_components
-    type: object
-    default:
-      - stage: 'sandbox_enterprise'
-        environment: 'sandbox'
-        component: 'enterprise'
-        service_connection: 'GA-development-tenant'
-        # init_subscription: '55922b0d-5c33-467f-91b9-42c4059d310c'
-        dependsOn: 'Precheck'
 
 variables:
   - name: timeoutInMinutes
@@ -50,17 +41,21 @@ variables:
 
 
 stages:
-  - stage: Precheck
+  - stage: TestWorkloadIdentity
     jobs:
-      - job: Precheck
+      - job: TestWorkloadIdentity
         pool:
           vmImage: ${{ variables.agentPool }}
         timeoutInMinutes: ${{ variables.timeoutInMinutes }}
         steps:
-          - template: steps/terraform-precheck.yaml@cnp-azuredevops-libraries
-            parameters:
-              keyvaultName: 'infra-vault-nonprod'
-              keyvaultSecret: 'azure-devops-sp-token'
-              serviceConnection: 'Demo'
-              overrideAction: ${{ parameters.overrideAction }}
+          - task: AzureCLI@2
+            inputs:
+              azureSubscription: 'Demo'
+              scriptType: 'bash'
+              scriptLocation: 'inlineScript'
+              inlineScript: |
+                echo "Testing Workload Identity"
+                az login --identity
+                az account show
+                az group list --output table
 
