@@ -1,4 +1,4 @@
-name: Azure Enterprise
+name: test
 trigger:
   batch: true
   branches:
@@ -36,20 +36,8 @@ parameters:
         environment: 'sandbox'
         component: 'enterprise'
         service_connection: 'GA-development-tenant'
-        init_subscription: '55922b0d-5c33-467f-91b9-42c4059d310c'
+        # init_subscription: '55922b0d-5c33-467f-91b9-42c4059d310c'
         dependsOn: 'Precheck'
-      - stage: 'prod_enterprise'
-        environment: 'prod'
-        component: 'enterprise'
-        service_connection: 'GA-Prod-Tenant'
-        init_subscription: 04d27a32-7a07-48b3-95b8-3c8691e1a263
-        dependsOn: 'sandbox_enterprise'
-      - stage: 'prod_video_hearings'
-        environment: 'prod'
-        component: 'video-hearings'
-        service_connection: 'DTS-Video-Hearings-tenant-GA'
-        init_subscription: "4b34a614-5deb-4e58-9180-0eaa01ff3dce"
-        dependsOn: 'sandbox_enterprise'
 
 variables:
   - name: timeoutInMinutes
@@ -73,40 +61,6 @@ stages:
             parameters:
               keyvaultName: 'infra-vault-nonprod'
               keyvaultSecret: 'azure-devops-sp-token'
-              serviceConnection: 'DCD-CFT-Sandbox'
+              serviceConnection: 'Demo'
               overrideAction: ${{ parameters.overrideAction }}
 
-          - bash: |
-              wget -O /tmp/yj https://github.com/sclevine/yj/releases/download/v5.1.0/yj-linux-amd64
-              chmod +x /tmp/yj
-              /tmp/yj -c < environments/prod/prod.tfvars > /tmp/variables.json
-            displayName: Convert HCL to JSON
-            workingDirectory: $(Pipeline.Workspace)/s/azure-enterprise
-
-          - template: steps/pipeline-tests-jest.yaml@cnp-azuredevops-libraries
-            parameters:
-              workingDirectory: $(Pipeline.Workspace)/s/azure-enterprise/tests
-              junit_output_dir: $(Pipeline.Workspace)/s/azure-enterprise/tests/junit
-              environment: prod
-              product: ${{ variables.product }}
-              test_title: 'Naming conventions'
-              test_pattern: namingConventions.test.js
-  - ${{ each deployment in parameters.environment_components }}:
-      - stage: ${{ deployment.stage }}
-        dependsOn: ${{ deployment.dependsOn }}
-        jobs:
-          - job: TerraformPlanApply
-            pool:
-              vmImage: ${{ variables.agentPool }}
-            timeoutInMinutes: ${{ variables.timeoutInMinutes }}
-            steps:
-              - template: steps/terraform.yaml@cnp-azuredevops-libraries
-                parameters:
-                  overrideAction: ${{ parameters.overrideAction }}
-                  environment: ${{ deployment.environment }}
-                  component: ${{ deployment.component }}
-                  serviceConnection: ${{ deployment.service_connection }}
-                  terraformInitSubscription: ${{ deployment.init_subscription }}
-                  product: ${{ variables.product }}
-                  terraformEnvironmentVariables:
-                    AZDO_PERSONAL_ACCESS_TOKEN: $(AZDO_PERSONAL_ACCESS_TOKEN)
