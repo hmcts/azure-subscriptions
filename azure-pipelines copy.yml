@@ -47,8 +47,6 @@ variables:
   - name: product
     value: enterprise
   - template: vars/input-variables.yaml@cnp-azuredevops-libraries
-  - name: manangeidentity
-    value: '/subscriptions/a8140a9e-f1b0-481f-a4de-09e2ee23f7ab/resourcegroups/test-workload-manage-identity/providers/Microsoft.ManagedIdentity/userAssignedIdentities/umi-workload-test-test'
 
 
 stages:
@@ -63,6 +61,6 @@ stages:
             parameters:
               keyvaultName: 'infra-vault-nonprod'
               keyvaultSecret: 'azure-devops-sp-token'
-              serviceConnection: ${{ variables.manangeidentity }}
+              serviceConnection: 'test-demo'
               overrideAction: ${{ parameters.overrideAction }}
 
