@@ -28,7 +28,7 @@ parameters:
     values:
       - plan
       - apply
-
+      
   - name: environment_components
     type: object
     default:
