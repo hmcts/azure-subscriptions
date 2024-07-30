@@ -59,7 +59,6 @@ sds_sandbox_subscriptions = {
   DTS-SHAREDSERVICES-SBOX = {
     deploy_acme = true
   }
-  DCD-MI-SBOX = {}
 }
 sds_non_production_subscriptions = {
   DTS-SHAREDSERVICES-DEMO = {
@@ -197,9 +196,6 @@ security_subscriptions = {
 }
 
 platform_sandbox_subscriptions = {
-  DTS-MANAGEMENT-SBOX = {
-    product = "mgmt"
-  }
   DTS-MANAGEMENT-SBOX-INTSVC = {
     environment = "sbox"
     product     = "mgmt"
@@ -218,23 +214,12 @@ platform_sandbox_subscriptions = {
   }
 }
 platform_non_production_subscriptions = {
-  DTS-MANAGEMENT-TEST = {
-    product = "mgmt"
-  }
   DTS-MANAGEMENT-NONPROD-INTSVC = {
     environment = "stg"
     product     = "mgmt"
   }
-  HMCTS-HUB-DEV = {
-    deploy_acme = true
-    product     = "hub"
-  }
   HMCTS-HUB-NONPROD-INTSVC = {
     environment = "stg"
-    product     = "hub"
-  }
-  HMCTS-HUB-TEST = {
-    deploy_acme = true
     product     = "hub"
   }
   DCD-RDO-Development = {
