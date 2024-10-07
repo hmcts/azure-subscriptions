@@ -21,5 +21,5 @@ output "subscription_name" {
 }
 
 output "reader_group_id" {
-  value = azuread_group.groups["Reader"].id
+  value = azuread_group.groups["Reader"].object_id
 }

@@ -8,7 +8,7 @@ resource "azuread_group" "groups" {
 
 resource "azuread_group_member" "members" {
   for_each         = local.members_list
-  group_object_id  = azuread_group.groups[each.value.role].id
+  group_object_id  = azuread_group.groups[each.value.role].object_id
   member_object_id = each.value.member
 }
 

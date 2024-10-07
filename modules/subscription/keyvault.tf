@@ -11,7 +11,7 @@ resource "azurerm_key_vault" "kv" {
 resource "azurerm_key_vault_access_policy" "permissions" {
   key_vault_id = azurerm_key_vault.kv.id
   tenant_id    = data.azurerm_client_config.current.tenant_id
-  object_id    = azuread_group.groups["Contributor"].id
+  object_id    = azuread_group.groups["Contributor"].object_id
   certificate_permissions = [
     "Backup",
     "Create",
