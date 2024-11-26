@@ -137,6 +137,10 @@ crime_subscriptions = {
     environment = "prod"
     product     = "crime-platform"
   }
+  "MoJ Common Platform Operational Services" = {
+    environment = "prod"
+    product     = "crime-platform"
+  }
 }
 
 heritage_sandbox_subscriptions = {
