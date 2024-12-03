@@ -7,7 +7,7 @@ locals {
 
   custom_roles = {
     "Application Gateway Backend Health Reader" = {
-      scope       = "/providers/Microsoft.Management/managementGroups/HMCTS"
+      scope = "/providers/Microsoft.Management/managementGroups/HMCTS"
     },
   }
 }
