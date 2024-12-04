@@ -8,8 +8,8 @@ resource "azurerm_management_group" "level_1" {
 }
 
 module "bootstrap" {
-  source       = "../management-group-bootstrap"
-  groups       = local.management_groups
+  source = "../management-group-bootstrap"
+  groups = local.management_groups
   # custom_roles = var.create_custom_roles == true ? azurerm_role_definition.custom_role_definitions : data.azurerm_role_definition.custom_role_definitions
   custom_roles = azurerm_role_definition.custom_role_definitions
   depends_on   = [azurerm_management_group.level_6]
