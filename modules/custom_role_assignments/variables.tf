@@ -11,3 +11,9 @@ variable "subscription_id" {
   description = "THe ID of the subscription to assign roles to."
   type        = string
 }
+
+variable "create_custom_roles" {
+  description = "A boolean value to inform module if custom roles were created or looked up using data lookups"
+  type        = bool
+  default     = true
+}

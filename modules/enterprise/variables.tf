@@ -2,6 +2,10 @@ variable "root_id" {}
 variable "root_name" {}
 variable "root_parent_id" {}
 
+variable "create_custom_roles" {
+  default = true
+}
+
 variable "management_groups" {
   type = map(
     object({ display_name = string, parent_management_group_id = string, subscription_ids = list(string) })
