@@ -25,20 +25,20 @@ Heritage --> Heritage-Prod:::mg
 Heritage --> Heritage-NonProd:::mg
 CFT --> CFT-Prod:::mg
 CFT --> CFT-NonProd:::mg
-CFT-NonProd:::mg --> DCD-CFTAPPS-DEMO Deploy_acmetrue --- DCD-CFTAPPS-DEV Deploy_acmetrue --- DCD-CFTAPPS-ITHC Deploy_acmetrue --- DCD-CFTAPPS-TEST Deploy_acmetrue --- DCD-CFTAPPSDATA-DEMO Deploy_acmetrue --- DCD-CNP-DEV Deploy_acmetrue --- DCD-CNP-QA Deploy_acmetrue --- Environmenttest --- DCD-ROBOTICS-DEV Environmentdev 
-CFT-Prod:::mg --> DCD-CFTAPPS-PROD Deploy_acmetrue --- DCD-CFTAPPS-STG Deploy_acmetrue --- DCD-CNP-Prod Deploy_acmetrue --- DTS-CFTPTL-INTSVC Deploy_acmetrue --- Environmentptl --- DTS-CFTSBOX-INTSVC Deploy_acmetrue --- Environmentptlsbox 
+CFT-NonProd:::mg --> DCD-CFTAPPS-DEMO Deploy_acmetrue --- DCD-CFTAPPS-DEV Deploy_acmetrue --- DCD-CFTAPPS-ITHC Deploy_acmetrue --- DCD-CFTAPPS-TEST Deploy_acmetrue --- DCD-CFTAPPSDATA-DEMO Deploy_acmetrue --- DCD-CNP-DEV Deploy_acmetrue --- DCD-CNP-QA Deploy_acmetrue --- Environmenttest --- DCD-ROBOTICS-DEV Environmentdev
+CFT-Prod:::mg --> DCD-CFTAPPS-PROD Deploy_acmetrue --- DCD-CFTAPPS-STG Deploy_acmetrue --- DCD-CNP-Prod Deploy_acmetrue --- DTS-CFTPTL-INTSVC Deploy_acmetrue --- Environmentptl --- DTS-CFTSBOX-INTSVC Deploy_acmetrue --- Environmentptlsbox
 Create_custom_roles:::mg --> False
 Crime:::mg --> Crime1[CRIME-ADO-POC Environmentprod] --- Crime2Productcrime-Platform] --- Crime3[MoJ Common Platform Non-Live Management Environmentstg] --- Crime4Productcrime-Platform] --- Crime5[MOJ DCD Atlassian NLE Environmentstg] --- Crime6Productcrime-Platform] --- Crime7[MoJ Common Platform Production Environmentprod] --- Crime8Productcrime-Platform] --- Crime9[MOJ DCD Atlassian LVE Environmentprod] --- Crime10Productcrime-Platform] --- Crime11[MoJ Common Platform Operational Services Environmentprod] --- Crime12Productcrime-Platform]
-Heritage-NonProd:::mg --> DTS-DATAINGEST-STG Environmentstg --- DTS-HERITAGE-EXTSVC-STG Environmentstg --- DTS-HERITAGE-INTSVC-STG Environmentstg --- DTS-HERITAGE-INTSVC-DEV Environmentdev --- DTS-ARCHIVING-TEST Environmenttest --- Productarm 
-Heritage-Prod:::mg --> DTS-DATAINGEST-PROD Environmentprod --- DTS-HERITAGE-EXTSVC-PROD Environmentprod --- DTS-HERITAGE-INTSVC-PROD Environmentprod --- DTS-ARCHIVING-PROD Environmentprod --- Productarm 
-Heritage-Sandbox:::mg --> DTS-DATAINGEST-SBOX Environmentsbox 
-Platform-NonProd:::mg --> DTS-MANAGEMENT-NONPROD-INTSVC Environmentstg --- Productmgmt --- HMCTS-HUB-NONPROD-INTSVC Environmentstg --- Producthub --- DCD-RDO-Development Environmentdev --- Productcft-Platform 
-Platform-Prod:::mg --> HMCTS-CONTROL Environmentprod --- Productenterprise --- Replication_typeRAGRS --- DTS-MANAGEMENT-PROD-INTSVC Environmentprod --- Productmgmt --- HMCTS-HUB-PROD-INTSVC Environmentprod --- Deploy_acmetrue --- Producthub --- Reform-CFT-Mgmt Environmentmgmt --- Productmgmt --- DCD-RDO-Production Environmentprod --- Productmgmt 
-Platform-Sandbox:::mg --> DTS-MANAGEMENT-SBOX-INTSVC Environmentsbox --- Productmgmt --- HMCTS-HUB-SBOX-INTSVC Environmentsbox --- Deploy_acmetrue --- Producthub --- DTS-DACS-SBOX Productenterprise --- CP-COPILOT-BETA Environmentsbox --- Productenterprise 
-SDS-NonProd:::mg --> DTS-SHAREDSERVICES-DEMO Deploy_acmetrue --- DTS-SHAREDSERVICES-DEV Deploy_acmetrue --- Additional_api_permissions 73c2949e-Da2d-457a-9607-Fcc665198967 817468d0-81dd-4cb5-94ac-07ca133fbbf6Scope --- DTS-SHAREDSERVICES-ITHC Deploy_acmetrue --- DTS-SHAREDSERVICES-TEST Deploy_acmetrue --- Reform-CFT-VH-Dev Deploy_acmetrue --- Environmentdev 
-SDS-Prod:::mg --> DTS-SHAREDSERVICES-STG Deploy_acmetrue --- DTS-SHAREDSERVICES-PROD Deploy_acmetrue --- Additional_api_permissions 73c2949e-Da2d-457a-9607-Fcc665198967 817468d0-81dd-4cb5-94ac-07ca133fbbf6Scope --- DCD-AWS-Migration Environmentprod --- DCD-CFT-VH-Pilot Deploy_acmetrue --- Environmentprod --- DTS-SHAREDSERVICESPTL Deploy_acmetrue --- Environmentptl --- DTS-SHAREDSERVICESPTL-SBOX Deploy_acmetrue --- Environmentptlsbox 
-SDS-Sandbox:::mg --> DTS-SHAREDSERVICES-SBOX Deploy_acmetrue 
-Security:::mg --> HMCTS-SOC-SBOX Deploy_acmetrue --- HMCTS-SOC-PROD Deploy_acmetrue 
+Heritage-NonProd:::mg --> DTS-DATAINGEST-STG Environmentstg --- DTS-HERITAGE-EXTSVC-STG Environmentstg --- DTS-HERITAGE-INTSVC-STG Environmentstg --- DTS-HERITAGE-INTSVC-DEV Environmentdev --- DTS-ARCHIVING-TEST Environmenttest --- Productarm
+Heritage-Prod:::mg --> DTS-DATAINGEST-PROD Environmentprod --- DTS-HERITAGE-EXTSVC-PROD Environmentprod --- DTS-HERITAGE-INTSVC-PROD Environmentprod --- DTS-ARCHIVING-PROD Environmentprod --- Productarm
+Heritage-Sandbox:::mg --> DTS-DATAINGEST-SBOX Environmentsbox
+Platform-NonProd:::mg --> DTS-MANAGEMENT-NONPROD-INTSVC Environmentstg --- Productmgmt --- HMCTS-HUB-NONPROD-INTSVC Environmentstg --- Producthub --- DCD-RDO-Development Environmentdev --- Productcft-Platform
+Platform-Prod:::mg --> HMCTS-CONTROL Environmentprod --- Productenterprise --- Replication_typeRAGRS --- DTS-MANAGEMENT-PROD-INTSVC Environmentprod --- Productmgmt --- HMCTS-HUB-PROD-INTSVC Environmentprod --- Deploy_acmetrue --- Producthub --- Reform-CFT-Mgmt Environmentmgmt --- Productmgmt --- DCD-RDO-Production Environmentprod --- Productmgmt
+Platform-Sandbox:::mg --> DTS-MANAGEMENT-SBOX-INTSVC Environmentsbox --- Productmgmt --- HMCTS-HUB-SBOX-INTSVC Environmentsbox --- Deploy_acmetrue --- Producthub --- DTS-DACS-SBOX Productenterprise --- CP-COPILOT-BETA Environmentsbox --- Productenterprise
+SDS-NonProd:::mg --> DTS-SHAREDSERVICES-DEMO Deploy_acmetrue --- DTS-SHAREDSERVICES-DEV Deploy_acmetrue --- Additional_api_permissions 73c2949e-Da2d-457a-9607-Fcc665198967 817468d0-81dd-4cb5-94ac-07ca133fbbf6Scope --- DTS-SHAREDSERVICES-ITHC Deploy_acmetrue --- DTS-SHAREDSERVICES-TEST Deploy_acmetrue --- Reform-CFT-VH-Dev Deploy_acmetrue --- Environmentdev
+SDS-Prod:::mg --> DTS-SHAREDSERVICES-STG Deploy_acmetrue --- DTS-SHAREDSERVICES-PROD Deploy_acmetrue --- Additional_api_permissions 73c2949e-Da2d-457a-9607-Fcc665198967 817468d0-81dd-4cb5-94ac-07ca133fbbf6Scope --- DCD-AWS-Migration Environmentprod --- DCD-CFT-VH-Pilot Deploy_acmetrue --- Environmentprod --- DTS-SHAREDSERVICESPTL Deploy_acmetrue --- Environmentptl --- DTS-SHAREDSERVICESPTL-SBOX Deploy_acmetrue --- Environmentptlsbox
+SDS-Sandbox:::mg --> DTS-SHAREDSERVICES-SBOX Deploy_acmetrue
+Security:::mg --> HMCTS-SOC-SBOX Deploy_acmetrue --- HMCTS-SOC-PROD Deploy_acmetrue
 ```
 
 ## Diagram setup
@@ -93,7 +93,7 @@ Modify the file [prod.tfvars](https://github.com/hmcts/azure-enterprise/blob/mai
     DTS-HERITAGE-STG = {}
    }
    ```
-  
+
 The environment is required to bootstrap the subscription. Most subscriptions have the environment name in the subscription name e.g. DTS-SHAREDSERVICES-DEV. The environment will be extracted automatically where this naming convention is followed. If a subscription does not follow this naming convention, then you must specify the environment in the tfvars file.
 
    ```
@@ -120,7 +120,7 @@ Create a 'help request' in the [#platops-help](https://hmcts-reform.slack.com/ap
    - append the top level of your new management group to the sed command on [L34](scripts/create-mermaid-diagram.sh#L34) `s/vh_subscriptions/VH:::mg/g; s/new_subscriptions/NEW:::mg/g'`
    - append the environments for your new management group to the sed command on [L37](scripts/create-mermaid-diagram.sh#L37) `Platform-Sandbox:::mg\'$'\n/g; NEW-Sandbox:::mg\'$'\n/g;'`
 
-<!-- TODO update this when we get a better example that's just doing what is required --> 
+<!-- TODO update this when we get a better example that's just doing what is required -->
 [Example pull request](https://github.com/hmcts/azure-enterprise/pull/11)
 
 ## Renaming a subscription
@@ -325,7 +325,7 @@ Each tenant needs to have a local user account and to have its own enrolment acc
 3. Assign the user account Global Administrator
 4. Invite dtsazure@hmcts.net to the tenant if it's not already present, this account should have visibility over all tenants
 5. Ask the EA Administrators to create an enrolment account in the HMCTS department
-   * named after the tenant, usually something like 'DTS <tenant name' 
+   * named after the tenant, usually something like 'DTS <tenant name'
    * account admin as `dtsazure@<custom-domain>`
    * If it's going to have subscriptions for Dev/Test ask them to enable the Dev/Test offer on the account
 6. Log into the [EA portal](https://ea.azure.com) using the tenant user `dtsazure@<custom-domain>`
@@ -374,7 +374,33 @@ This value will then be used to update the service connection in Azure DevOps.
 
 ## Creating and assigning custom roles
 
-### Creating a custom role 
+### Creating a custom role
+
+#### Production Tenant
+
+**Please note Custom roles should only be created for Sandbox and Video Hearings. If you require a custom role for the Production tenant please visit the [Custom Roles](https://github.com/hmcts/azure-custom-roles) repository.**
+
+**_Using the role within this repository_**
+
+Once you have created the role you can use it normally by updating the [locals.tf](./modules/enterprise/locals.tf) file in the enterprise module. Update the `custom_roles` local value with the name of the role, the description, the scope and the actions allowed.
+
+```terraform
+  custom_roles = {
+    "<myRoleName>" = {
+      description = "A description of the roles purpose"
+      scope       = "/providers/Microsoft.Management/managementGroups/HMCTS"
+      actions     = [ List of actions to give the role ]
+    },
+  }
+```
+
+In Production this list is used to lookup existing roles such as those created via the `custom-roles` repository.
+
+> Please note that these roles will be created in Sandbox and Video Hearings tenants rather than being looked up as those tenants are not managed via `custom-roles`.
+
+#### Sandbox and Video Hearings
+
+If you require a custom role for Sandbox or Video Hearings you can use the following guidance.
 
 To create a custom role you need to update the [locals.tf](./modules/enterprise/locals.tf) file in the enterprise module and update the `custom_roles` local value with the name of the role, the description, the scope and the actions allowed.
 
@@ -400,7 +426,7 @@ Once the role has been created we can assign it by updating the [locals.tf](./mo
 ]
 ```
 
-#### Subscriptions 
+#### Subscriptions
 
 Once the role has been created we can assign it by updating the [locals.tf](./modules/subscription/locals.tf) file in the subscription module. You will need to add the name of the custom role, the ID of the principal being assigned to the role and the scope of the permission.
 
@@ -446,7 +472,7 @@ We are aware that use of the PAT token is not ideal way to authenticate against 
 
 We can use something called *Azure Lighthouse* to manage multiple tenants and have identity configure on multiple tenant but don't think its worth the effort in this scenario.
 [Blog post](https://andrewmatveychuk.com/how-to-deploy-to-another-tenant-with-azure-devops/) if we like to go through that route
- 
+
 
 - There also seem to be existing bug on the *azuredevops* provider.  We expect the Service Principal access to work at least on prod_enterprise  step but it seems its not even working for that because of bug on *azuredevops* provider.  Its throwing this error when trying to use the service principal to authenticate to ADO.
 
@@ -454,11 +480,11 @@ We can use something called *Azure Lighthouse* to manage multiple tenants and ha
 
 ```terraform
  Error: Request cancelled
-│ 
+│
 │   with module.subscription["DTS-DATAINGEST-STG"].azuredevops_serviceendpoint_azurerm.endpoint,
 │   on ../../modules/subscription/azure_devops.tf line 1, in resource "azuredevops_serviceendpoint_azurerm" "endpoint":
 │    1: resource "azuredevops_serviceendpoint_azurerm" "endpoint" {
-│ 
+│
 │ The plugin.(*GRPCProvider).UpgradeResourceState request was cancelled.
 
 ```

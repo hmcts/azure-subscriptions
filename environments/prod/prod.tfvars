@@ -252,4 +252,5 @@ enrollment_account_name = "233705"
 
 add_service_connection_to_ado = true
 
+# Do not create custom_roles for production/enterprise component
 create_custom_roles = false
