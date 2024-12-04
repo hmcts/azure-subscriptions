@@ -12,5 +12,4 @@ locals {
       actions     = ["Microsoft.Network/applicationGateways/backendhealth/action"]
     },
   }
-  }
 }
