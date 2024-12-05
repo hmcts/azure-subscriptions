@@ -99,6 +99,6 @@ variable "expiresAfter" {
 
 # Defined here as we have an input in the tfvar file but this variable is not used within this component
 variable "create_custom_roles" {
-  default     = true
+  default     = false
   description = "Should this component create any custom roles defined in the enterprise module"
 }

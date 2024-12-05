@@ -3,7 +3,7 @@ variable "root_name" {}
 variable "root_parent_id" {}
 
 variable "create_custom_roles" {
-  default = true
+  default = false
 }
 
 variable "management_groups" {

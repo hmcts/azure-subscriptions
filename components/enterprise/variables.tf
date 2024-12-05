@@ -106,6 +106,6 @@ variable "expiresAfter" {
 }
 
 variable "create_custom_roles" {
-  default     = true
+  default     = false
   description = "Should this component create any custom roles defined in the enterprise module"
 }
