@@ -104,3 +104,8 @@ variable "expiresAfter" {
   description = "Date when Sandbox resources can be deleted. Format: YYYY-MM-DD"
   default     = "3000-01-01"
 }
+
+variable "create_custom_roles" {
+  default     = false
+  description = "Should this component create any custom roles defined in the enterprise module"
+}

@@ -96,3 +96,9 @@ variable "expiresAfter" {
   description = "Date when Sandbox resources can be deleted. Format: YYYY-MM-DD"
   default     = "3000-01-01"
 }
+
+# Defined here as we have an input in the tfvar file but this variable is not used within this component
+variable "create_custom_roles" {
+  default     = true
+  description = "Should this component create any custom roles defined in the enterprise module"
+}

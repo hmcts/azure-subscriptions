@@ -95,7 +95,7 @@ Modify the file [prod.tfvars](https://github.com/hmcts/azure-enterprise/blob/mai
     DTS-HERITAGE-STG = {}
    }
    ```
-  
+
 The environment is required to bootstrap the subscription. Most subscriptions have the environment name in the subscription name e.g. DTS-SHAREDSERVICES-DEV. The environment will be extracted automatically where this naming convention is followed. If a subscription does not follow this naming convention, then you must specify the environment in the tfvars file.
 
    ```
@@ -122,7 +122,7 @@ Create a 'help request' in the [#platops-help](https://hmcts-reform.slack.com/ap
    - append the top level of your new management group to the sed command on [L34](scripts/create-mermaid-diagram.sh#L34) `s/vh_subscriptions/VH:::mg/g; s/new_subscriptions/NEW:::mg/g'`
    - append the environments for your new management group to the sed command on [L37](scripts/create-mermaid-diagram.sh#L37) `Platform-Sandbox:::mg\'$'\n/g; NEW-Sandbox:::mg\'$'\n/g;'`
 
-<!-- TODO update this when we get a better example that's just doing what is required --> 
+<!-- TODO update this when we get a better example that's just doing what is required -->
 [Example pull request](https://github.com/hmcts/azure-enterprise/pull/11)
 
 ## Renaming a subscription
@@ -327,7 +327,7 @@ Each tenant needs to have a local user account and to have its own enrolment acc
 3. Assign the user account Global Administrator
 4. Invite dtsazure@hmcts.net to the tenant if it's not already present, this account should have visibility over all tenants
 5. Ask the EA Administrators to create an enrolment account in the HMCTS department
-   * named after the tenant, usually something like 'DTS <tenant name' 
+   * named after the tenant, usually something like 'DTS <tenant name'
    * account admin as `dtsazure@<custom-domain>`
    * If it's going to have subscriptions for Dev/Test ask them to enable the Dev/Test offer on the account
 6. Log into the [EA portal](https://ea.azure.com) using the tenant user `dtsazure@<custom-domain>`
@@ -376,7 +376,33 @@ This value will then be used to update the service connection in Azure DevOps.
 
 ## Creating and assigning custom roles
 
-### Creating a custom role 
+### Creating a custom role
+
+#### Production Tenant
+
+**Please note Custom roles should only be created for Sandbox and Video Hearings. If you require a custom role for the Production tenant please visit the [Custom Roles](https://github.com/hmcts/azure-custom-roles) repository.**
+
+**_Using the role within this repository_**
+
+Once you have created the role you can use it normally by updating the [locals.tf](./modules/enterprise/locals.tf) file in the enterprise module. Update the `custom_roles` local value with the name of the role, the description, the scope and the actions allowed.
+
+```terraform
+  custom_roles = {
+    "<myRoleName>" = {
+      description = "A description of the roles purpose"
+      scope       = "/providers/Microsoft.Management/managementGroups/HMCTS"
+      actions     = [ List of actions to give the role ]
+    },
+  }
+```
+
+In Production this list is used to lookup existing roles such as those created via the `custom-roles` repository.
+
+> Please note that these roles will be created in Sandbox and Video Hearings tenants rather than being looked up as those tenants are not managed via `custom-roles`.
+
+#### Sandbox and Video Hearings
+
+If you require a custom role for Sandbox or Video Hearings you can use the following guidance.
 
 To create a custom role you need to update the [locals.tf](./modules/enterprise/locals.tf) file in the enterprise module and update the `custom_roles` local value with the name of the role, the description, the scope and the actions allowed.
 
@@ -402,7 +428,7 @@ Once the role has been created we can assign it by updating the [locals.tf](./mo
 ]
 ```
 
-#### Subscriptions 
+#### Subscriptions
 
 Once the role has been created we can assign it by updating the [locals.tf](./modules/subscription/locals.tf) file in the subscription module. You will need to add the name of the custom role, the ID of the principal being assigned to the role and the scope of the permission.
 
@@ -448,7 +474,7 @@ We are aware that use of the PAT token is not ideal way to authenticate against 
 
 We can use something called *Azure Lighthouse* to manage multiple tenants and have identity configure on multiple tenant but don't think its worth the effort in this scenario.
 [Blog post](https://andrewmatveychuk.com/how-to-deploy-to-another-tenant-with-azure-devops/) if we like to go through that route
- 
+
 
 - There also seem to be existing bug on the *azuredevops* provider.  We expect the Service Principal access to work at least on prod_enterprise  step but it seems its not even working for that because of bug on *azuredevops* provider.  Its throwing this error when trying to use the service principal to authenticate to ADO.
 
@@ -456,11 +482,11 @@ We can use something called *Azure Lighthouse* to manage multiple tenants and ha
 
 ```terraform
  Error: Request cancelled
-│ 
+│
 │   with module.subscription["DTS-DATAINGEST-STG"].azuredevops_serviceendpoint_azurerm.endpoint,
 │   on ../../modules/subscription/azure_devops.tf line 1, in resource "azuredevops_serviceendpoint_azurerm" "endpoint":
 │    1: resource "azuredevops_serviceendpoint_azurerm" "endpoint" {
-│ 
+│
 │ The plugin.(*GRPCProvider).UpgradeResourceState request was cancelled.
 
 ```

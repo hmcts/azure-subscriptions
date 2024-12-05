@@ -22,7 +22,8 @@ resource "azurerm_role_assignment" "custom_role_assignments_readers" {
       role  = association[1]
   } }
 
-  principal_id       = azuread_group.readers[each.value.group].object_id
-  scope              = "/providers/Microsoft.Management/managementGroups/${each.value.group}"
-  role_definition_id = var.custom_roles[each.value.role].role_definition_resource_id
+  principal_id = azuread_group.readers[each.value.group].object_id
+  scope        = "/providers/Microsoft.Management/managementGroups/${each.value.group}"
+  # role_definition_id = var.custom_roles[each.value.role].id
+  role_definition_id = split("|", var.custom_roles[each.value.role].id)[0]
 }
