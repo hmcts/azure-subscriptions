@@ -7,9 +7,9 @@ Simplified for our use-cases / retrofitting.
 graph TD
 classDef mg stroke:#ff1100,stroke-width:4px
 Root:::mg --> HMCTS
+HMCTS:::mg --> VH:::mg
 HMCTS:::mg --> Security:::mg
 HMCTS:::mg --> Crime:::mg
-HMCTS:::mg --> Create_custom_roles:::mg
 HMCTS:::mg --> CFT:::mg
 HMCTS:::mg --> Heritage:::mg
 HMCTS:::mg --> Platform:::mg
@@ -23,22 +23,24 @@ Platform --> Platform-NonProd:::mg
 Heritage --> Heritage-Sandbox:::mg
 Heritage --> Heritage-Prod:::mg
 Heritage --> Heritage-NonProd:::mg
+CFT --> CFT-Sandbox:::mg
 CFT --> CFT-Prod:::mg
 CFT --> CFT-NonProd:::mg
-CFT-NonProd:::mg --> DCD-CFTAPPS-DEMO Deploy_acmetrue --- DCD-CFTAPPS-DEV Deploy_acmetrue --- DCD-CFTAPPS-ITHC Deploy_acmetrue --- DCD-CFTAPPS-TEST Deploy_acmetrue --- DCD-CFTAPPSDATA-DEMO Deploy_acmetrue --- DCD-CNP-DEV Deploy_acmetrue --- DCD-CNP-QA Deploy_acmetrue --- Environmenttest --- DCD-ROBOTICS-DEV Environmentdev 
-CFT-Prod:::mg --> DCD-CFTAPPS-PROD Deploy_acmetrue --- DCD-CFTAPPS-STG Deploy_acmetrue --- DCD-CNP-Prod Deploy_acmetrue --- DTS-CFTPTL-INTSVC Deploy_acmetrue --- Environmentptl --- DTS-CFTSBOX-INTSVC Deploy_acmetrue --- Environmentptlsbox 
-Create_custom_roles:::mg --> False
-Crime:::mg --> Crime1[CRIME-ADO-POC Environmentprod] --- Crime2Productcrime-Platform] --- Crime3[MoJ Common Platform Non-Live Management Environmentstg] --- Crime4Productcrime-Platform] --- Crime5[MOJ DCD Atlassian NLE Environmentstg] --- Crime6Productcrime-Platform] --- Crime7[MoJ Common Platform Production Environmentprod] --- Crime8Productcrime-Platform] --- Crime9[MOJ DCD Atlassian LVE Environmentprod] --- Crime10Productcrime-Platform] --- Crime11[MoJ Common Platform Operational Services Environmentprod] --- Crime12Productcrime-Platform]
-Heritage-NonProd:::mg --> DTS-DATAINGEST-STG Environmentstg --- DTS-HERITAGE-EXTSVC-STG Environmentstg --- DTS-HERITAGE-INTSVC-STG Environmentstg --- DTS-HERITAGE-INTSVC-DEV Environmentdev --- DTS-ARCHIVING-TEST Environmenttest --- Productarm 
-Heritage-Prod:::mg --> DTS-DATAINGEST-PROD Environmentprod --- DTS-HERITAGE-EXTSVC-PROD Environmentprod --- DTS-HERITAGE-INTSVC-PROD Environmentprod --- DTS-ARCHIVING-PROD Environmentprod --- Productarm 
-Heritage-Sandbox:::mg --> DTS-DATAINGEST-SBOX Environmentsbox 
-Platform-NonProd:::mg --> DTS-MANAGEMENT-NONPROD-INTSVC Environmentstg --- Productmgmt --- HMCTS-HUB-NONPROD-INTSVC Environmentstg --- Producthub --- DCD-RDO-Development Environmentdev --- Productcft-Platform 
-Platform-Prod:::mg --> HMCTS-CONTROL Environmentprod --- Productenterprise --- Replication_typeRAGRS --- DTS-MANAGEMENT-PROD-INTSVC Environmentprod --- Productmgmt --- HMCTS-HUB-PROD-INTSVC Environmentprod --- Deploy_acmetrue --- Producthub --- Reform-CFT-Mgmt Environmentmgmt --- Productmgmt --- DCD-RDO-Production Environmentprod --- Productmgmt 
-Platform-Sandbox:::mg --> DTS-MANAGEMENT-SBOX-INTSVC Environmentsbox --- Productmgmt --- HMCTS-HUB-SBOX-INTSVC Environmentsbox --- Deploy_acmetrue --- Producthub --- DTS-DACS-SBOX Productenterprise --- CP-COPILOT-BETA Environmentsbox --- Productenterprise 
-SDS-NonProd:::mg --> DTS-SHAREDSERVICES-DEMO Deploy_acmetrue --- DTS-SHAREDSERVICES-DEV Deploy_acmetrue --- Additional_api_permissions 73c2949e-Da2d-457a-9607-Fcc665198967 817468d0-81dd-4cb5-94ac-07ca133fbbf6Scope --- DTS-SHAREDSERVICES-ITHC Deploy_acmetrue --- DTS-SHAREDSERVICES-TEST Deploy_acmetrue --- Reform-CFT-VH-Dev Deploy_acmetrue --- Environmentdev 
-SDS-Prod:::mg --> DTS-SHAREDSERVICES-STG Deploy_acmetrue --- DTS-SHAREDSERVICES-PROD Deploy_acmetrue --- Additional_api_permissions 73c2949e-Da2d-457a-9607-Fcc665198967 817468d0-81dd-4cb5-94ac-07ca133fbbf6Scope --- DCD-AWS-Migration Environmentprod --- DCD-CFT-VH-Pilot Deploy_acmetrue --- Environmentprod --- DTS-SHAREDSERVICESPTL Deploy_acmetrue --- Environmentptl --- DTS-SHAREDSERVICESPTL-SBOX Deploy_acmetrue --- Environmentptlsbox 
-SDS-Sandbox:::mg --> DTS-SHAREDSERVICES-SBOX Deploy_acmetrue 
-Security:::mg --> HMCTS-SOC-SBOX Deploy_acmetrue --- HMCTS-SOC-PROD Deploy_acmetrue 
+CFT-NonProd:::mg --> DCD-CFTAPPS-DEMO --- DCD-CFTAPPS-DEV --- DCD-CFTAPPS-ITHC --- DCD-CFTAPPS-TEST --- DCD-CFTAPPSDATA-DEMO --- DCD-CNP-DEV --- DCD-CNP-QA --- DCD-ROBOTICS-DEV 
+CFT-Prod:::mg --> DCD-CFTAPPS-PROD --- DCD-CFTAPPS-STG --- DCD-CNP-Prod --- DTS-CFTPTL-INTSVC --- DTS-CFTSBOX-INTSVC 
+CFT-Sandbox:::mg --> DCD-CFT-Sandbox --- DCD-CFTAPPS-SBOX --- DCD-ROBOTICS-SBOX 
+Crime:::mg --> Crime1[CRIME-ADO-POC] --- Crime2[MoJ Common Platform Non-Live Management] --- Crime3[MOJ DCD Atlassian NLE] --- Crime4[MoJ Common Platform Production] --- Crime5[MOJ DCD Atlassian LVE] --- Crime6[MoJ Common Platform Operational Services]
+Heritage-NonProd:::mg --> DTS-DATAINGEST-STG --- DTS-HERITAGE-EXTSVC-STG --- DTS-HERITAGE-INTSVC-STG --- DTS-HERITAGE-INTSVC-DEV --- DTS-ARCHIVING-TEST 
+Heritage-Prod:::mg --> DTS-DATAINGEST-PROD --- DTS-HERITAGE-EXTSVC-PROD --- DTS-HERITAGE-INTSVC-PROD --- DTS-ARCHIVING-PROD 
+Heritage-Sandbox:::mg --> DTS-DATAINGEST-SBOX 
+Platform-NonProd:::mg --> DTS-MANAGEMENT-NONPROD-INTSVC --- HMCTS-HUB-NONPROD-INTSVC --- DCD-RDO-Development 
+Platform-Prod:::mg --> HMCTS-CONTROL --- DTS-MANAGEMENT-PROD-INTSVC --- HMCTS-HUB-PROD-INTSVC --- Reform-CFT-Mgmt --- DCD-RDO-Production 
+Platform-Sandbox:::mg --> DTS-MANAGEMENT-SBOX-INTSVC --- HMCTS-HUB-SBOX-INTSVC --- DTS-DACS-SBOX --- CP-COPILOT-BETA 
+SDS-NonProd:::mg --> DTS-SHAREDSERVICES-DEMO --- DTS-SHAREDSERVICES-DEV --- DTS-SHAREDSERVICES-ITHC --- DTS-SHAREDSERVICES-TEST --- Reform-CFT-VH-Dev 
+SDS-Prod:::mg --> DTS-SHAREDSERVICES-STG --- DTS-SHAREDSERVICES-PROD --- DCD-AWS-Migration --- DCD-CFT-VH-Pilot --- DTS-SHAREDSERVICESPTL --- DTS-SHAREDSERVICESPTL-SBOX 
+SDS-Sandbox:::mg --> DTS-SHAREDSERVICES-SBOX 
+Security:::mg --> HMCTS-SOC-SBOX --- HMCTS-SOC-PROD 
+VH:::mg --> DTS-VH-PROD 
 ```
 
 ## Diagram setup
