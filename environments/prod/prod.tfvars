@@ -82,6 +82,10 @@ sds_non_production_subscriptions = {
     deploy_acme = true
     environment = "dev"
   }
+  DTS-ARCHIVING-TEST = {
+    environment = "test"
+    product     = "arm"
+  }
 }
 sds_production_subscriptions = {
   DTS-SHAREDSERVICES-STG = {
@@ -109,6 +113,10 @@ sds_production_subscriptions = {
   DTS-SHAREDSERVICESPTL-SBOX = {
     deploy_acme = true
     environment = "ptlsbox"
+  }
+  DTS-ARCHIVING-PROD = {
+    environment = "prod"
+    product     = "arm"
   }
 }
 
@@ -157,10 +165,6 @@ heritage_non_production_subscriptions = {
   DTS-HERITAGE-INTSVC-DEV = {
     environment = "dev"
   }
-  DTS-ARCHIVING-TEST = {
-    environment = "test"
-    product     = "arm"
-  }
 }
 heritage_production_subscriptions = {
   DTS-DATAINGEST-PROD = {
@@ -171,10 +175,6 @@ heritage_production_subscriptions = {
   }
   DTS-HERITAGE-INTSVC-PROD = {
     environment = "prod"
-  }
-  DTS-ARCHIVING-PROD = {
-    environment = "prod"
-    product     = "arm"
   }
 }
 
